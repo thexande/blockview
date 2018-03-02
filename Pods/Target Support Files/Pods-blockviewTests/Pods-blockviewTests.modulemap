@@ -1,0 +1,6 @@
+framework module Pods_blockviewTests {
+  umbrella header "Pods-blockviewTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -5,7 +5,9 @@ target 'blockview' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   pod 'RealmSwift'
-  pod 'FontAwesome_swift'
+  pod 'Realm'
+  pod 'lottie-ios'
+  pod 'FontAwesome.swift', :git => 'https://github.com/thii/FontAwesome.swift', :branch => 'swift-4.0'
 
   # Pods for blockview
 
