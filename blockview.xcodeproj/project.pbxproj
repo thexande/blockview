@@ -18,6 +18,7 @@
 		B094377820491CA700AF36D0 /* RootTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094377720491CA700AF36D0 /* RootTabViewController.swift */; };
 		B094377A20491DBC00AF36D0 /* MyWalletsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094377920491DBC00AF36D0 /* MyWalletsViewController.swift */; };
 		B094377C20491DE100AF36D0 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094377B20491DE100AF36D0 /* ExploreViewController.swift */; };
+		B094377E2049212800AF36D0 /* qr_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B094377D2049212800AF36D0 /* qr_animation.json */; };
 		B999799E11C88AAD22ACB237 /* Pods_blockviewUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB8EEAAF2E9CCB2BD8A8D8A /* Pods_blockviewUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		B094377720491CA700AF36D0 /* RootTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabViewController.swift; sourceTree = "<group>"; };
 		B094377920491DBC00AF36D0 /* MyWalletsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWalletsViewController.swift; sourceTree = "<group>"; };
 		B094377B20491DE100AF36D0 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		B094377D2049212800AF36D0 /* qr_animation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = qr_animation.json; sourceTree = "<group>"; };
 		F03965C361FEDFAD4D29A05A /* Pods-blockviewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blockviewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-blockviewTests/Pods-blockviewTests.release.xcconfig"; sourceTree = "<group>"; };
 		F1535F4A5D145F5B4C3AD838 /* Pods-blockviewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blockviewTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-blockviewTests/Pods-blockviewTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +135,7 @@
 				B094374F204919A200AF36D0 /* Assets.xcassets */,
 				B0943751204919A200AF36D0 /* LaunchScreen.storyboard */,
 				B0943754204919A200AF36D0 /* Info.plist */,
+				B094377D2049212800AF36D0 /* qr_animation.json */,
 			);
 			path = blockview;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 			files = (
 				B0943753204919A200AF36D0 /* LaunchScreen.storyboard in Resources */,
 				B0943750204919A200AF36D0 /* Assets.xcassets in Resources */,
+				B094377E2049212800AF36D0 /* qr_animation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +358,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-blockview/Pods-blockview-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Anchorage/Anchorage.framework",
 				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -361,6 +366,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Anchorage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
