@@ -11,7 +11,6 @@
 		621790FD40245D7D569ECEEA /* Pods_blockview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33F9953134B00710D7ADBA09 /* Pods_blockview.framework */; };
 		B0943749204919A200AF36D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0943748204919A200AF36D0 /* AppDelegate.swift */; };
 		B094374B204919A200AF36D0 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094374A204919A200AF36D0 /* ScannerViewController.swift */; };
-		B0943750204919A200AF36D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B094374F204919A200AF36D0 /* Assets.xcassets */; };
 		B0943753204919A200AF36D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0943751204919A200AF36D0 /* LaunchScreen.storyboard */; };
 		B094375E204919A200AF36D0 /* blockviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094375D204919A200AF36D0 /* blockviewTests.swift */; };
 		B0943769204919A200AF36D0 /* blockviewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0943768204919A200AF36D0 /* blockviewUITests.swift */; };
@@ -20,6 +19,10 @@
 		B094377C20491DE100AF36D0 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094377B20491DE100AF36D0 /* ExploreViewController.swift */; };
 		B094377E2049212800AF36D0 /* qr_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B094377D2049212800AF36D0 /* qr_animation.json */; };
 		B094378120492B6600AF36D0 /* FontAwesomeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094378020492B6600AF36D0 /* FontAwesomeHelper.swift */; };
+		B0943785204A425E00AF36D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0943784204A425E00AF36D0 /* Assets.xcassets */; };
+		B0943788204A55D800AF36D0 /* WalletEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0943787204A55D800AF36D0 /* WalletEmptyStateView.swift */; };
+		B094378A204A563700AF36D0 /* WalletRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0943789204A563700AF36D0 /* WalletRowCell.swift */; };
+		B094378C204A565400AF36D0 /* WalletSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094378B204A565400AF36D0 /* WalletSectionHeader.swift */; };
 		B999799E11C88AAD22ACB237 /* Pods_blockviewUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB8EEAAF2E9CCB2BD8A8D8A /* Pods_blockviewUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +54,6 @@
 		B0943745204919A200AF36D0 /* blockview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blockview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0943748204919A200AF36D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B094374A204919A200AF36D0 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
-		B094374F204919A200AF36D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0943752204919A200AF36D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0943754204919A200AF36D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0943759204919A200AF36D0 /* blockviewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = blockviewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +67,10 @@
 		B094377B20491DE100AF36D0 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		B094377D2049212800AF36D0 /* qr_animation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = qr_animation.json; sourceTree = "<group>"; };
 		B094378020492B6600AF36D0 /* FontAwesomeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontAwesomeHelper.swift; sourceTree = "<group>"; };
+		B0943784204A425E00AF36D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
+		B0943787204A55D800AF36D0 /* WalletEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletEmptyStateView.swift; sourceTree = "<group>"; };
+		B0943789204A563700AF36D0 /* WalletRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletRowCell.swift; sourceTree = "<group>"; };
+		B094378B204A565400AF36D0 /* WalletSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSectionHeader.swift; sourceTree = "<group>"; };
 		F03965C361FEDFAD4D29A05A /* Pods-blockviewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blockviewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-blockviewTests/Pods-blockviewTests.release.xcconfig"; sourceTree = "<group>"; };
 		F1535F4A5D145F5B4C3AD838 /* Pods-blockviewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blockviewTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-blockviewTests/Pods-blockviewTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,10 +138,11 @@
 		B0943747204919A200AF36D0 /* blockview */ = {
 			isa = PBXGroup;
 			children = (
+				B0943786204A55CA00AF36D0 /* View */,
 				B094377F20492B5800AF36D0 /* Helpers */,
 				B094377620491C7600AF36D0 /* Controllers */,
 				B0943748204919A200AF36D0 /* AppDelegate.swift */,
-				B094374F204919A200AF36D0 /* Assets.xcassets */,
+				B0943784204A425E00AF36D0 /* Assets.xcassets */,
 				B0943751204919A200AF36D0 /* LaunchScreen.storyboard */,
 				B0943754204919A200AF36D0 /* Info.plist */,
 				B094377D2049212800AF36D0 /* qr_animation.json */,
@@ -178,6 +185,16 @@
 				B094378020492B6600AF36D0 /* FontAwesomeHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B0943786204A55CA00AF36D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B0943787204A55D800AF36D0 /* WalletEmptyStateView.swift */,
+				B0943789204A563700AF36D0 /* WalletRowCell.swift */,
+				B094378B204A565400AF36D0 /* WalletSectionHeader.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		BE9DB1D07F4F2D5503DF1867 /* Pods */ = {
@@ -310,7 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0943753204919A200AF36D0 /* LaunchScreen.storyboard in Resources */,
-				B0943750204919A200AF36D0 /* Assets.xcassets in Resources */,
+				B0943785204A425E00AF36D0 /* Assets.xcassets in Resources */,
 				B094377E2049212800AF36D0 /* qr_animation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,10 +513,13 @@
 			files = (
 				B094374B204919A200AF36D0 /* ScannerViewController.swift in Sources */,
 				B094377A20491DBC00AF36D0 /* MyWalletsViewController.swift in Sources */,
+				B0943788204A55D800AF36D0 /* WalletEmptyStateView.swift in Sources */,
+				B094378C204A565400AF36D0 /* WalletSectionHeader.swift in Sources */,
 				B094378120492B6600AF36D0 /* FontAwesomeHelper.swift in Sources */,
 				B094377C20491DE100AF36D0 /* ExploreViewController.swift in Sources */,
 				B0943749204919A200AF36D0 /* AppDelegate.swift in Sources */,
 				B094377820491CA700AF36D0 /* RootTabViewController.swift in Sources */,
+				B094378A204A563700AF36D0 /* WalletRowCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
