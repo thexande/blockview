@@ -12,6 +12,7 @@ final class MyWalletsViewController: UIViewController {
         view.addSubview(emptyState)
         emptyState.edgeAnchors == view.edgeAnchors
         emptyState.actionButton.addTarget(self, action: #selector(scanTapped), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: FontAwesomeHelper.iconToImage(icon: .camera, color: .black, width: 35, height: 35), style: .plain, target: self, action: #selector(scanTapped))
     }
     
     
@@ -30,7 +31,8 @@ final class EmptyStateView: UIView {
         backgroundColor = .white
         addSubview(animation)
         animation.sizeAnchors == CGSize(width: 200, height: 200)
-        animation.centerAnchors == centerAnchors
+        animation.centerXAnchor == centerXAnchor
+        animation.centerYAnchor == centerYAnchor - 100
         animation.loopAnimation = true
         animation.play()
         

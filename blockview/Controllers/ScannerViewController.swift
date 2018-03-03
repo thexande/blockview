@@ -1,5 +1,6 @@
 import AVFoundation
 import UIKit
+import Anchorage
 
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
@@ -42,9 +43,32 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = view.layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
+        
+        let targetLayer = CALayer()
+        let targetImage = #imageLiteral(resourceName: "qr_box_white").withRenderingMode(.alwaysTemplate)
+        targetLayer.frame = CGRect(x: view.frame.midX - 100, y: view.frame.midY - 100, width: 200, height: 200)
+        
+        targetLayer.contents = targetImage.cgImage
+        
+        previewLayer.addSublayer(targetLayer)
         view.layer.addSublayer(previewLayer)
         
         captureSession.startRunning()
+        
+        let overlay = UIView()
+        let overlayLabel = UILabel()
+        overlayLabel.textColor = .white
+        overlayLabel.font = UIFont.systemFont(ofSize: 24, weight: .black)
+        overlayLabel.text = "Scan your LTC wallet address."
+        overlay.addSubview(overlayLabel)
+        overlayLabel.horizontalAnchors == overlayLabel.horizontalAnchors + 24
+        overlayLabel.topAnchor == overlay.topAnchor
+        overlay.backgroundColor = .clear
+        view.addSubview(overlay)
+        overlay.topAnchor == view.safeAreaLayoutGuide.topAnchor
+        overlay.bottomAnchor == view.safeAreaLayoutGuide.bottomAnchor
+        overlay.horizontalAnchors == view.horizontalAnchors
+        
     }
     
     func failed() {
