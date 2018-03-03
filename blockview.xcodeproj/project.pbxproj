@@ -23,6 +23,10 @@
 		B0943788204A55D800AF36D0 /* WalletEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0943787204A55D800AF36D0 /* WalletEmptyStateView.swift */; };
 		B094378A204A563700AF36D0 /* WalletRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0943789204A563700AF36D0 /* WalletRowCell.swift */; };
 		B094378C204A565400AF36D0 /* WalletSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094378B204A565400AF36D0 /* WalletSectionHeader.swift */; };
+		B094378E204A73A700AF36D0 /* WalletDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094378D204A73A700AF36D0 /* WalletDetailController.swift */; };
+		B0943790204A87DC00AF36D0 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094378F204A87DC00AF36D0 /* Buttons.swift */; };
+		B0943792204A87F700AF36D0 /* WalletDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0943791204A87F700AF36D0 /* WalletDetailHeaderView.swift */; };
+		B0943794204A881900AF36D0 /* WalletDetailRowItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0943793204A881900AF36D0 /* WalletDetailRowItemCell.swift */; };
 		B999799E11C88AAD22ACB237 /* Pods_blockviewUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB8EEAAF2E9CCB2BD8A8D8A /* Pods_blockviewUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +75,10 @@
 		B0943787204A55D800AF36D0 /* WalletEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletEmptyStateView.swift; sourceTree = "<group>"; };
 		B0943789204A563700AF36D0 /* WalletRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletRowCell.swift; sourceTree = "<group>"; };
 		B094378B204A565400AF36D0 /* WalletSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSectionHeader.swift; sourceTree = "<group>"; };
+		B094378D204A73A700AF36D0 /* WalletDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDetailController.swift; sourceTree = "<group>"; };
+		B094378F204A87DC00AF36D0 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		B0943791204A87F700AF36D0 /* WalletDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDetailHeaderView.swift; sourceTree = "<group>"; };
+		B0943793204A881900AF36D0 /* WalletDetailRowItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDetailRowItemCell.swift; sourceTree = "<group>"; };
 		F03965C361FEDFAD4D29A05A /* Pods-blockviewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blockviewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-blockviewTests/Pods-blockviewTests.release.xcconfig"; sourceTree = "<group>"; };
 		F1535F4A5D145F5B4C3AD838 /* Pods-blockviewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blockviewTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-blockviewTests/Pods-blockviewTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,6 +183,7 @@
 				B094377720491CA700AF36D0 /* RootTabViewController.swift */,
 				B094377920491DBC00AF36D0 /* MyWalletsViewController.swift */,
 				B094377B20491DE100AF36D0 /* ExploreViewController.swift */,
+				B094378D204A73A700AF36D0 /* WalletDetailController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -193,6 +202,9 @@
 				B0943787204A55D800AF36D0 /* WalletEmptyStateView.swift */,
 				B0943789204A563700AF36D0 /* WalletRowCell.swift */,
 				B094378B204A565400AF36D0 /* WalletSectionHeader.swift */,
+				B094378F204A87DC00AF36D0 /* Buttons.swift */,
+				B0943791204A87F700AF36D0 /* WalletDetailHeaderView.swift */,
+				B0943793204A881900AF36D0 /* WalletDetailRowItemCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -512,14 +524,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				B094374B204919A200AF36D0 /* ScannerViewController.swift in Sources */,
+				B0943794204A881900AF36D0 /* WalletDetailRowItemCell.swift in Sources */,
 				B094377A20491DBC00AF36D0 /* MyWalletsViewController.swift in Sources */,
 				B0943788204A55D800AF36D0 /* WalletEmptyStateView.swift in Sources */,
+				B0943790204A87DC00AF36D0 /* Buttons.swift in Sources */,
 				B094378C204A565400AF36D0 /* WalletSectionHeader.swift in Sources */,
 				B094378120492B6600AF36D0 /* FontAwesomeHelper.swift in Sources */,
 				B094377C20491DE100AF36D0 /* ExploreViewController.swift in Sources */,
 				B0943749204919A200AF36D0 /* AppDelegate.swift in Sources */,
+				B094378E204A73A700AF36D0 /* WalletDetailController.swift in Sources */,
 				B094377820491CA700AF36D0 /* RootTabViewController.swift in Sources */,
 				B094378A204A563700AF36D0 /* WalletRowCell.swift in Sources */,
+				B0943792204A87F700AF36D0 /* WalletDetailHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

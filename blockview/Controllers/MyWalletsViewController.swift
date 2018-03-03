@@ -2,14 +2,14 @@ import UIKit
 import Lottie
 import Anchorage
 
-struct MyWalletsSectionProperties {
-    let items: [WalletRowProperties]
-    let title: String
-}
-
 protocol WalletRowItemPropertiesUpdating {
     var properties: WalletRowProperties { get set }
     func update(_ properties: WalletRowProperties)
+}
+
+struct MyWalletsSectionProperties {
+    let items: [WalletRowProperties]
+    let title: String
 }
 
 struct WalletRowProperties {
@@ -20,7 +20,6 @@ struct WalletRowProperties {
     let walletType: WalletType
     static let `default` = WalletRowProperties(name: "", address: "", holdings: "", spent: "", walletType: .bitcoin)
 }
-
 
 enum WalletType: String {
     case bitcoin
@@ -48,32 +47,45 @@ enum WalletType: String {
 }
 
 final class MyWalletsViewController: UIViewController {
-    let emptyState = MyWalletsEmptyStateView()
-    let table = UITableView()
-    let searchController = UISearchController(searchResultsController: nil)
+    fileprivate let emptyState = MyWalletsEmptyStateView()
+    fileprivate let table = UITableView()
+    fileprivate let searchController = UISearchController(searchResultsController: nil)
     fileprivate let refreshControl = UIRefreshControl()
-    var isSearching: Bool = false
+    fileprivate var isSearching: Bool = false
+    fileprivate let walletTypeAlertController = UIAlertController(title: "Wallet Type", message: "Select your Wallet type.", preferredStyle: .actionSheet)
 
     
     var sections: [MyWalletsSectionProperties] = [
         MyWalletsSectionProperties(items: [
                 WalletRowProperties(name: "Coinbase", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .bitcoin),
+                WalletRowProperties(name: "Exodus Wallet", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .bitcoin),
+                WalletRowProperties(name: "Cold Storage", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .bitcoin),
             ], title: "Bitcoin"),
         MyWalletsSectionProperties(items: [
-            WalletRowProperties(name: "Coinbase", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .litecoin),
-            WalletRowProperties(name: "Coinbase", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .litecoin),
+            WalletRowProperties(name: "Bunker Cold Storage 300 miles off grid", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .litecoin),
+            WalletRowProperties(name: "Exodus Wallet", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .litecoin),
             ], title: "Litecoin"),
         
         MyWalletsSectionProperties(items: [
-            WalletRowProperties(name: "Coinbase", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dash),
-            WalletRowProperties(name: "Coinbase", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dash)
+            WalletRowProperties(name: "Cold Storage", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dash),
+            WalletRowProperties(name: "Trezor", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dash),
+            WalletRowProperties(name: "CloudFoundry Master Node", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dash)
             ], title: "Dash"),
         
         MyWalletsSectionProperties(items: [
-            WalletRowProperties(name: "Coinbase", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dogecoin),
-            WalletRowProperties(name: "Coinbase", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dogecoin)
+            WalletRowProperties(name: "Dogecoin Core", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dogecoin),
+            WalletRowProperties(name: "Dogebase", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dogecoin)
             ], title: "Dogecoin"),
     ]
+    
+    let detailProperties = WalletDetailViewProperties(title: "Ledger Nano", headerProperties: WalletDetailHeaderViewProperties(balance: "Balance: 1.02394 BTC", received: "Received: 1.02394 BTC", send: "Sent: 1.02394 BTC", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV"), items: [
+        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        ])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,7 +111,7 @@ final class MyWalletsViewController: UIViewController {
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Currencies"
+        searchController.searchBar.placeholder = "Search"
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
@@ -113,14 +125,38 @@ final class MyWalletsViewController: UIViewController {
         }
         
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        
+        
+        let actions = [
+            UIAlertAction(title: "Bitcoin", style: .default, handler: { _ in
+                
+            }),
+            UIAlertAction(title: "Litecoin", style: .default, handler: { _ in
+                
+            }),
+            UIAlertAction(title: "Dogecoin", style: .default, handler: { _ in
+                
+            }),
+            UIAlertAction(title: "Dash", style: .default, handler: { _ in
+                
+            }),
+            UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        ]
+        
+        actions.forEach { action in walletTypeAlertController.addAction(action) }
     }
     
     @objc func refreshData() {
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.refreshControl.endRefreshing()
+        }
     }
     
     @objc func scanTapped() {
-        present(ScannerViewController(), animated: true, completion: nil)
+        present(walletTypeAlertController, animated: true, completion: nil)
+        
+        
+//        present(ScannerViewController(), animated: true, completion: nil)
     }
 }
 
@@ -173,11 +209,22 @@ extension MyWalletsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 38
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailController = WalletDetailController()
+        detailController.properties = detailProperties
+        navigationController?.pushViewController(detailController, animated: true)
+    }
 }
 
 
 
 
+
+enum StyleConstants {
+    static let primaryBlue: UIColor = UIColor(red:0.00, green:0.48, blue:1.00, alpha:1.0)
+    static let navGray: UIColor = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0)
+}
 
 
 
