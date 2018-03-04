@@ -53,7 +53,6 @@ final class MyWalletsViewController: UIViewController {
     fileprivate let refreshControl = UIRefreshControl()
     fileprivate var isSearching: Bool = false
     fileprivate let walletTypeAlertController = UIAlertController(title: "Wallet Type", message: "Select your Wallet type.", preferredStyle: .actionSheet)
-
     
     var sections: [MyWalletsSectionProperties] = [
         MyWalletsSectionProperties(items: [
@@ -78,7 +77,15 @@ final class MyWalletsViewController: UIViewController {
             ], title: "Dogecoin"),
     ]
     
-    let detailProperties = WalletDetailViewProperties(title: "Ledger Nano", headerProperties: WalletDetailHeaderViewProperties(balance: "Balance: 1.02394 BTC", received: "Received: 1.02394 BTC", send: "Sent: 1.02394 BTC", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV"), items: [
+    let detailProperties = WalletDetailViewProperties(title: "Ledger Nano", headerProperties: WalletDetailHeaderViewProperties(balance: "1.0239094 BTC", received: "1.0239094 BTC", send: "1.0239094 BTC", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV"), items: [
+        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
         WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
         WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
         WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
@@ -90,9 +97,12 @@ final class MyWalletsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "My Wallets"
+        view.backgroundColor = .white
         
         
         view.addSubview(table)
+        table.backgroundView?.backgroundColor = .clear
+        table.backgroundColor = .clear
         table.edgeAnchors == view.edgeAnchors
         table.estimatedRowHeight = UITableViewAutomaticDimension
         table.tableFooterView = UIView()
@@ -217,12 +227,10 @@ extension MyWalletsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-
-
-
-
 enum StyleConstants {
     static let primaryBlue: UIColor = UIColor(red:0.00, green:0.48, blue:1.00, alpha:1.0)
+    static let primaryGreen: UIColor = UIColor(red:0.16, green:0.73, blue:0.37, alpha:1.0)
+    static let primaryRed: UIColor = UIColor(red:0.99, green:0.30, blue:0.33, alpha:1.0)
     static let navGray: UIColor = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0)
 }
 
