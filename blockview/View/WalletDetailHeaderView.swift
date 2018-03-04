@@ -1,7 +1,7 @@
 import UIKit
 import Anchorage
 
-final class WalletDetailHeaderView: UIView {
+final class WalletDetailHeaderView: UIView, ViewPropertiesUpdating {
     fileprivate let background = UIImageView()
     fileprivate let balance = UILabel()
     fileprivate let balanceTitle = UILabel()
@@ -10,15 +10,19 @@ final class WalletDetailHeaderView: UIView {
     fileprivate let sent = UILabel()
     fileprivate let sentTitle = UILabel()
     fileprivate let copyButton = PrimaryButton()
-    fileprivate let qrButton = SecondaryButton()
+    fileprivate let qrButton = PrimaryButton()
     fileprivate let accentImageView = UIImageView(image: #imageLiteral(resourceName: "btc"))
     
     public var properties: WalletDetailHeaderViewProperties = .default {
         didSet {
-            balance.text = properties.balance
-            received.text = properties.received
-            sent.text = properties.send
+            update(properties)
         }
+    }
+    
+    func update(_ properties: WalletDetailHeaderViewProperties) {
+        balance.text = properties.balance
+        received.text = properties.received
+        sent.text = properties.send
     }
     
     override init(frame: CGRect) {

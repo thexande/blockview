@@ -80,18 +80,20 @@ final class MyWalletsViewController: UIViewController {
     let detailProperties = WalletDetailViewProperties(title: "Ledger Nano", headerProperties: WalletDetailHeaderViewProperties(balance: "1.0239094 BTC", received: "1.0239094 BTC", send: "1.0239094 BTC", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV"), items: [
         WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
         WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        WalletDetailRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
         WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
         WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        WalletDetailRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
         WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
         WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        WalletDetailRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
         WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
         WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        WalletDetailRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
         WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
         WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
-        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
-        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
-        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
-        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        WalletDetailRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+      
         ])
     
     override func viewDidLoad() {
@@ -154,6 +156,13 @@ final class MyWalletsViewController: UIViewController {
         ]
         
         actions.forEach { action in walletTypeAlertController.addAction(action) }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if let selected = table.indexPathForSelectedRow {
+            table.deselectRow(at: selected, animated: true)
+        }
     }
     
     @objc func refreshData() {

@@ -1,7 +1,7 @@
 import UIKit
 import Anchorage
 
-final class WalletDetailRowItemCell: UITableViewCell {
+final class WalletDetailRowItemCell: UITableViewCell, ViewPropertiesUpdating {
     fileprivate let title = UILabel()
     fileprivate let subTitle = UILabel()
     fileprivate let transactionIcon = UIImageView()
@@ -9,20 +9,44 @@ final class WalletDetailRowItemCell: UITableViewCell {
     fileprivate let lockIcon = UIImageView()
     fileprivate let confirmationCount = UILabel()
     
+    public var properties: WalletDetailRowItemProperties = .default {
+        didSet {
+            update(properties)
+        }
+    }
+    
+    func update(_ properties: WalletDetailRowItemProperties) {
+        title.text = properties.title
+        subTitle.text = properties.subTitle
+        confirmationCount.text = properties.transactionCount
+        
+        switch properties.transactionType {
+        case .recieved:
+            transactionBackground.backgroundColor = StyleConstants.primaryGreen
+            transactionIcon.image = #imageLiteral(resourceName: "down_arrow")
+        case.sent:
+            transactionBackground.backgroundColor = StyleConstants.primaryRed
+            transactionIcon.image = #imageLiteral(resourceName: "up_arrow")
+        }
+    }
+    
+    
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         contentView.addSubview(transactionBackground)
-        transactionBackground.sizeAnchors == CGSize(width: 42, height: 42)
+        transactionBackground.sizeAnchors == CGSize(width: 36, height: 36)
         transactionBackground.backgroundColor = StyleConstants.primaryGreen
-        transactionBackground.layer.cornerRadius = 21
+        transactionBackground.layer.cornerRadius = 18
         transactionBackground.leadingAnchor == contentView.leadingAnchor + 12
         transactionBackground.centerYAnchor == contentView.centerYAnchor
         transactionBackground.addSubview(transactionIcon)
         
         transactionIcon.image = #imageLiteral(resourceName: "up_arrow")
-        transactionIcon.centerAnchors == transactionBackground.centerAnchors
-        transactionIcon.sizeAnchors == CGSize(width: 20, height: 25)
+        transactionIcon.contentMode = .scaleAspectFit
+        let inset: CGFloat = 8
+        transactionIcon.edgeAnchors == transactionBackground.edgeAnchors + UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
         
         let stack = UIStackView(arrangedSubviews: [title, subTitle])
         stack.axis = .vertical
@@ -45,6 +69,13 @@ final class WalletDetailRowItemCell: UITableViewCell {
         lockIcon.sizeAnchors == CGSize(width: 32, height: 32)
         lockIcon.trailingAnchor == contentView.trailingAnchor - 12
         lockIcon.centerYAnchor == contentView.centerYAnchor
+        
+        contentView.addSubview(confirmationCount)
+        confirmationCount.textColor = .white
+        confirmationCount.textAlignment = .center
+        confirmationCount.font = UIFont.systemFont(ofSize: 13)
+        confirmationCount.centerXAnchor == lockIcon.centerXAnchor
+        confirmationCount.centerYAnchor == lockIcon.centerYAnchor + 6
         
     }
     

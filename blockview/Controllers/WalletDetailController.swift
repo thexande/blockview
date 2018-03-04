@@ -1,6 +1,12 @@
 import UIKit
 import Anchorage
 
+protocol ViewPropertiesUpdating {
+    associatedtype ViewProperties
+    var properties: ViewProperties { get set }
+    func update(_ properties: ViewProperties)
+}
+
 enum WalletDetailRowType {
     case sent
     case recieved
@@ -29,15 +35,20 @@ struct WalletDetailRowItemProperties {
     static let `default` = WalletDetailRowItemProperties(transactionType: .sent, title: "", subTitle: "", transactionCount: "")
 }
 
-final class WalletDetailController: UITableViewController {
+final class WalletDetailController: UITableViewController, ViewPropertiesUpdating {
     fileprivate let header = WalletDetailHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 172))
     fileprivate let segment = UISegmentedControl(items: [ "Recent", "Largest"])
     
     public var properties: WalletDetailViewProperties = .default {
         didSet {
-            title = properties.title
-            header.properties = properties.headerProperties
+            update(properties)
         }
+    }
+    
+    func update(_ properties: WalletDetailViewProperties) {
+        header.properties = properties.headerProperties
+        title = properties.title
+        header.properties = properties.headerProperties
     }
     
     override func viewDidLoad() {
@@ -62,6 +73,7 @@ final class WalletDetailController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WalletDetailRowItemCell.self), for: indexPath) as? WalletDetailRowItemCell else {
             return UITableViewCell()
         }
+        cell.properties = properties.items[indexPath.row]
         return cell
     }
     

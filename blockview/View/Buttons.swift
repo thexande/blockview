@@ -1,13 +1,13 @@
 import UIKit
 
-final class PrimaryButton: UIButton {
+final class SecondaryButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.cornerRadius = 6
         layer.borderWidth = 2
         layer.borderColor = StyleConstants.primaryBlue.cgColor
         setTitleColor(StyleConstants.primaryBlue, for: .normal)
-        titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        titleLabel?.font = UIFont.systemFont(ofSize: 16)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -15,13 +15,13 @@ final class PrimaryButton: UIButton {
     }
 }
 
-final class SecondaryButton: UIButton {
+final class PrimaryButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.cornerRadius = 6
         backgroundColor = StyleConstants.primaryBlue
         setTitleColor(.white, for: .normal)
-        titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        titleLabel?.font = UIFont.systemFont(ofSize: 16)
     }
     
     required init?(coder aDecoder: NSCoder) {
