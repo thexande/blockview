@@ -51,18 +51,18 @@ final class WalletDetailController: UITableViewController, ViewPropertiesUpdatin
         transactionItemProperties:  TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
         sections: [
             MetadataSectionProperties(title: "Transaction Metadata", items: [
-                    MetadataRowItemProperties(title: "Hash", content: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
-                    MetadataRowItemProperties(title: "Block Index", content: "58"),
-                    MetadataRowItemProperties(title: "Block Height", content: "19823129038"),
-                    MetadataRowItemProperties(title: "Confirmations", content: "123"),
+                MetadataRowItemProperties(title: "Hash", content: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", displayStyle: .metadata),
+                    MetadataRowItemProperties(title: "Block Index", content: "58", displayStyle: .metadata),
+                    MetadataRowItemProperties(title: "Block Height", content: "19823129038", displayStyle: .metadata),
+                    MetadataRowItemProperties(title: "Confirmations", content: "123", displayStyle: .metadata),
 //                    MetadataRowItemProperties(title: "", content: ""),
 //                    MetadataRowItemProperties(title: "", content: ""),
 //                    MetadataRowItemProperties(title: "", content: ""),
                 ]
             ),
             MetadataSectionProperties(title: "Transaction Metadata", items: [
-                MetadataRowItemProperties(title: "Hash", content: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
-                MetadataRowItemProperties(title: "Hash", content: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
+                MetadataRowItemProperties(title: "Hash", content: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", displayStyle: .metadata),
+                MetadataRowItemProperties(title: "Hash", content: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", displayStyle: .metadata),
                 ]
             )
         ]

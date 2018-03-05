@@ -31,6 +31,7 @@
 		B0943799204CBF9900AF36D0 /* MetadataTableSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0943798204CBF9900AF36D0 /* MetadataTableSectionController.swift */; };
 		B094379B204CBFC900AF36D0 /* MetadataRowItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094379A204CBFC900AF36D0 /* MetadataRowItemCell.swift */; };
 		B094379D204CBFFF00AF36D0 /* TransactionTableSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094379C204CBFFF00AF36D0 /* TransactionTableSectionController.swift */; };
+		B094379F204CDEF600AF36D0 /* SectionProxyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094379E204CDEF600AF36D0 /* SectionProxyTableViewController.swift */; };
 		B999799E11C88AAD22ACB237 /* Pods_blockviewUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB8EEAAF2E9CCB2BD8A8D8A /* Pods_blockviewUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		B0943798204CBF9900AF36D0 /* MetadataTableSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataTableSectionController.swift; sourceTree = "<group>"; };
 		B094379A204CBFC900AF36D0 /* MetadataRowItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataRowItemCell.swift; sourceTree = "<group>"; };
 		B094379C204CBFFF00AF36D0 /* TransactionTableSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableSectionController.swift; sourceTree = "<group>"; };
+		B094379E204CDEF600AF36D0 /* SectionProxyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionProxyTableViewController.swift; sourceTree = "<group>"; };
 		F03965C361FEDFAD4D29A05A /* Pods-blockviewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blockviewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-blockviewTests/Pods-blockviewTests.release.xcconfig"; sourceTree = "<group>"; };
 		F1535F4A5D145F5B4C3AD838 /* Pods-blockviewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blockviewTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-blockviewTests/Pods-blockviewTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,6 +196,7 @@
 				B094377B20491DE100AF36D0 /* ExploreViewController.swift */,
 				B094378D204A73A700AF36D0 /* WalletDetailController.swift */,
 				B0943795204CA5D900AF36D0 /* TransactionDetailViewController.swift */,
+				B094379E204CDEF600AF36D0 /* SectionProxyTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				B0943788204A55D800AF36D0 /* WalletEmptyStateView.swift in Sources */,
 				B0943790204A87DC00AF36D0 /* Buttons.swift in Sources */,
 				B094379D204CBFFF00AF36D0 /* TransactionTableSectionController.swift in Sources */,
+				B094379F204CDEF600AF36D0 /* SectionProxyTableViewController.swift in Sources */,
 				B094378C204A565400AF36D0 /* WalletSectionHeader.swift in Sources */,
 				B094378120492B6600AF36D0 /* FontAwesomeHelper.swift in Sources */,
 				B094377C20491DE100AF36D0 /* ExploreViewController.swift in Sources */,

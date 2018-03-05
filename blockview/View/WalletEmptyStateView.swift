@@ -2,7 +2,7 @@ import UIKit
 import Anchorage
 import Lottie
 
-final class MyWalletsEmptyStateView: UIView {
+final class WalletsEmptyStateView: UIView {
     let animation = LOTAnimationView(name: "qr_animation")
     let actionButton = UIButton()
     

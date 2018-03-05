@@ -43,3 +43,26 @@ final class MetadataRowItemCell: UITableViewCell, ViewPropertiesUpdating {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+final class MetadataAddressRowItemCell: UITableViewCell {
+    fileprivate let addressLabel = UILabel()
+    
+    public var address: String? {
+        didSet {
+            addressLabel.text = address
+        }
+    }
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        let inset: CGFloat = 12
+        addressLabel.textColor = .gray
+        addressLabel.font = UIFont.systemFont(ofSize: 13)
+        contentView.addSubview(addressLabel)
+        addressLabel.edgeAnchors + UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}

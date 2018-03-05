@@ -7,7 +7,7 @@ protocol WalletRowItemPropertiesUpdating {
     func update(_ properties: WalletRowProperties)
 }
 
-struct MyWalletsSectionProperties {
+struct WalletsSectionProperties {
     let items: [WalletRowProperties]
     let title: String
 }
@@ -46,32 +46,32 @@ enum WalletType: String {
     }
 }
 
-final class MyWalletsViewController: UIViewController {
-    fileprivate let emptyState = MyWalletsEmptyStateView()
+final class WalletsViewController: UIViewController {
+    fileprivate let emptyState = WalletsEmptyStateView()
     fileprivate let table = UITableView()
     fileprivate let searchController = UISearchController(searchResultsController: nil)
     fileprivate let refreshControl = UIRefreshControl()
     fileprivate var isSearching: Bool = false
     fileprivate let walletTypeAlertController = UIAlertController(title: "Wallet Type", message: "Select your Wallet type.", preferredStyle: .actionSheet)
     
-    var sections: [MyWalletsSectionProperties] = [
-        MyWalletsSectionProperties(items: [
+    var sections: [WalletsSectionProperties] = [
+        WalletsSectionProperties(items: [
                 WalletRowProperties(name: "Coinbase", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .bitcoin),
                 WalletRowProperties(name: "Exodus Wallet", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .bitcoin),
                 WalletRowProperties(name: "Cold Storage", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .bitcoin),
             ], title: "Bitcoin"),
-        MyWalletsSectionProperties(items: [
+        WalletsSectionProperties(items: [
             WalletRowProperties(name: "Bunker Cold Storage 300 miles off grid", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .litecoin),
             WalletRowProperties(name: "Exodus Wallet", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .litecoin),
             ], title: "Litecoin"),
         
-        MyWalletsSectionProperties(items: [
+        WalletsSectionProperties(items: [
             WalletRowProperties(name: "Cold Storage", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dash),
             WalletRowProperties(name: "Trezor", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dash),
             WalletRowProperties(name: "CloudFoundry Master Node", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dash)
             ], title: "Dash"),
         
-        MyWalletsSectionProperties(items: [
+        WalletsSectionProperties(items: [
             WalletRowProperties(name: "Dogecoin Core", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dogecoin),
             WalletRowProperties(name: "Dogebase", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dogecoin)
             ], title: "Dogecoin"),
@@ -98,7 +98,7 @@ final class MyWalletsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "My Wallets"
+        title = "Wallets"
         view.backgroundColor = .white
         
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -186,13 +186,13 @@ final class MyWalletsViewController: UIViewController {
     }
 }
 
-extension MyWalletsViewController: UISearchResultsUpdating {
+extension WalletsViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         
     }
 }
 
-extension MyWalletsViewController: UISearchBarDelegate {
+extension WalletsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         isSearching = true
 //        filteredCryptos = cryptos
@@ -207,7 +207,7 @@ extension MyWalletsViewController: UISearchBarDelegate {
     }
 }
 
-extension MyWalletsViewController: UITableViewDelegate, UITableViewDataSource {
+extension WalletsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }

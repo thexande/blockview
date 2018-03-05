@@ -2,6 +2,7 @@ import UIKit
 import Anchorage
 
 protocol TableSectionController: UITableViewDelegate, UITableViewDataSource {
+    var sectionTitle: String? { get }
     func registerReusableTypes(tableView: UITableView)
 }
 
@@ -9,16 +10,32 @@ protocol CollectionSectionController: UICollectionViewDelegateFlowLayout, UIColl
     func registerReusableTypes(collectionView: UICollectionView)
 }
 
-struct MetadataRowItemProperties {
-    let title: String
-    let content: String
-    static let `default` = MetadataRowItemProperties(title: "", content: "")
+enum MetadataRowDisplayStyle {
+    case metadata
+    case address
 }
 
-struct MetadataSectionProperties {
+struct MetadataTitleRowItemProperties: MetadataRowItemProperties {
+    let title: String
+    let content: String
+    static let `default` = MetadataTitleRowItemProperties(title: "", content: "")
+}
+
+protocol MetadataRowItemProperties {
+//    static var `default`: Self { get }
+}
+
+protocol MetadataSectionProperties {
+    var displayStyle: MetadataRowDisplayStyle { get }
+    var title: String { get }
+    var items: [MetadataRowItemProperties] { get }
+}
+
+struct MetadataTitleSectionProperties: MetadataSectionProperties {
+    let displayStyle: MetadataRowDisplayStyle
     let title: String
     let items: [MetadataRowItemProperties]
-    static let `default` = MetadataSectionProperties(title: "", items: [])
+    static let `default` = MetadataTitleSectionProperties(displayStyle: .address, title: "", items: [])
 }
 
 struct TransactionDetailViewProperties {
@@ -28,8 +45,8 @@ struct TransactionDetailViewProperties {
     static let `default` = TransactionDetailViewProperties(title: "", transactionItemProperties: .default, sections: [])
 }
 
-final class TransactionDetailViewController: UITableViewController, ViewPropertiesUpdating {
-    fileprivate var sections: [TableSectionController] = [] {
+final class TransactionDetailViewController: SectionProxyTableViewController, ViewPropertiesUpdating {
+    override var sections: [TableSectionController] {
         didSet {
             sections.forEach { $0.registerReusableTypes(tableView: tableView) }
             tableView.reloadData()
@@ -58,25 +75,5 @@ final class TransactionDetailViewController: UITableViewController, ViewProperti
         navigationItem.largeTitleDisplayMode = .never
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableViewAutomaticDimension
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return sections[indexPath.section].tableView(tableView, cellForRowAt: indexPath)
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].tableView(tableView, numberOfRowsInSection: section)
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return (sections[section].tableView?(tableView, heightForHeaderInSection: section)) ?? 0
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return sections[section].tableView?(tableView, viewForHeaderInSection: section)
     }
 }

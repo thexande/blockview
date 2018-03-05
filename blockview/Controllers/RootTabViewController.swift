@@ -4,7 +4,7 @@ import UIKit
 
 class RootTabViewController: UITabBarController {
     let tabOneItem: UIViewController = {
-        let vc = UINavigationController(rootViewController: MyWalletsViewController())
+        let vc = UINavigationController(rootViewController: WalletsViewController())
         let icon = UIImage() //FontAwesomeHelper.iconToImage(icon: FontAwesome.lineChart, color: .black, width: 35, height: 35)
         let item = UITabBarItem(title: "my wallets".uppercased(), image: icon, selectedImage: icon)
         vc.navigationBar.prefersLargeTitles = true
