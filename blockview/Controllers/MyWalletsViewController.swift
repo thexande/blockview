@@ -78,21 +78,21 @@ final class MyWalletsViewController: UIViewController {
     ]
     
     let detailProperties = WalletDetailViewProperties(title: "Ledger Nano", headerProperties: WalletDetailHeaderViewProperties(balance: "1.0239094 BTC", received: "1.0239094 BTC", send: "1.0239094 BTC", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV"), items: [
-        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
-        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
-        WalletDetailRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
-        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
-        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
-        WalletDetailRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
-        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
-        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
-        WalletDetailRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
-        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
-        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
-        WalletDetailRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
-        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
-        WalletDetailRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
-        WalletDetailRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", transactionCount: "6+"),
+        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
       
         ])
     
@@ -101,6 +101,8 @@ final class MyWalletsViewController: UIViewController {
         title = "My Wallets"
         view.backgroundColor = .white
         
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         
         view.addSubview(table)
         table.backgroundView?.backgroundColor = .clear
@@ -118,7 +120,9 @@ final class MyWalletsViewController: UIViewController {
 //        view.addSubview(emptyState)
 //        emptyState.edgeAnchors == view.edgeAnchors
 //        emptyState.actionButton.addTarget(self, action: #selector(scanTapped), for: .touchUpInside)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "scan_title"), style: .plain, target: self, action: #selector(scanTapped))
+        
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(scanTapped))
         
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
@@ -140,8 +144,11 @@ final class MyWalletsViewController: UIViewController {
         
         
         let actions = [
-            UIAlertAction(title: "Bitcoin", style: .default, handler: { _ in
-                
+            UIAlertAction(title: "Bitcoin", style: .default, handler: { [weak self] _ in
+                guard let `self` = self else { return }
+                DispatchQueue.main.async {
+                    self.present(ScannerViewController(), animated: true, completion: nil)
+                }
             }),
             UIAlertAction(title: "Litecoin", style: .default, handler: { _ in
                 

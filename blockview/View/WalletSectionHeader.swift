@@ -16,7 +16,7 @@ final class WalletSectionHeader: UITableViewHeaderFooterView {
         contentView.addSubview(title)
         title.leadingAnchor == contentView.leadingAnchor + 12
         title.centerYAnchor == contentView.centerYAnchor
-        title.font = UIFont.systemFont(ofSize: 17)
+        title.font = UIFont.systemFont(ofSize: 14, weight: .medium)
     }
     
     required init?(coder aDecoder: NSCoder) {

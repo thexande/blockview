@@ -9,16 +9,16 @@ final class WalletDetailRowItemCell: UITableViewCell, ViewPropertiesUpdating {
     fileprivate let lockIcon = UIImageView()
     fileprivate let confirmationCount = UILabel()
     
-    public var properties: WalletDetailRowItemProperties = .default {
+    public var properties: TransactionRowItemProperties = .default {
         didSet {
             update(properties)
         }
     }
     
-    func update(_ properties: WalletDetailRowItemProperties) {
+    func update(_ properties: TransactionRowItemProperties) {
         title.text = properties.title
         subTitle.text = properties.subTitle
-        confirmationCount.text = properties.transactionCount
+        confirmationCount.text = properties.confirmationCount
         
         switch properties.transactionType {
         case .recieved:

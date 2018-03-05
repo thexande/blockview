@@ -15,7 +15,7 @@ enum WalletDetailRowType {
 struct WalletDetailViewProperties {
     let title: String
     let headerProperties: WalletDetailHeaderViewProperties
-    let items: [WalletDetailRowItemProperties]
+    let items: [TransactionRowItemProperties]
     static let `default` = WalletDetailViewProperties(title: "", headerProperties: WalletDetailHeaderViewProperties(balance: "", received: "", send: "", address: ""), items: [])
 }
 
@@ -27,17 +27,46 @@ struct WalletDetailHeaderViewProperties {
     static let `default` = WalletDetailHeaderViewProperties(balance: "", received: "", send: "", address: "")
 }
 
-struct WalletDetailRowItemProperties {
+struct TransactionRowItemProperties {
     let transactionType: WalletDetailRowType
     let title: String
     let subTitle: String
-    let transactionCount: String
-    static let `default` = WalletDetailRowItemProperties(transactionType: .sent, title: "", subTitle: "", transactionCount: "")
+    let confirmationCount: String
+    static let `default` = TransactionRowItemProperties(transactionType: .sent, title: "", subTitle: "", confirmationCount: "")
 }
 
 final class WalletDetailController: UITableViewController, ViewPropertiesUpdating {
     fileprivate let header = WalletDetailHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 172))
     fileprivate let segment = UISegmentedControl(items: [ "Recent", "Largest"])
+    
+    fileprivate var sections: [TableSectionController] = [] {
+        didSet {
+            sections.forEach { $0.registerReusableTypes(tableView: tableView) }
+            tableView.reloadData()
+        }
+    }
+    
+    let transacctionDetailProps = TransactionDetailViewProperties(
+        title: "Outgoing LTC",
+        transactionItemProperties:  TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        sections: [
+            MetadataSectionProperties(title: "Transaction Metadata", items: [
+                    MetadataRowItemProperties(title: "Hash", content: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
+                    MetadataRowItemProperties(title: "Block Index", content: "58"),
+                    MetadataRowItemProperties(title: "Block Height", content: "19823129038"),
+                    MetadataRowItemProperties(title: "Confirmations", content: "123"),
+//                    MetadataRowItemProperties(title: "", content: ""),
+//                    MetadataRowItemProperties(title: "", content: ""),
+//                    MetadataRowItemProperties(title: "", content: ""),
+                ]
+            ),
+            MetadataSectionProperties(title: "Transaction Metadata", items: [
+                MetadataRowItemProperties(title: "Hash", content: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
+                MetadataRowItemProperties(title: "Hash", content: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
+                ]
+            )
+        ]
+    )
     
     public var properties: WalletDetailViewProperties = .default {
         didSet {
@@ -49,15 +78,20 @@ final class WalletDetailController: UITableViewController, ViewPropertiesUpdatin
         header.properties = properties.headerProperties
         title = properties.title
         header.properties = properties.headerProperties
+        
+        sections = [TransactionTableSectionController.mapController(from: properties.items)]
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        
         navigationItem.titleView = segment
         tableView.tableHeaderView = header
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView()
-        tableView.register(WalletDetailRowItemCell.self, forCellReuseIdentifier: String(describing: WalletDetailRowItemCell.self))
         
         segment.sizeToFit()
         segment.addTarget(self, action: #selector(didChangeSegmentedControl(_:)), for: .valueChanged)
@@ -66,17 +100,18 @@ final class WalletDetailController: UITableViewController, ViewPropertiesUpdatin
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return properties.items.count
+        return sections[section].tableView(tableView, numberOfRowsInSection: section)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WalletDetailRowItemCell.self), for: indexPath) as? WalletDetailRowItemCell else {
-            return UITableViewCell()
-        }
-        cell.properties = properties.items[indexPath.row]
-        return cell
+        return sections[indexPath.section].tableView(tableView, cellForRowAt: indexPath)
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = TransactionDetailViewController()
+        controller.properties = transacctionDetailProps
+        navigationController?.pushViewController(controller, animated: true)
+    }
     
     @objc func didChangeSegmentedControl(_ sender: UISegmentedControl) {
         

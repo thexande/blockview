@@ -9,7 +9,7 @@ final class WalletDetailHeaderView: UIView, ViewPropertiesUpdating {
     fileprivate let receivedTitle = UILabel()
     fileprivate let sent = UILabel()
     fileprivate let sentTitle = UILabel()
-    fileprivate let copyButton = PrimaryButton()
+    fileprivate let copyButton = SecondaryButton()
     fileprivate let qrButton = PrimaryButton()
     fileprivate let accentImageView = UIImageView(image: #imageLiteral(resourceName: "btc"))
     

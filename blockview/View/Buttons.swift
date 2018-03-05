@@ -7,7 +7,7 @@ final class SecondaryButton: UIButton {
         layer.borderWidth = 2
         layer.borderColor = StyleConstants.primaryBlue.cgColor
         setTitleColor(StyleConstants.primaryBlue, for: .normal)
-        titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -21,7 +21,7 @@ final class PrimaryButton: UIButton {
         layer.cornerRadius = 6
         backgroundColor = StyleConstants.primaryBlue
         setTitleColor(.white, for: .normal)
-        titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
     }
     
     required init?(coder aDecoder: NSCoder) {
