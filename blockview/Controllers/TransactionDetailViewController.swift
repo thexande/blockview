@@ -13,6 +13,7 @@ protocol CollectionSectionController: UICollectionViewDelegateFlowLayout, UIColl
 enum MetadataRowDisplayStyle {
     case metadata
     case address
+    case transactionSegment
 }
 
 /// Metadata Table row item view properties
@@ -27,8 +28,13 @@ struct MetadataTitleRowItemProperties: MetadataRowItemProperties {
 }
 
 struct MetadataAddressRowItemProperties: MetadataRowItemProperties {
-    let title: String
-    static let `default` = MetadataAddressRowItemProperties(title: "")
+    let address: String
+    static let `default` = MetadataAddressRowItemProperties(address: "")
+}
+
+struct MetadataTransactionSegmentRowItemProperties: MetadataRowItemProperties {
+    let address: String
+    static let `default` = MetadataTransactionSegmentRowItemProperties(address: "")
 }
 
 
@@ -50,8 +56,16 @@ struct MetadataAddressSectionProperties: MetadataSectionProperties {
     var displayStyle: MetadataRowDisplayStyle
     let title: String
     var items: [MetadataRowItemProperties]
-    static let `detail` = MetadataAddressSectionProperties(displayStyle: .address, title: "", items: [])
+    static let `default` = MetadataAddressSectionProperties(displayStyle: .address, title: "", items: [])
 }
+
+struct MetadataTransactionSegmentSectionProperties: MetadataSectionProperties {
+    let displayStyle: MetadataRowDisplayStyle
+    let title: String
+    var items: [MetadataRowItemProperties]
+    static let `default` = MetadataTransactionSegmentSectionProperties(displayStyle: .transactionSegment, title: "", items: [])
+}
+
 
 
 
@@ -94,5 +108,13 @@ final class TransactionDetailViewController: SectionProxyTableViewController, Vi
         navigationItem.largeTitleDisplayMode = .never
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+    }
+    
+    @objc func refreshData() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.refreshControl?.endRefreshing()
+        }
     }
 }

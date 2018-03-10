@@ -45,6 +45,30 @@ final class MetadataTitleRowItemCell: UITableViewCell, ViewPropertiesUpdating {
 }
 
 final class MetadataAddressRowItemCell: UITableViewCell {
+    fileprivate let addressLabel = UILabel()
+    
+    public var address: String? {
+        didSet {
+            addressLabel.text = address
+        }
+    }
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        let inset: CGFloat = 12
+        addressLabel.numberOfLines = 0
+        addressLabel.textColor = .gray
+        addressLabel.font = UIFont.systemFont(ofSize: 13)
+        contentView.addSubview(addressLabel)
+        addressLabel.edgeAnchors == contentView.edgeAnchors + UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+final class MetadataTransactionSegmentRowItemCell: UITableViewCell {
     fileprivate let rightIcon = UIImageView(image: #imageLiteral(resourceName: "Arrow Right"))
     fileprivate let addressLabel = UILabel()
     
@@ -53,7 +77,7 @@ final class MetadataAddressRowItemCell: UITableViewCell {
             addressLabel.text = address
         }
     }
-
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addressLabel.numberOfLines = 0

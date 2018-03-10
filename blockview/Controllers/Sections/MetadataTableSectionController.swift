@@ -13,7 +13,14 @@ final class MetadataTableSectionHelper {
                 let controller = MetadataTitleTableSectionController.mapControllerFromProperties(items)
                 controller.sectionTitle = properties.title
                 return controller
-            } else {
+            } else if let properties = section as? MetadataTransactionSegmentSectionProperties {
+                guard let items = properties.items as? [MetadataTransactionSegmentRowItemProperties] else { return nil }
+                let controller = MetadataTransactionSegmentTableSectionController()
+                controller.properties = items
+                controller.sectionTitle = properties.title
+                return controller
+            }
+            else {
                 return nil
             }
         }
@@ -37,7 +44,7 @@ final class MetadataAddressTableSectionController: NSObject, TableSectionControl
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MetadataAddressRowItemCell.self)) as? MetadataAddressRowItemCell else {
             return UITableViewCell()
         }
-        cell.address = properties[indexPath.row].title
+        cell.address = properties[indexPath.row].address
         return cell
     }
     
@@ -78,6 +85,48 @@ final class MetadataTitleTableSectionController: NSObject, TableSectionControlle
             return UITableViewCell()
         }
         cell.properties = properties[indexPath.row]
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 38
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: WalletSectionHeader.self)) as? WalletSectionHeader else {
+            return UIView()
+        }
+        header.title.text = sectionTitle
+        return header
+    }
+    
+    static func mapControllerFromProperties(_ properties: [MetadataTitleRowItemProperties]) -> MetadataTitleTableSectionController {
+        let controller = MetadataTitleTableSectionController()
+        controller.properties = properties
+        return controller
+    }
+}
+
+
+final class MetadataTransactionSegmentTableSectionController: NSObject, TableSectionController {
+    public var properties: [MetadataTransactionSegmentRowItemProperties] = []
+    var sectionTitle: String?
+    
+    func registerReusableTypes(tableView: UITableView) {
+        tableView.register(MetadataTransactionSegmentRowItemCell.self, forCellReuseIdentifier: String(describing: MetadataTransactionSegmentRowItemCell.self))
+        tableView.register(WalletSectionHeader.self, forHeaderFooterViewReuseIdentifier: String(describing: WalletSectionHeader.self))
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return properties.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MetadataTransactionSegmentRowItemCell.self)) as? MetadataTransactionSegmentRowItemCell else {
+            return UITableViewCell()
+        }
+        cell.address = properties[indexPath.row].address
         return cell
     }
     

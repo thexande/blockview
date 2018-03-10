@@ -57,9 +57,14 @@ final class WalletDetailController: UITableViewController, ViewPropertiesUpdatin
                 MetadataTitleRowItemProperties(title: "Confirmations", content: "123"),
                 ]
             ),
-            MetadataAddressSectionProperties(displayStyle: .metadata, title: "Transaction Metadata", items: [
-                MetadataAddressRowItemProperties(title: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
-                MetadataAddressRowItemProperties(title: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
+            MetadataTransactionSegmentSectionProperties(displayStyle: .transactionSegment, title: "Inputs", items: [
+                MetadataTransactionSegmentRowItemProperties(address: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
+                MetadataTransactionSegmentRowItemProperties(address: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
+                ]
+            ),
+            MetadataTransactionSegmentSectionProperties(displayStyle: .transactionSegment, title: "Outputs", items: [
+                MetadataTransactionSegmentRowItemProperties(address: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
+                MetadataTransactionSegmentRowItemProperties(address: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
                 ]
             ),
             MetadataTitleSectionProperties(displayStyle: .metadata, title: "Transaction Metadata", items: [
@@ -69,9 +74,9 @@ final class WalletDetailController: UITableViewController, ViewPropertiesUpdatin
                 MetadataTitleRowItemProperties(title: "Confirmations", content: "123"),
                 ]
             ),
-            MetadataAddressSectionProperties(displayStyle: .metadata, title: "Transaction Metadata", items: [
-                MetadataAddressRowItemProperties(title: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
-                MetadataAddressRowItemProperties(title: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
+            MetadataAddressSectionProperties(displayStyle: .metadata, title: "Addresses", items: [
+                MetadataAddressRowItemProperties(address: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
+                MetadataAddressRowItemProperties(address: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
                 ]
             ),
             MetadataTitleSectionProperties(displayStyle: .metadata, title: "Transaction Metadata", items: [
@@ -81,11 +86,12 @@ final class WalletDetailController: UITableViewController, ViewPropertiesUpdatin
                 MetadataTitleRowItemProperties(title: "Confirmations", content: "123"),
                 ]
             ),
+         
             MetadataAddressSectionProperties(displayStyle: .metadata, title: "Transaction Metadata", items: [
-                MetadataAddressRowItemProperties(title: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
-                MetadataAddressRowItemProperties(title: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
+                MetadataAddressRowItemProperties(address: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
+                MetadataAddressRowItemProperties(address: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),
                 ]
-            )
+            ),
         ]
     )
     
@@ -118,6 +124,15 @@ final class WalletDetailController: UITableViewController, ViewPropertiesUpdatin
         segment.addTarget(self, action: #selector(didChangeSegmentedControl(_:)), for: .valueChanged)
         segment.selectedSegmentIndex = 0
         navigationItem.titleView = segment
+        
+        tableView.refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+    }
+    
+    @objc func refreshData() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.refreshControl?.endRefreshing()
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

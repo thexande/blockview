@@ -246,6 +246,26 @@ extension WalletsViewController: UITableViewDelegate, UITableViewDataSource {
         detailController.properties = detailProperties
         navigationController?.pushViewController(detailController, animated: true)
     }
+    
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Add") { (action, view, handler) in
+            print("Add Action Tapped")
+        }
+        deleteAction.backgroundColor = StyleConstants.primaryGreen
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
+    }
+    
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, handler) in
+            print("Delete Action Tapped")
+        }
+        deleteAction.backgroundColor = StyleConstants.primaryRed
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
+    }
 }
 
 enum StyleConstants {
