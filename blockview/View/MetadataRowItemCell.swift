@@ -1,17 +1,17 @@
 import UIKit
 import Anchorage
 
-final class MetadataRowItemCell: UITableViewCell, ViewPropertiesUpdating {
+final class MetadataTitleRowItemCell: UITableViewCell, ViewPropertiesUpdating {
     fileprivate let titleLabel = UILabel()
     fileprivate let contentLabel = UILabel()
     
-    public var properties: MetadataRowItemProperties = .default {
+    public var properties: MetadataTitleRowItemProperties = .default {
         didSet {
             update(properties)
         }
     }
     
-    func update(_ properties: MetadataRowItemProperties) {
+    func update(_ properties: MetadataTitleRowItemProperties) {
         titleLabel.text = properties.title
         contentLabel.text = properties.content
         
@@ -56,10 +56,11 @@ final class MetadataAddressRowItemCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         let inset: CGFloat = 12
+        addressLabel.numberOfLines = 0
         addressLabel.textColor = .gray
         addressLabel.font = UIFont.systemFont(ofSize: 13)
         contentView.addSubview(addressLabel)
-        addressLabel.edgeAnchors + UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+        addressLabel.edgeAnchors == contentView.edgeAnchors + UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     }
     
     required init?(coder aDecoder: NSCoder) {

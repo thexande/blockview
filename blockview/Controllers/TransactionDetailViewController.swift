@@ -15,16 +15,24 @@ enum MetadataRowDisplayStyle {
     case address
 }
 
+/// Metadata Table row item view properties
+protocol MetadataRowItemProperties {
+    //    static var `default`: Self { get }
+}
+
 struct MetadataTitleRowItemProperties: MetadataRowItemProperties {
     let title: String
     let content: String
     static let `default` = MetadataTitleRowItemProperties(title: "", content: "")
 }
 
-protocol MetadataRowItemProperties {
-//    static var `default`: Self { get }
+struct MetadataAddressRowItemProperties: MetadataRowItemProperties {
+    let title: String
+    static let `default` = MetadataAddressRowItemProperties(title: "")
 }
 
+
+/// Metadata Table row item view properties
 protocol MetadataSectionProperties {
     var displayStyle: MetadataRowDisplayStyle { get }
     var title: String { get }
@@ -37,6 +45,16 @@ struct MetadataTitleSectionProperties: MetadataSectionProperties {
     let items: [MetadataRowItemProperties]
     static let `default` = MetadataTitleSectionProperties(displayStyle: .address, title: "", items: [])
 }
+
+struct MetadataAddressSectionProperties: MetadataSectionProperties {
+    var displayStyle: MetadataRowDisplayStyle
+    let title: String
+    var items: [MetadataRowItemProperties]
+    static let `detail` = MetadataAddressSectionProperties(displayStyle: .address, title: "", items: [])
+}
+
+
+
 
 struct TransactionDetailViewProperties {
     let title: String
@@ -61,13 +79,14 @@ final class TransactionDetailViewController: SectionProxyTableViewController, Vi
     
     func update(_ properties: TransactionDetailViewProperties) {
         title = properties.title
-        let metadataSections: [TableSectionController] = properties.sections.map(MetadataTableSectionController.mapControllerFromProperties(_:))
+        let metadataSections = MetadataTableSectionHelper.mapControllerFromSections(properties.sections)
         let transactionSection = TransactionTableSectionController.mapController(from: [properties.transactionItemProperties])
         
         var sectionControllers: [TableSectionController] = []
         sectionControllers.append(transactionSection)
         sectionControllers.append(contentsOf: metadataSections)
         sections = sectionControllers
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {

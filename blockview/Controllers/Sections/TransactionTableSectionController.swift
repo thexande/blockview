@@ -1,6 +1,8 @@
 import UIKit
 
 final class TransactionTableSectionController: NSObject, TableSectionController {
+    var sectionTitle: String?
+    
     public var properties: [TransactionRowItemProperties] = []
     
     func registerReusableTypes(tableView: UITableView) {
