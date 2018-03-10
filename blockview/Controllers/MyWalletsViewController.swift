@@ -123,6 +123,7 @@ final class WalletsViewController: UIViewController {
         
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(scanTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
         
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
@@ -183,6 +184,10 @@ final class WalletsViewController: UIViewController {
         
         
 //        present(ScannerViewController(), animated: true, completion: nil)
+    }
+    
+    @objc func editTapped() {
+        
     }
 }
 

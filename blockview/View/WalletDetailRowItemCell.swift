@@ -55,11 +55,9 @@ final class WalletDetailRowItemCell: UITableViewCell, ViewPropertiesUpdating {
         stack.leadingAnchor == transactionBackground.trailingAnchor + 12
         stack.verticalAnchors == contentView.verticalAnchors + 8
         
-        title.text = "Sent 149.48672345 BTC"
-        title.font = UIFont.systemFont(ofSize: 14)
+        title.font = UIFont.systemFont(ofSize: 18)
         
-        subTitle.text = "3:56 PM, June 29, 2019"
-        subTitle.font = UIFont.systemFont(ofSize: 12)
+        subTitle.font = UIFont.systemFont(ofSize: 16)
         subTitle.textColor = .gray
         
         let lock = #imageLiteral(resourceName: "lock")

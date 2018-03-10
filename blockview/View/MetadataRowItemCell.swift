@@ -27,7 +27,7 @@ final class MetadataTitleRowItemCell: UITableViewCell, ViewPropertiesUpdating {
         
         labels.forEach { label in
             label.numberOfLines = 0
-            label.font = UIFont.systemFont(ofSize: 12)
+            label.font = UIFont.systemFont(ofSize: 14)
         }
         
         let stack = UIStackView(arrangedSubviews: labels)
@@ -45,6 +45,7 @@ final class MetadataTitleRowItemCell: UITableViewCell, ViewPropertiesUpdating {
 }
 
 final class MetadataAddressRowItemCell: UITableViewCell {
+    fileprivate let rightIcon = UIImageView(image: #imageLiteral(resourceName: "Arrow Right"))
     fileprivate let addressLabel = UILabel()
     
     public var address: String? {
@@ -55,12 +56,20 @@ final class MetadataAddressRowItemCell: UITableViewCell {
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        let inset: CGFloat = 12
         addressLabel.numberOfLines = 0
         addressLabel.textColor = .gray
-        addressLabel.font = UIFont.systemFont(ofSize: 13)
+        addressLabel.font = UIFont.systemFont(ofSize: 16)
+        
         contentView.addSubview(addressLabel)
-        addressLabel.edgeAnchors == contentView.edgeAnchors + UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+        contentView.addSubview(rightIcon)
+        
+        addressLabel.verticalAnchors == contentView.verticalAnchors + 12
+        addressLabel.leadingAnchor == contentView.leadingAnchor + 12
+        addressLabel.trailingAnchor == rightIcon.leadingAnchor - 12
+        
+        rightIcon.sizeAnchors == CGSize(width: 8, height: 13)
+        rightIcon.centerYAnchor == contentView.centerYAnchor
+        rightIcon.trailingAnchor == contentView.trailingAnchor - 12
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -1,6 +1,6 @@
 import UIKit
 
-class MetadataTableSectionHelper {
+final class MetadataTableSectionHelper {
     static func mapControllerFromSections(_ sections: [MetadataSectionProperties]) -> [TableSectionController] {
         return sections.flatMap { section -> TableSectionController? in
             if let properties = section as? MetadataAddressSectionProperties {

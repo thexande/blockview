@@ -49,9 +49,9 @@ final class WalletRowCell: UITableViewCell, WalletRowItemPropertiesUpdating {
         address.font = UIFont.systemFont(ofSize: 12)
         address.textColor = .gray
         
-        holding.font = UIFont.systemFont(ofSize: 12)
+        holding.font = UIFont.systemFont(ofSize: 16)
         
-        spent.font = UIFont.systemFont(ofSize: 12)
+        spent.font = UIFont.systemFont(ofSize: 16)
     }
     
     required init?(coder aDecoder: NSCoder) {
