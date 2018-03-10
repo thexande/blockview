@@ -10,60 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "blockview/Controllers/Sections/MetadataTableSectionController.swift"
-            timestampString = "542359652.251057"
+            timestampString = "542413653.723608"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
             endingLineNumber = "21"
             landmarkName = "mapControllerFromSections(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "blockview.MetadataAddressTableSectionController.__allocating_init() -&gt; blockview.MetadataAddressTableSectionController"
-                  moduleName = "blockview"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alexandermurphy/Documents/thexande_apps/blockview/blockview/Controllers/Sections/MetadataTableSectionController.swift"
-                  timestampString = "542356816.9248509"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "blockview.MetadataAddressTableSectionController.__deallocating_deinit"
-                  moduleName = "blockview"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alexandermurphy/Documents/thexande_apps/blockview/blockview/Controllers/Sections/MetadataTableSectionController.swift"
-                  timestampString = "542356816.926793"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "blockview.MetadataAddressTableSectionController.init() -&gt; blockview.MetadataAddressTableSectionController"
-                  moduleName = "blockview"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alexandermurphy/Documents/thexande_apps/blockview/blockview/Controllers/Sections/MetadataTableSectionController.swift"
-                  timestampString = "542356816.929163"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "17">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -73,12 +26,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "blockview/Controllers/Sections/MetadataTableSectionController.swift"
-            timestampString = "542359652.2516201"
+            timestampString = "542413653.724408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
             endingLineNumber = "17"
             landmarkName = "mapControllerFromSections(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "blockview/WalletCoordinator.swift"
+            timestampString = "542413653.724649"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "handleRoute(route:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

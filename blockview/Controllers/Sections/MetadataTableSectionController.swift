@@ -28,6 +28,7 @@ final class MetadataTableSectionHelper {
 }
 
 final class MetadataAddressTableSectionController: NSObject, TableSectionController {
+    public var dispatcher: WalletActionDispatching?
     public var properties: [MetadataAddressRowItemProperties] = []
     var sectionTitle: String?
     
@@ -68,6 +69,7 @@ final class MetadataAddressTableSectionController: NSObject, TableSectionControl
 }
 
 final class MetadataTitleTableSectionController: NSObject, TableSectionController {
+    public var dispatcher: WalletActionDispatching?
     public var properties: [MetadataTitleRowItemProperties] = []
     var sectionTitle: String?
     
@@ -110,6 +112,7 @@ final class MetadataTitleTableSectionController: NSObject, TableSectionControlle
 
 
 final class MetadataTransactionSegmentTableSectionController: NSObject, TableSectionController {
+    public var dispatcher: WalletActionDispatching?
     public var properties: [MetadataTransactionSegmentRowItemProperties] = []
     var sectionTitle: String?
     

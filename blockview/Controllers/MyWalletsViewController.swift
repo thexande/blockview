@@ -53,7 +53,7 @@ struct WalletsViewProperties {
 }
 
 final class WalletsViewController: UIViewController {
-    public var dispatch: WalletActionDispatching?
+    public var dispatcher: WalletActionDispatching?
     fileprivate let emptyState = WalletsEmptyStateView()
     fileprivate let table = UITableView()
     fileprivate let searchController = UISearchController(searchResultsController: nil)
@@ -67,47 +67,9 @@ final class WalletsViewController: UIViewController {
         }
     }
     
-    var sections: [WalletsSectionProperties] = [
-        WalletsSectionProperties(items: [
-            WalletRowProperties(name: "Coinbase", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .bitcoin),
-            WalletRowProperties(name: "Exodus Wallet", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .bitcoin),
-            WalletRowProperties(name: "Cold Storage", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .bitcoin),
-            ], title: "Bitcoin"),
-        WalletsSectionProperties(items: [
-            WalletRowProperties(name: "Bunker Cold Storage 300 miles off grid", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .litecoin),
-            WalletRowProperties(name: "Exodus Wallet", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .litecoin),
-            ], title: "Litecoin"),
-        
-        WalletsSectionProperties(items: [
-            WalletRowProperties(name: "Cold Storage", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dash),
-            WalletRowProperties(name: "Trezor", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dash),
-            WalletRowProperties(name: "CloudFoundry Master Node", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dash)
-            ], title: "Dash"),
-        
-        WalletsSectionProperties(items: [
-            WalletRowProperties(name: "Dogecoin Core", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dogecoin),
-            WalletRowProperties(name: "Dogebase", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .dogecoin)
-            ], title: "Dogecoin"),
-    ]
+    let sections: [WalletsSectionProperties] = DummyData.sections
     
-    let detailProperties = WalletDetailViewProperties(title: "Ledger Nano", headerProperties: WalletDetailHeaderViewProperties(balance: "1.0239094 BTC", received: "1.0239094 BTC", send: "1.0239094 BTC", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV"), items: [
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-      
-        ])
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -254,7 +216,7 @@ extension WalletsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WalletRowCell.self)) as? WalletRowCell {
-            dispatch?.dispatch(walletAction: .)
+            dispatcher?.dispatch(walletAction: .selectedWallet(cell.properties.address))
         }
 //        let detailController = WalletDetailController()
 //        detailController.properties = detailProperties

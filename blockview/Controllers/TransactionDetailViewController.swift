@@ -2,6 +2,7 @@ import UIKit
 import Anchorage
 
 protocol TableSectionController: UITableViewDelegate, UITableViewDataSource {
+    var dispatcher: WalletActionDispatching? { get set }
     var sectionTitle: String? { get }
     func registerReusableTypes(tableView: UITableView)
 }
@@ -78,6 +79,7 @@ struct TransactionDetailViewProperties {
 }
 
 final class TransactionDetailViewController: SectionProxyTableViewController, ViewPropertiesUpdating {
+    public var dispatcher: WalletActionDispatching?
     override var sections: [TableSectionController] {
         didSet {
             sections.forEach { $0.registerReusableTypes(tableView: tableView) }
