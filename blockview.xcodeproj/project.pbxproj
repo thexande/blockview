@@ -35,6 +35,7 @@
 		B09722F82053AF8F00152EFD /* TransactionSegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09722F72053AF8F00152EFD /* TransactionSegmentViewController.swift */; };
 		B09722FA2053BA0A00152EFD /* WalletCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09722F92053BA0A00152EFD /* WalletCoordinator.swift */; };
 		B09722FC20548DBC00152EFD /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09722FB20548DBC00152EFD /* DummyData.swift */; };
+		B09722FE2054A1B100152EFD /* QRDispalyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09722FD2054A1B100152EFD /* QRDispalyViewController.swift */; };
 		B999799E11C88AAD22ACB237 /* Pods_blockviewUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB8EEAAF2E9CCB2BD8A8D8A /* Pods_blockviewUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,7 @@
 		B09722F72053AF8F00152EFD /* TransactionSegmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSegmentViewController.swift; sourceTree = "<group>"; };
 		B09722F92053BA0A00152EFD /* WalletCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCoordinator.swift; sourceTree = "<group>"; };
 		B09722FB20548DBC00152EFD /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
+		B09722FD2054A1B100152EFD /* QRDispalyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDispalyViewController.swift; sourceTree = "<group>"; };
 		F03965C361FEDFAD4D29A05A /* Pods-blockviewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blockviewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-blockviewTests/Pods-blockviewTests.release.xcconfig"; sourceTree = "<group>"; };
 		F1535F4A5D145F5B4C3AD838 /* Pods-blockviewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blockviewTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-blockviewTests/Pods-blockviewTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,6 +208,7 @@
 				B0943795204CA5D900AF36D0 /* TransactionDetailViewController.swift */,
 				B094379E204CDEF600AF36D0 /* SectionProxyTableViewController.swift */,
 				B09722F72053AF8F00152EFD /* TransactionSegmentViewController.swift */,
+				B09722FD2054A1B100152EFD /* QRDispalyViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				B094378C204A565400AF36D0 /* WalletSectionHeader.swift in Sources */,
 				B094378120492B6600AF36D0 /* FontAwesomeHelper.swift in Sources */,
 				B094377C20491DE100AF36D0 /* ExploreViewController.swift in Sources */,
+				B09722FE2054A1B100152EFD /* QRDispalyViewController.swift in Sources */,
 				B0943749204919A200AF36D0 /* AppDelegate.swift in Sources */,
 				B094378E204A73A700AF36D0 /* WalletDetailController.swift in Sources */,
 				B094377820491CA700AF36D0 /* RootTabViewController.swift in Sources */,

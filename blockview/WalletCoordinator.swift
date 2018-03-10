@@ -3,17 +3,22 @@ import UIKit
 enum WalletAction {
     case reloadWallets
     case reloadWallet(String)
-    case reloadTransaction(String)
-    
     case selectedWallet(String)
+    
+    case reloadTransaction(String)
     case selectedTransaction(String)
+    
+    case reloadTransactionSegment(String)
     case selectedTransactionSegment(String)
+    
+    case displayWalletQR(String)
+    case scanQR(WalletType)
 }
 
 struct TransactionSegmentViewProperties {
     let title: String
-    let items: [MetadataRowItemProperties]
-    static let `default` = TransactionSegmentViewProperties(title: "", items: [])
+    let sections: [MetadataSectionProperties]
+    static let `default` = TransactionSegmentViewProperties(title: "", sections: [])
 }
 
 
@@ -22,6 +27,7 @@ enum WalletRoute {
     case transactionDetail(TransactionDetailViewProperties)
     case transactionSegmentDetail(TransactionSegmentViewProperties)
     case wallets(WalletsViewProperties)
+    case qrCodeDisplay(String)
 }
 
 protocol WalletActionDispatching {
@@ -33,14 +39,15 @@ protocol WalletRoutable {
     weak var navigation: UINavigationController? { get }
 }
 
+
 final class WalletCoordinator: WalletActionDispatching {
     fileprivate let navigationController = UINavigationController(rootViewController: UIViewController())
     fileprivate let walletViewController = WalletsViewController()
     fileprivate let walletDetailViewController = WalletDetailController()
     fileprivate let transactionDetailViewController = TransactionDetailViewController()
     fileprivate let transactionSegmentDetailViewController = TransactionSegmentViewController()
-    
-    
+    fileprivate let qrDisplayViewController = QRDispalyViewController()
+    fileprivate let scannerViewController = ScannerViewController()
     
     public var rootViewController: UIViewController {
         return self.navigationController
@@ -59,11 +66,20 @@ final class WalletCoordinator: WalletActionDispatching {
         case .reloadWallet(let walletAddress): return
         case .selectedWallet(let walletAddress):
             handleRoute(route: .walletDetail(DummyData.detailProperties))
+        
         case .reloadTransaction(let transactionHash): return
         case .selectedTransaction(let transactionHash):
             handleRoute(route: .transactionDetail(DummyData.transacctionDetailProps))
+            
+        case .reloadTransactionSegment(let transactionSegmentAddress): return
         case .selectedTransactionSegment(let transactionSegmentAddress):
-            handleRoute(route: .transactionSegmentDetail(.default))
+            handleRoute(route: .transactionSegmentDetail(TransactionSegmentViewProperties(title: "segment detail", sections: DummyData.transacctionDetailProps.sections)))
+        
+        
+        case .displayWalletQR(let walletAddress):
+           handleRoute(route: .qrCodeDisplay(walletAddress))
+        case .scanQR(let walletType):
+            return
         }
     }
 }
@@ -89,9 +105,19 @@ extension WalletCoordinator: WalletRoutable {
         case .transactionSegmentDetail(let properties):
             transactionSegmentDetailViewController.properties = properties
             navigation?.pushViewController(transactionSegmentDetailViewController, animated: true)
+        case .qrCodeDisplay(let walletAddress):
+            qrDisplayViewController.address = walletAddress
+            navigation?.present(qrDisplayViewController, animated: true, completion: nil)
         }
     }
 }
 
 
 
+extension UIAlertAction {
+    convenience init(_ walletType: WalletType, dispatcher: WalletActionDispatching?) {
+        self.init(title: walletType.rawValue, style: .default, handler: { _ in
+            dispatcher?.dispatch(walletAction: .scanQR(.bitcoin))
+        })
+    }
+}

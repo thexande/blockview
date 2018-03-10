@@ -69,8 +69,6 @@ final class WalletsViewController: UIViewController {
     
     let sections: [WalletsSectionProperties] = DummyData.sections
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Wallets"
@@ -115,14 +113,11 @@ final class WalletsViewController: UIViewController {
         }
         
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        
+
         
         let actions = [
             UIAlertAction(title: "Bitcoin", style: .default, handler: { [weak self] _ in
-                guard let `self` = self else { return }
-                DispatchQueue.main.async {
-                    self.present(ScannerViewController(), animated: true, completion: nil)
-                }
+                self?.dispatcher?.dispatch(walletAction: .scanQR(.bitcoin))
             }),
             UIAlertAction(title: "Litecoin", style: .default, handler: { _ in
                 

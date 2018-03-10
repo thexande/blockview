@@ -13,6 +13,7 @@ final class WalletDetailHeaderView: UIView, ViewPropertiesUpdating {
     fileprivate let qrButton = PrimaryButton()
     fileprivate let accentImageView = UIImageView(image: #imageLiteral(resourceName: "btc"))
     
+    public var dispatcher: WalletActionDispatching?
     public var properties: WalletDetailHeaderViewProperties = .default {
         didSet {
             update(properties)
@@ -25,6 +26,10 @@ final class WalletDetailHeaderView: UIView, ViewPropertiesUpdating {
         sent.text = properties.send
     }
     
+    @objc func showWalletQR() {
+        dispatcher?.dispatch(walletAction: .displayWalletQR(properties.address))
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = StyleConstants.navGray
@@ -32,7 +37,9 @@ final class WalletDetailHeaderView: UIView, ViewPropertiesUpdating {
         addSubview(accentImageView)
         accentImageView.alpha = 0.2
         copyButton.setTitle("Copy Wallet Address", for: .normal)
+        
         qrButton.setTitle("Show Wallet QR Code", for: .normal)
+        qrButton.addTarget(self, action: #selector(showWalletQR), for: .touchUpInside)
         
         let buttons: [UIView] = [qrButton, copyButton]
         
