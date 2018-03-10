@@ -33,6 +33,7 @@
 		B094379D204CBFFF00AF36D0 /* TransactionTableSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094379C204CBFFF00AF36D0 /* TransactionTableSectionController.swift */; };
 		B094379F204CDEF600AF36D0 /* SectionProxyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094379E204CDEF600AF36D0 /* SectionProxyTableViewController.swift */; };
 		B09722F82053AF8F00152EFD /* TransactionSegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09722F72053AF8F00152EFD /* TransactionSegmentViewController.swift */; };
+		B09722FA2053BA0A00152EFD /* WalletCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09722F92053BA0A00152EFD /* WalletCoordinator.swift */; };
 		B999799E11C88AAD22ACB237 /* Pods_blockviewUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB8EEAAF2E9CCB2BD8A8D8A /* Pods_blockviewUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		B094379C204CBFFF00AF36D0 /* TransactionTableSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableSectionController.swift; sourceTree = "<group>"; };
 		B094379E204CDEF600AF36D0 /* SectionProxyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionProxyTableViewController.swift; sourceTree = "<group>"; };
 		B09722F72053AF8F00152EFD /* TransactionSegmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSegmentViewController.swift; sourceTree = "<group>"; };
+		B09722F92053BA0A00152EFD /* WalletCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCoordinator.swift; sourceTree = "<group>"; };
 		F03965C361FEDFAD4D29A05A /* Pods-blockviewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blockviewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-blockviewTests/Pods-blockviewTests.release.xcconfig"; sourceTree = "<group>"; };
 		F1535F4A5D145F5B4C3AD838 /* Pods-blockviewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blockviewTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-blockviewTests/Pods-blockviewTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +168,7 @@
 				B0943751204919A200AF36D0 /* LaunchScreen.storyboard */,
 				B0943754204919A200AF36D0 /* Info.plist */,
 				B094377D2049212800AF36D0 /* qr_animation.json */,
+				B09722F92053BA0A00152EFD /* WalletCoordinator.swift */,
 			);
 			path = blockview;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				B094378A204A563700AF36D0 /* WalletRowCell.swift in Sources */,
 				B0943796204CA5D900AF36D0 /* TransactionDetailViewController.swift in Sources */,
 				B0943792204A87F700AF36D0 /* WalletDetailHeaderView.swift in Sources */,
+				B09722FA2053BA0A00152EFD /* WalletCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

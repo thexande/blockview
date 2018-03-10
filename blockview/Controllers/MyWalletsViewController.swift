@@ -46,7 +46,14 @@ enum WalletType: String {
     }
 }
 
+struct WalletsViewProperties {
+    let title: String
+    var sections: [WalletsSectionProperties]
+    static let `default` = WalletsViewProperties(title: "", sections: [])
+}
+
 final class WalletsViewController: UIViewController {
+    public var dispatch: WalletActionDispatching?
     fileprivate let emptyState = WalletsEmptyStateView()
     fileprivate let table = UITableView()
     fileprivate let searchController = UISearchController(searchResultsController: nil)
@@ -54,11 +61,17 @@ final class WalletsViewController: UIViewController {
     fileprivate var isSearching: Bool = false
     fileprivate let walletTypeAlertController = UIAlertController(title: "Wallet Type", message: "Select your Wallet type.", preferredStyle: .actionSheet)
     
+    public var properties: WalletsViewProperties = .default {
+        didSet {
+            
+        }
+    }
+    
     var sections: [WalletsSectionProperties] = [
         WalletsSectionProperties(items: [
-                WalletRowProperties(name: "Coinbase", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .bitcoin),
-                WalletRowProperties(name: "Exodus Wallet", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .bitcoin),
-                WalletRowProperties(name: "Cold Storage", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .bitcoin),
+            WalletRowProperties(name: "Coinbase", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .bitcoin),
+            WalletRowProperties(name: "Exodus Wallet", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .bitcoin),
+            WalletRowProperties(name: "Cold Storage", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .bitcoin),
             ], title: "Bitcoin"),
         WalletsSectionProperties(items: [
             WalletRowProperties(name: "Bunker Cold Storage 300 miles off grid", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV", holdings: "Holding: 0.87999823 BTC", spent: "Spent: 0.87999823 BTC", walletType: .litecoin),
@@ -114,8 +127,6 @@ final class WalletsViewController: UIViewController {
         table.dataSource = self
         table.register(WalletRowCell.self, forCellReuseIdentifier: String(describing: WalletRowCell.self))
         table.register(WalletSectionHeader.self, forHeaderFooterViewReuseIdentifier: String(describing: WalletSectionHeader.self))
-        table.reloadData()
-        
         
 //        view.addSubview(emptyState)
 //        emptyState.edgeAnchors == view.edgeAnchors
@@ -242,9 +253,12 @@ extension WalletsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailController = WalletDetailController()
-        detailController.properties = detailProperties
-        navigationController?.pushViewController(detailController, animated: true)
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WalletRowCell.self)) as? WalletRowCell {
+            dispatch?.dispatch(walletAction: .)
+        }
+//        let detailController = WalletDetailController()
+//        detailController.properties = detailProperties
+//        navigationController?.pushViewController(detailController, animated: true)
     }
     
     @available(iOS 11.0, *)
