@@ -1,21 +1,24 @@
 import UIKit
 
 final class MetadataTableSectionHelper {
-    static func mapControllerFromSections(_ sections: [MetadataSectionProperties]) -> [TableSectionController] {
+    static func mapControllerFromSections(_ sections: [MetadataSectionProperties], dispatcher: WalletActionDispatching?) -> [TableSectionController] {
         return sections.flatMap { section -> TableSectionController? in
             if let properties = section as? MetadataAddressSectionProperties {
                 guard let items = properties.items as? [MetadataAddressRowItemProperties] else { return nil }
                 let controller = MetadataAddressTableSectionController.mapControllerFromProperties(items)
+                controller.dispatcher = dispatcher
                 controller.sectionTitle = properties.title
                 return controller
             } else if let properties = section as? MetadataTitleSectionProperties {
                 guard let items = properties.items as? [MetadataTitleRowItemProperties] else { return nil }
                 let controller = MetadataTitleTableSectionController.mapControllerFromProperties(items)
+                controller.dispatcher = dispatcher
                 controller.sectionTitle = properties.title
                 return controller
             } else if let properties = section as? MetadataTransactionSegmentSectionProperties {
                 guard let items = properties.items as? [MetadataTransactionSegmentRowItemProperties] else { return nil }
                 let controller = MetadataTransactionSegmentTableSectionController()
+                controller.dispatcher = dispatcher
                 controller.properties = items
                 controller.sectionTitle = properties.title
                 return controller
@@ -59,6 +62,10 @@ final class MetadataAddressTableSectionController: NSObject, TableSectionControl
         }
         header.title.text = sectionTitle
         return header
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        dispatcher?.dispatch(walletAction: .selectedTransactionSegment(properties[indexPath.row].address))
     }
     
     static func mapControllerFromProperties(_ properties: [MetadataAddressRowItemProperties]) -> MetadataAddressTableSectionController {
@@ -144,6 +151,10 @@ final class MetadataTransactionSegmentTableSectionController: NSObject, TableSec
         }
         header.title.text = sectionTitle
         return header
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        dispatcher?.dispatch(walletAction: .selectedTransactionSegment(properties[indexPath.row].address))
     }
     
     static func mapControllerFromProperties(_ properties: [MetadataTitleRowItemProperties]) -> MetadataTitleTableSectionController {

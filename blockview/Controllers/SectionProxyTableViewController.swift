@@ -22,5 +22,9 @@ class SectionProxyTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return sections[section].tableView?(tableView, viewForHeaderInSection: section)
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        sections[indexPath.section].tableView?(tableView, didSelectRowAt: indexPath)
+    }
 }
 

@@ -28,11 +28,12 @@ struct WalletDetailHeaderViewProperties {
 }
 
 struct TransactionRowItemProperties {
+    let transactionHash: String
     let transactionType: WalletDetailRowType
     let title: String
     let subTitle: String
     let confirmationCount: String
-    static let `default` = TransactionRowItemProperties(transactionType: .sent, title: "", subTitle: "", confirmationCount: "")
+    static let `default` = TransactionRowItemProperties(transactionHash: "", transactionType: .sent, title: "", subTitle: "", confirmationCount: "")
 }
 
 final class WalletDetailController: SectionProxyTableViewController, ViewPropertiesUpdating {
@@ -57,8 +58,9 @@ final class WalletDetailController: SectionProxyTableViewController, ViewPropert
         header.properties = properties.headerProperties
         title = properties.title
         header.properties = properties.headerProperties
-        
-        sections = [TransactionTableSectionController.mapController(from: properties.items)]
+        let controller = TransactionTableSectionController.mapController(from: properties.items)
+        controller.dispatcher = dispatcher
+        sections = [controller]
     }
     
     override func viewDidLoad() {

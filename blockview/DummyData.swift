@@ -1,26 +1,29 @@
 struct DummyData {
-    static let detailProperties = WalletDetailViewProperties(title: "Ledger Nano", headerProperties: WalletDetailHeaderViewProperties(balance: "1.0239094 BTC", received: "1.0239094 BTC", send: "1.0239094 BTC", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV"), items: [
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
-        TransactionRowItemProperties(transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+    static let detailProperties = WalletDetailViewProperties(
+        title: "Ledger Nano",
+        headerProperties: WalletDetailHeaderViewProperties(balance: "1.0239094 BTC", received: "1.0239094 BTC", send: "1.0239094 BTC", address: "Lb3sAACgGk8i6GsMApKqpTi2DWoybaU5BV"),
+        items: [
+        TransactionRowItemProperties(transactionHash: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionHash: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionHash: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionHash: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionHash: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionHash: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionHash: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionHash: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionHash: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionHash: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionHash: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionHash: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionHash: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionHash: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        TransactionRowItemProperties(transactionHash: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", transactionType: .recieved, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
         
         ])
     
     static let transacctionDetailProps = TransactionDetailViewProperties(
         title: "Outgoing LTC",
-        transactionItemProperties:  TransactionRowItemProperties(transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
+        transactionItemProperties:  TransactionRowItemProperties(transactionHash: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67", transactionType: .sent, title: "Sent 149.48672345 LTC", subTitle: "3:56 PM, June 29, 2019", confirmationCount: "6+"),
         sections: [
             MetadataTitleSectionProperties(displayStyle: .metadata, title: "Transaction Metadata", items: [
                 MetadataTitleRowItemProperties(title: "Hash", content: "5be6b54c89d5be512f099914f52725b77b7c8168fc6e16c2d1b5dc8842576a67"),

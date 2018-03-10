@@ -7,11 +7,20 @@ enum WalletAction {
     
     case selectedWallet(String)
     case selectedTransaction(String)
+    case selectedTransactionSegment(String)
 }
+
+struct TransactionSegmentViewProperties {
+    let title: String
+    let items: [MetadataRowItemProperties]
+    static let `default` = TransactionSegmentViewProperties(title: "", items: [])
+}
+
 
 enum WalletRoute {
     case walletDetail(WalletDetailViewProperties)
     case transactionDetail(TransactionDetailViewProperties)
+    case transactionSegmentDetail(TransactionSegmentViewProperties)
     case wallets(WalletsViewProperties)
 }
 
@@ -29,6 +38,7 @@ final class WalletCoordinator: WalletActionDispatching {
     fileprivate let walletViewController = WalletsViewController()
     fileprivate let walletDetailViewController = WalletDetailController()
     fileprivate let transactionDetailViewController = TransactionDetailViewController()
+    fileprivate let transactionSegmentDetailViewController = TransactionSegmentViewController()
     
     
     
@@ -39,6 +49,7 @@ final class WalletCoordinator: WalletActionDispatching {
     init() {
         self.navigationController.viewControllers = [walletViewController]
         walletViewController.dispatcher = self
+        walletDetailViewController.dispatcher = self
         transactionDetailViewController.dispatcher = self
     }
     
@@ -46,11 +57,13 @@ final class WalletCoordinator: WalletActionDispatching {
         switch walletAction {
         case .reloadWallets: return
         case .reloadWallet(let walletAddress): return
+        case .selectedWallet(let walletAddress):
+            handleRoute(route: .walletDetail(DummyData.detailProperties))
         case .reloadTransaction(let transactionHash): return
         case .selectedTransaction(let transactionHash):
             handleRoute(route: .transactionDetail(DummyData.transacctionDetailProps))
-        case .selectedWallet(let walletAddress):
-            handleRoute(route: .walletDetail(DummyData.detailProperties))
+        case .selectedTransactionSegment(let transactionSegmentAddress):
+            handleRoute(route: .transactionSegmentDetail(.default))
         }
     }
 }
@@ -64,15 +77,18 @@ extension WalletCoordinator: WalletRoutable {
     
     func handleRoute(route: WalletRoute) {
         switch route {
-        case .walletDetail(let walletDetailViewProperties):
-            walletDetailViewController.properties = walletDetailViewProperties
-            navigationController.pushViewController(walletDetailViewController, animated: true)
-        case .wallets(let walletsViewProperties):
-            walletViewController.properties = walletsViewProperties
-            navigationController.pushViewController(walletViewController, animated: true)
-        case .transactionDetail(let transactionDetailViewProperties):
-            transactionDetailViewController.properties = transactionDetailViewProperties
-            navigationController.pushViewController(transactionDetailViewController, animated: true)
+        case .walletDetail(let properties):
+            walletDetailViewController.properties = properties
+            navigation?.pushViewController(walletDetailViewController, animated: true)
+        case .wallets(let properties):
+            walletViewController.properties = properties
+            navigation?.pushViewController(walletViewController, animated: true)
+        case .transactionDetail(let properties):
+            transactionDetailViewController.properties = properties
+            navigation?.pushViewController(transactionDetailViewController, animated: true)
+        case .transactionSegmentDetail(let properties):
+            transactionSegmentDetailViewController.properties = properties
+            navigation?.pushViewController(transactionSegmentDetailViewController, animated: true)
         }
     }
 }

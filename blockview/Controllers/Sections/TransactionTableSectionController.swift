@@ -21,6 +21,9 @@ final class TransactionTableSectionController: NSObject, TableSectionController 
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        dispatcher?.dispatch(walletAction: .selectedTransaction(properties[indexPath.row].transactionHash))
+    }
     static func mapController(from properties: [TransactionRowItemProperties]) -> TransactionTableSectionController {
         let controller = TransactionTableSectionController()
         controller.properties = properties
