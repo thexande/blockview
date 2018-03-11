@@ -10,6 +10,7 @@ target 'blockview' do
   pod 'lottie-ios'
   pod 'FontAwesome.swift', :git => 'https://github.com/thii/FontAwesome.swift', :branch => 'swift-4.0'
   pod 'QRCode'
+  pod 'Result', '~> 3.0.0'
 
   # Pods for blockview
 

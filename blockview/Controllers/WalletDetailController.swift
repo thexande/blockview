@@ -74,6 +74,7 @@ final class WalletDetailController: SectionProxyTableViewController, ViewPropert
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(pressedSave   ))
         
         navigationItem.titleView = segment
         tableView.tableHeaderView = header
@@ -94,20 +95,12 @@ final class WalletDetailController: SectionProxyTableViewController, ViewPropert
             self.refreshControl?.endRefreshing()
         }
     }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return sections[section].tableView(tableView, numberOfRowsInSection: section)
-//    }
-//
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        return sections[indexPath.section].tableView(tableView, cellForRowAt: indexPath)
-//    }
-//
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        sections[indexPath.section].tableView(tableView, didSelectRowAt: indexPath)
-//    }
-    
+
     @objc func didChangeSegmentedControl(_ sender: UISegmentedControl) {
         
+    }
+    
+    @objc func pressedSave() {
+        dispatcher?.dispatch(walletAction: .walletNameSelectAlert)
     }
 }
