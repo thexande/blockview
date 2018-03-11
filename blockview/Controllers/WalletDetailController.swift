@@ -40,7 +40,7 @@ final class WalletDetailController: SectionProxyTableViewController, ViewPropert
     fileprivate let header = WalletDetailHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 172))
     fileprivate let segment = UISegmentedControl(items: [ "Recent", "Largest"])
     
-    public var dispatcher: WalletActionDispatching? {
+    public weak var dispatcher: WalletActionDispatching? {
         didSet {
             header.dispatcher = dispatcher
         }

@@ -79,7 +79,7 @@ struct TransactionDetailViewProperties {
 }
 
 final class TransactionDetailViewController: SectionProxyTableViewController, ViewPropertiesUpdating {
-    public var dispatcher: WalletActionDispatching?
+    public weak var dispatcher: WalletActionDispatching?
     override var sections: [TableSectionController] {
         didSet {
             sections.forEach { $0.registerReusableTypes(tableView: tableView) }

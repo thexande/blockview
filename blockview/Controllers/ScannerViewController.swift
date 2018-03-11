@@ -5,6 +5,8 @@ import Anchorage
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
+    public var success: ((String, WalletType?) -> Void)?
+    public var walletType: WalletType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,7 +110,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     
     func found(code: String) {
-        print(code)
+        success?(code, walletType)
     }
     
     override var prefersStatusBarHidden: Bool {

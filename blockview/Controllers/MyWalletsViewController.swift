@@ -53,13 +53,12 @@ struct WalletsViewProperties {
 }
 
 final class WalletsViewController: UIViewController {
-    public var dispatcher: WalletActionDispatching?
+    public weak var dispatcher: WalletActionDispatching?
     fileprivate let emptyState = WalletsEmptyStateView()
     fileprivate let table = UITableView()
     fileprivate let searchController = UISearchController(searchResultsController: nil)
     fileprivate let refreshControl = UIRefreshControl()
     fileprivate var isSearching: Bool = false
-    fileprivate let walletTypeAlertController = UIAlertController(title: "Wallet Type", message: "Select your Wallet type.", preferredStyle: .actionSheet)
     
     public var properties: WalletsViewProperties = .default {
         didSet {
@@ -117,7 +116,7 @@ final class WalletsViewController: UIViewController {
         
         let actions = [
             UIAlertAction(title: "Bitcoin", style: .default, handler: { [weak self] _ in
-                self?.dispatcher?.dispatch(walletAction: .scanQR(.bitcoin))
+//                self?.dispatcher?.dispatch(walletAction: .scanQR(.bitcoin))
             }),
             UIAlertAction(title: "Litecoin", style: .default, handler: { _ in
                 
@@ -131,7 +130,7 @@ final class WalletsViewController: UIViewController {
             UIAlertAction(title: "cancel", style: .cancel, handler: nil)
         ]
         
-        actions.forEach { action in walletTypeAlertController.addAction(action) }
+//        actions.forEach { action in walletTypeAlertController.addAction(action) }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -148,7 +147,8 @@ final class WalletsViewController: UIViewController {
     }
     
     @objc func scanTapped() {
-        present(walletTypeAlertController, animated: true, completion: nil)
+        dispatcher?.dispatch(walletAction: .walletTypeSelectAlert)
+//        present(walletTypeAlertController, animated: true, completion: nil)
         
         
 //        present(ScannerViewController(), animated: true, completion: nil)
