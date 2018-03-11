@@ -11,7 +11,7 @@ enum WalletAction {
     case reloadTransactionSegment(String)
     case selectedTransactionSegment(String)
     
-    case displayWalletQR(String)
+    case displayWalletQR(String, String)
     case walletTypeSelectAlert
     case scanQR(WalletType)
     case deliverQRResult(String, WalletType?)
@@ -29,7 +29,7 @@ enum WalletRoute {
     case transactionDetail(TransactionDetailViewProperties)
     case transactionSegmentDetail(TransactionSegmentViewProperties)
     case wallets(WalletsViewProperties)
-    case qrCodeDisplay(String)
+    case qrCodeDisplay(String, String)
     case walletTypeSelectAlert
     case scanQRCode
 }
@@ -89,8 +89,8 @@ final class WalletCoordinator: WalletActionDispatching {
             handleRoute(route: .transactionSegmentDetail(TransactionSegmentViewProperties(title: "segment detail", sections: DummyData.transacctionDetailProps.sections)))
         
         
-        case .displayWalletQR(let walletAddress):
-           handleRoute(route: .qrCodeDisplay(walletAddress))
+        case .displayWalletQR(let walletAddress, let walletTitle):
+           handleRoute(route: .qrCodeDisplay(walletAddress, walletTitle))
         case .scanQR(let walletType):
             scannerViewController.walletType = walletType
             handleRoute(route: .scanQRCode)
@@ -125,9 +125,10 @@ extension WalletCoordinator: WalletRoutable {
         case .transactionSegmentDetail(let properties):
             transactionSegmentDetailViewController.properties = properties
             navigation?.pushViewController(transactionSegmentDetailViewController, animated: true)
-        case .qrCodeDisplay(let walletAddress):
+        case .qrCodeDisplay(let walletAddress, let walletTitle):
             qrDisplayViewController.address = walletAddress
-            navigation?.present(qrDisplayViewController, animated: true, completion: nil)
+            qrDisplayViewController.title = walletTitle
+            navigation?.present(UINavigationController(rootViewController: qrDisplayViewController), animated: true, completion: nil)
         case .walletTypeSelectAlert:
             navigation?.present(walletTypeAlertController, animated: true, completion: nil)
         case .scanQRCode:

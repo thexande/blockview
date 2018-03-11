@@ -27,7 +27,7 @@ final class WalletDetailHeaderView: UIView, ViewPropertiesUpdating {
     }
     
     @objc func showWalletQR() {
-        dispatcher?.dispatch(walletAction: .displayWalletQR(properties.address))
+        dispatcher?.dispatch(walletAction: .displayWalletQR(properties.address, properties.title))
     }
     
     override init(frame: CGRect) {

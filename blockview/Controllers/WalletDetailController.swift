@@ -16,7 +16,7 @@ struct WalletDetailViewProperties {
     let title: String
     let headerProperties: WalletDetailHeaderViewProperties
     let items: [TransactionRowItemProperties]
-    static let `default` = WalletDetailViewProperties(title: "", headerProperties: WalletDetailHeaderViewProperties(balance: "", received: "", send: "", address: ""), items: [])
+    static let `default` = WalletDetailViewProperties(title: "", headerProperties: WalletDetailHeaderViewProperties(balance: "", received: "", send: "", address: "", title: ""), items: [])
 }
 
 struct WalletDetailHeaderViewProperties {
@@ -24,7 +24,8 @@ struct WalletDetailHeaderViewProperties {
     let received: String
     let send: String
     let address: String
-    static let `default` = WalletDetailHeaderViewProperties(balance: "", received: "", send: "", address: "")
+    let title: String
+    static let `default` = WalletDetailHeaderViewProperties(balance: "", received: "", send: "", address: "", title: "")
 }
 
 struct TransactionRowItemProperties {
