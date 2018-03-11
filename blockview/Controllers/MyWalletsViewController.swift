@@ -44,6 +44,15 @@ enum WalletType: String {
         case .dash: return UIColor(red:0.22, green:0.45, blue:0.71, alpha:1.0)
         }
     }
+    
+    public var symbol: String {
+        switch self {
+        case .bitcoin: return "BTC"
+        case .litecoin: return "LTC"
+        case .dogecoin: return "DOGE"
+        case .dash: return "DASH"
+        }
+    }
 }
 
 struct WalletsViewProperties {

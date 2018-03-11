@@ -13,6 +13,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     public var walletType: WalletType? {
         didSet {
             icon.image = walletType?.icon
+            overlayLabel.text = "Scan your \(walletType?.symbol ?? "") wallet address."
         }
     }
     
@@ -67,7 +68,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
      
         overlayLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        overlayLabel.text = "Scan your LTC wallet address."
         overlayLabel.textAlignment = .center
      
         
