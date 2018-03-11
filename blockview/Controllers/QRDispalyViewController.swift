@@ -7,7 +7,7 @@ final class QRDispalyViewController: UIViewController {
     
     public var address: String = "" {
         didSet {
-            let qrCode = QRCode("http://schuch.me")
+            let qrCode = QRCode(address)
             image.image = qrCode?.image
         }
     }
@@ -16,7 +16,7 @@ final class QRDispalyViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(image)
-        image.widthAnchor == view.widthAnchor - 24
+        image.widthAnchor == view.widthAnchor - 64
         image.heightAnchor == image.widthAnchor
         image.centerAnchors == view.centerAnchors
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(done))

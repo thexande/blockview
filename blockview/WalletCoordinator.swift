@@ -4,17 +4,15 @@ enum WalletAction {
     case reloadWallets
     case reloadWallet(String)
     case selectedWallet(String)
-    
     case reloadTransaction(String)
     case selectedTransaction(String)
-    
     case reloadTransactionSegment(String)
     case selectedTransactionSegment(String)
-    
-    case displayWalletQR(String, String)
     case walletTypeSelectAlert
+    case displayWalletQR(String, String)
     case scanQR(WalletType)
     case deliverQRResult(String, WalletType?)
+    case copyWalletAddressToClipboard(String)
 }
 
 struct TransactionSegmentViewProperties {
@@ -43,6 +41,11 @@ protocol WalletRoutable {
     weak var navigation: UINavigationController? { get }
 }
 
+protocol WalletFactory {
+    func makeWalletSelectorAlertController() -> UIAlertController
+    func makeWalletSelectorAction(_ walletType: WalletType) -> UIAlertAction
+    func addWalletSelectAlertActions(_ controller: UIAlertController, walletTypes: [WalletType])
+}
 
 final class WalletCoordinator: WalletActionDispatching {
     fileprivate let navigationController = UINavigationController(rootViewController: UIViewController())
@@ -95,11 +98,18 @@ final class WalletCoordinator: WalletActionDispatching {
             scannerViewController.walletType = walletType
             handleRoute(route: .scanQRCode)
             return
-        case .deliverQRResult(let walletType, let walletAddress):
+        case .deliverQRResult(let walletAddress, let walletType):
             print(walletType)
+            
+            
+            WalletService.fetchWallet(walletAddress: walletAddress, { wallet in
+                print(wallet?.address)
+            })
         
         case .walletTypeSelectAlert:
             handleRoute(route: .walletTypeSelectAlert)
+        case .copyWalletAddressToClipboard(let walletAddress):
+            print(walletAddress)
         }
     }
 }
@@ -137,12 +147,6 @@ extension WalletCoordinator: WalletRoutable {
     }
 }
 
-protocol WalletFactory {
-    func makeWalletSelectorAlertController() -> UIAlertController
-    func makeWalletSelectorAction(_ walletType: WalletType) -> UIAlertAction
-    func addWalletSelectAlertActions(_ controller: UIAlertController, walletTypes: [WalletType])
-}
-
 extension WalletCoordinator: WalletFactory {
     func makeWalletSelectorAlertController() -> UIAlertController {
         let controller = UIAlertController(title: "Wallet Type", message: "Select your Wallet type.", preferredStyle: .actionSheet)
@@ -160,7 +164,7 @@ extension WalletCoordinator: WalletFactory {
     }
     
     func makeWalletSelectorAction(_ walletType: WalletType) -> UIAlertAction {
-        return UIAlertAction(title: walletType.rawValue, style: .default, handler: { [weak self] _ in
+        return UIAlertAction(title: walletType.rawValue.capitalized, style: .default, handler: { [weak self] _ in
             self?.dispatch(walletAction: .scanQR(walletType))
         })
     }
@@ -172,5 +176,81 @@ extension UIAlertAction {
 
 
 final class WalletService {
-    
+    static func fetchWallet(walletAddress: String, _ completion: @escaping(Wallet?) -> Void) {
+        guard let url = URLFactory.url(walletAddress: walletAddress) else {
+            completion(nil)
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else { return }
+            do {
+                let wallet = try JSONDecoder().decode(Wallet.self, from: data)
+                completion(wallet)
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }.resume()
+    }
+}
+
+
+struct URLFactory {
+    static func url(walletAddress: String) -> URL? {
+        let address = "https://api.blockcypher.com/v1/ltc/main/addrs/\(walletAddress)/full?limit=50"
+        return URL(string: address)
+    }
+}
+
+struct Wallet: Codable {
+    let address: String
+    let total_received: Int
+    let total_sent: Int
+    let balance: Int
+    let unconfirmed_balance: Int
+    let final_balance: Int
+    let n_tx: Int
+    let unconfirmed_n_tx: Int
+    let final_n_tx: Int
+    let txs: [Transaction]
+}
+
+struct Transaction: Codable {
+    let block_hash: String
+    let block_height: Int
+    let block_index: Int
+    let hash: String
+    let addresses: [String]
+    let total: Int
+    let fees: Int
+    let size: Int
+    let preference: String
+    let relayed_by: String?
+    let confirmed: String
+    let received: String
+    let ver: Int
+    let double_spend: Bool
+    let vin_sz: Int
+    let vout_sz: Int
+    let confirmations: Int
+    let confidence: Int
+    let inputs: [Input]
+    let outputs: [Output]
+}
+
+struct Input: Codable {
+    let prev_hash: String
+    let output_index: Int
+    let output_value: Int
+    let script_type: String
+    let script: String
+    let addresses: [String]
+    let sequence: Int
+    let age: Int
+    let wallet_name: String?
+    let wallet_token: String?
+}
+
+struct Output: Codable {
+    let value: Int
 }

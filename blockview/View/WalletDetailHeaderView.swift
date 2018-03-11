@@ -30,13 +30,19 @@ final class WalletDetailHeaderView: UIView, ViewPropertiesUpdating {
         dispatcher?.dispatch(walletAction: .displayWalletQR(properties.address, properties.title))
     }
     
+    @objc func copyWalletAddress() {
+        dispatcher?.dispatch(walletAction: .copyWalletAddressToClipboard(properties.address))
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = StyleConstants.navGray
         clipsToBounds = true
         addSubview(accentImageView)
         accentImageView.alpha = 0.2
+        
         copyButton.setTitle("Copy Wallet Address", for: .normal)
+        copyButton.addTarget(self, action: #selector(copyWalletAddress), for: .touchUpInside)
         
         qrButton.setTitle("Show Wallet QR Code", for: .normal)
         qrButton.addTarget(self, action: #selector(showWalletQR), for: .touchUpInside)

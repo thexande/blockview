@@ -100,9 +100,7 @@ final class WalletsViewController: UIViewController {
 //        emptyState.edgeAnchors == view.edgeAnchors
 //        emptyState.actionButton.addTarget(self, action: #selector(scanTapped), for: .touchUpInside)
         
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(scanTapped))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
         
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
