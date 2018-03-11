@@ -168,3 +168,8 @@ extension WalletCoordinator: WalletFactory {
 extension UIAlertAction {
     static let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
 }
+
+
+final class WalletService {
+    
+}

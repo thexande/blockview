@@ -3,10 +3,18 @@ import UIKit
 import Anchorage
 
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+    fileprivate let icon = UIImageView()
+    fileprivate let overlayLabel = UILabel()
+    fileprivate let overlay = UIView()
+    let headerView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     public var success: ((String, WalletType?) -> Void)?
-    public var walletType: WalletType?
+    public var walletType: WalletType? {
+        didSet {
+            icon.image = walletType?.icon
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,19 +65,33 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         captureSession.startRunning()
         
-        let overlay = UIView()
-        let overlayLabel = UILabel()
-        overlayLabel.textColor = .white
-        overlayLabel.font = UIFont.systemFont(ofSize: 24, weight: .black)
+     
+        overlayLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         overlayLabel.text = "Scan your LTC wallet address."
-        overlay.addSubview(overlayLabel)
-        overlayLabel.horizontalAnchors == overlayLabel.horizontalAnchors + 24
-        overlayLabel.topAnchor == overlay.topAnchor
+        overlayLabel.textAlignment = .center
+     
+        
         overlay.backgroundColor = .clear
         view.addSubview(overlay)
         overlay.topAnchor == view.safeAreaLayoutGuide.topAnchor
         overlay.bottomAnchor == view.safeAreaLayoutGuide.bottomAnchor
         overlay.horizontalAnchors == view.horizontalAnchors
+        
+        overlay.addSubview(headerView)
+        
+        headerView.horizontalAnchors == overlay.horizontalAnchors
+        headerView.topAnchor == view.topAnchor
+        headerView.heightAnchor == 140
+        
+        headerView.contentView.addSubview(icon)
+        icon.sizeAnchors == CGSize(width: 60, height: 60)
+        icon.centerXAnchor == headerView.centerXAnchor
+        icon.topAnchor == headerView.topAnchor + 36
+        
+        headerView.contentView.addSubview(overlayLabel)
+        overlayLabel.horizontalAnchors == headerView.horizontalAnchors + 24
+        overlayLabel.topAnchor == icon.bottomAnchor + 12
+        
         
     }
     
