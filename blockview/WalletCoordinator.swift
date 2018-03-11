@@ -1,4 +1,5 @@
 import UIKit
+import Result
 
 enum WalletAction {
     case reloadWallets
@@ -98,6 +99,19 @@ final class WalletCoordinator: WalletActionDispatching {
         self.addWalletSelectAlertActions(walletTypeAlertController, walletTypes: walletTypes)
         self.addWalletNameAlertActions(walletNameAlertController, walletDescriptions: WalletDescription.props)
         
+        let attributes = [
+            NSAttributedStringKey.foregroundColor : UIColor.white
+        ]
+        
+        navigation?.navigationBar.largeTitleTextAttributes = attributes
+        
+        var navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.tintColor = .white
+        navigationBarAppearace.barTintColor = WalletType.litecoin.color
+        // change navigation item title color
+        navigationBarAppearace.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+        
     }
     
     func dispatch(walletAction: WalletAction) {
@@ -118,15 +132,20 @@ final class WalletCoordinator: WalletActionDispatching {
         
         case .displayWalletQR(let walletAddress, let walletTitle):
            handleRoute(route: .qrCodeDisplay(walletAddress, walletTitle))
+        
         case .scanQR(let walletType):
             scannerViewController.walletType = walletType
             handleRoute(route: .scanQRCode)
+        
         case .deliverQRResult(let walletAddress, let walletType):
             handleQRResult(walletAddress: walletAddress, walletType: walletType)
+        
         case .walletTypeSelectAlert:
             handleRoute(route: .walletTypeSelectAlert)
+        
         case .copyWalletAddressToClipboard(let walletAddress):
             handleCopyWalletAddressToClipboard(walletAddress: walletAddress)
+        
         case .walletNameSelectAlert:
             handleRoute(route: .walletNameSelectAlert)
         }
@@ -146,7 +165,11 @@ extension WalletCoordinator {
     fileprivate func handleQRResult(walletAddress: String, walletType: WalletType?) {
         guard let walletType = walletType else { return }
         WalletService.fetchWallet(walletAddress: walletAddress, walletType: walletType) { [weak self] wallet in
-            guard let wallet = wallet else {
+            switch wallet {
+            case .success(let wallet):
+                print(wallet)
+            case .failure(let error):
+                print(error.localizedDescription)
                 let alertController = UIAlertController.confirmationAlert(
                     confirmationTitle: "Sorry.",
                     confirmationMessage: String(
@@ -157,10 +180,7 @@ extension WalletCoordinator {
                 DispatchQueue.main.async {
                     self?.navigation?.present(alertController, animated: true, completion: nil)
                 }
-                return
             }
-            
-            print(wallet)
         }
     }
 }
@@ -253,11 +273,15 @@ extension UIAlertAction {
     }
 }
 
+enum WalletServiceError: Error {
+    case walletDoesNotExist
+    case urlGenerationFailure
+}
 
 final class WalletService {
-    static func fetchWallet(walletAddress: String, walletType: WalletType, _ completion: @escaping(Wallet?) -> Void) {
+    static func fetchWallet(walletAddress: String, walletType: WalletType, _ completion: @escaping(Result<Wallet, WalletServiceError>) -> Void) {
         guard let url = URLFactory.url(walletAddress: walletAddress, walletType: walletType) else {
-            completion(nil)
+            completion(.failure(.urlGenerationFailure))
             return
         }
         
@@ -265,9 +289,9 @@ final class WalletService {
             guard let data = data else { return }
             do {
                 let wallet = try JSONDecoder().decode(Wallet.self, from: data)
-                completion(wallet)
+                completion(.success(wallet))
             } catch let error {
-                completion(nil)
+                completion(.failure(.walletDoesNotExist))
                 print(error.localizedDescription)
             }
         }.resume()
@@ -317,15 +341,15 @@ struct Transaction: Codable {
     let inputs: [Input]
     let outputs: [Output]
     
-    static func viewPropertyItem(from transaction: Transaction) -> TransactionRowItemProperties {
-        return TransactionRowItemProperties(
-            transactionHash: transaction.hash,
-            transactionType: .recieved,
-            title: <#T##String#>,
-            subTitle: <#T##String#>,
-            confirmationCount: String(transaction.confirmations)
-        )
-    }
+//    static func viewPropertyItem(from transaction: Transaction) -> TransactionRowItemProperties {
+//        return TransactionRowItemProperties(
+//            transactionHash: transaction.hash,
+//            transactionType: .recieved,
+//            title: <#T##String#>,
+//            subTitle: <#T##String#>,
+//            confirmationCount: String(transaction.confirmations)
+//        )
+//    }
 }
 
 struct Input: Codable {
