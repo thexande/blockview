@@ -36,6 +36,10 @@
 		B09722FA2053BA0A00152EFD /* WalletCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09722F92053BA0A00152EFD /* WalletCoordinator.swift */; };
 		B09722FC20548DBC00152EFD /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09722FB20548DBC00152EFD /* DummyData.swift */; };
 		B09722FE2054A1B100152EFD /* QRDispalyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09722FD2054A1B100152EFD /* QRDispalyViewController.swift */; };
+		B0CE1BBC2055EFD0003D5EFB /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1BBB2055EFD0003D5EFB /* Date.swift */; };
+		B0CE1BBE2055EFF0003D5EFB /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1BBD2055EFF0003D5EFB /* UIAlertController.swift */; };
+		B0CE1BC12055F042003D5EFB /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1BC02055F042003D5EFB /* WalletService.swift */; };
+		B0CE1BC42055F26F003D5EFB /* WalletControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1BC32055F26F003D5EFB /* WalletControllerFactory.swift */; };
 		B999799E11C88AAD22ACB237 /* Pods_blockviewUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB8EEAAF2E9CCB2BD8A8D8A /* Pods_blockviewUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +101,10 @@
 		B09722F92053BA0A00152EFD /* WalletCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCoordinator.swift; sourceTree = "<group>"; };
 		B09722FB20548DBC00152EFD /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		B09722FD2054A1B100152EFD /* QRDispalyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDispalyViewController.swift; sourceTree = "<group>"; };
+		B0CE1BBB2055EFD0003D5EFB /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		B0CE1BBD2055EFF0003D5EFB /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
+		B0CE1BC02055F042003D5EFB /* WalletService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletService.swift; sourceTree = "<group>"; };
+		B0CE1BC32055F26F003D5EFB /* WalletControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletControllerFactory.swift; sourceTree = "<group>"; };
 		F03965C361FEDFAD4D29A05A /* Pods-blockviewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blockviewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-blockviewTests/Pods-blockviewTests.release.xcconfig"; sourceTree = "<group>"; };
 		F1535F4A5D145F5B4C3AD838 /* Pods-blockviewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blockviewTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-blockviewTests/Pods-blockviewTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,6 +172,9 @@
 		B0943747204919A200AF36D0 /* blockview */ = {
 			isa = PBXGroup;
 			children = (
+				B0CE1BC22055F261003D5EFB /* Factories */,
+				B0CE1BBF2055F027003D5EFB /* Services */,
+				B0CE1BBA2055EFC7003D5EFB /* Extensions */,
 				B0943786204A55CA00AF36D0 /* View */,
 				B094377F20492B5800AF36D0 /* Helpers */,
 				B094377620491C7600AF36D0 /* Controllers */,
@@ -242,6 +253,31 @@
 				B094379C204CBFFF00AF36D0 /* TransactionTableSectionController.swift */,
 			);
 			path = Sections;
+			sourceTree = "<group>";
+		};
+		B0CE1BBA2055EFC7003D5EFB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B0CE1BBB2055EFD0003D5EFB /* Date.swift */,
+				B0CE1BBD2055EFF0003D5EFB /* UIAlertController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B0CE1BBF2055F027003D5EFB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B0CE1BC02055F042003D5EFB /* WalletService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B0CE1BC22055F261003D5EFB /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				B0CE1BC32055F26F003D5EFB /* WalletControllerFactory.swift */,
+			);
+			path = Factories;
 			sourceTree = "<group>";
 		};
 		BE9DB1D07F4F2D5503DF1867 /* Pods */ = {
@@ -562,6 +598,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0CE1BBC2055EFD0003D5EFB /* Date.swift in Sources */,
 				B094374B204919A200AF36D0 /* ScannerViewController.swift in Sources */,
 				B09722F82053AF8F00152EFD /* TransactionSegmentViewController.swift in Sources */,
 				B0943794204A881900AF36D0 /* WalletDetailRowItemCell.swift in Sources */,
@@ -572,7 +609,9 @@
 				B094379D204CBFFF00AF36D0 /* TransactionTableSectionController.swift in Sources */,
 				B094379F204CDEF600AF36D0 /* SectionProxyTableViewController.swift in Sources */,
 				B094378C204A565400AF36D0 /* WalletSectionHeader.swift in Sources */,
+				B0CE1BC12055F042003D5EFB /* WalletService.swift in Sources */,
 				B094378120492B6600AF36D0 /* FontAwesomeHelper.swift in Sources */,
+				B0CE1BBE2055EFF0003D5EFB /* UIAlertController.swift in Sources */,
 				B094377C20491DE100AF36D0 /* ExploreViewController.swift in Sources */,
 				B09722FE2054A1B100152EFD /* QRDispalyViewController.swift in Sources */,
 				B0943749204919A200AF36D0 /* AppDelegate.swift in Sources */,
@@ -584,6 +623,7 @@
 				B0943796204CA5D900AF36D0 /* TransactionDetailViewController.swift in Sources */,
 				B0943792204A87F700AF36D0 /* WalletDetailHeaderView.swift in Sources */,
 				B09722FA2053BA0A00152EFD /* WalletCoordinator.swift in Sources */,
+				B0CE1BC42055F26F003D5EFB /* WalletControllerFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

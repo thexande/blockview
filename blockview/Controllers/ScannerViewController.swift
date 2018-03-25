@@ -132,7 +132,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     
     func found(code: String) {
-        success?(code, walletType)
+        let walletAddress = String(code.split(separator: ":").last ?? "")
+        success?(walletAddress, walletType)
     }
     
     override var prefersStatusBarHidden: Bool {

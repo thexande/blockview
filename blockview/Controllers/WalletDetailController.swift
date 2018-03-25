@@ -61,6 +61,7 @@ final class WalletDetailController: SectionProxyTableViewController, ViewPropert
     }
     
     func update(_ properties: WalletDetailViewProperties) {
+        sections = []
         header.properties = properties.headerProperties
         title = properties.title
         header.properties = properties.headerProperties
@@ -80,14 +81,21 @@ final class WalletDetailController: SectionProxyTableViewController, ViewPropert
         tableView.tableHeaderView = header
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView()
+
+        tableView.refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-        segment.sizeToFit()
         segment.addTarget(self, action: #selector(didChangeSegmentedControl(_:)), for: .valueChanged)
         segment.selectedSegmentIndex = 0
         navigationItem.titleView = segment
-        
-        tableView.refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     @objc func refreshData() {
@@ -103,4 +111,14 @@ final class WalletDetailController: SectionProxyTableViewController, ViewPropert
     @objc func pressedSave() {
         dispatcher?.dispatch(walletAction: .walletNameSelectAlert)
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        sections = []
+    }
+    
+//    public func prepareForReuse() {
+//        sections = []
+//        tableView.reloadData()
+//    }
 }

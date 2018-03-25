@@ -63,16 +63,12 @@ protocol WalletRoutable {
     weak var navigation: UINavigationController? { get }
 }
 
-protocol WalletFactory {
-    func makeWalletSelectorAlertController() -> UIAlertController
-    func makeWalletSelectorAction(_ walletType: WalletType) -> UIAlertAction
-    func addWalletSelectAlertActions(_ controller: UIAlertController, walletTypes: [WalletType])
-}
 
 final class WalletCoordinator: WalletActionDispatching {
+    fileprivate let factory = WalletControllerFactory()
     fileprivate let navigationController = UINavigationController(rootViewController: UIViewController())
     fileprivate let walletViewController = WalletsViewController()
-    fileprivate let walletDetailViewController = WalletDetailController()
+    fileprivate let walletDetailViewController = WalletDetailController(nibName: nil, bundle: nil)
     fileprivate let transactionDetailViewController = TransactionDetailViewController()
     fileprivate let transactionSegmentDetailViewController = TransactionSegmentViewController()
     fileprivate let qrDisplayViewController = QRDispalyViewController()
@@ -89,6 +85,7 @@ final class WalletCoordinator: WalletActionDispatching {
         walletViewController.dispatcher = self
         walletDetailViewController.dispatcher = self
         transactionDetailViewController.dispatcher = self
+        factory.dispatcher = self
         
         scannerViewController.success = { [weak self] address, walletType in
             self?.dispatch(walletAction: .deliverQRResult(address, walletType))
@@ -96,22 +93,22 @@ final class WalletCoordinator: WalletActionDispatching {
         
         let walletTypes: [WalletType] = [.bitcoin, .litecoin, .dash, .dogecoin]
         
-        self.addWalletSelectAlertActions(walletTypeAlertController, walletTypes: walletTypes)
-        self.addWalletNameAlertActions(walletNameAlertController, walletDescriptions: WalletDescription.props)
-        
-        let attributes = [
-            NSAttributedStringKey.foregroundColor : UIColor.white
-        ]
-        
-        navigation?.navigationBar.largeTitleTextAttributes = attributes
-        
-        var navigationBarAppearace = UINavigationBar.appearance()
-        navigationBarAppearace.tintColor = .white
-        navigationBarAppearace.barTintColor = WalletType.litecoin.color
-        // change navigation item title color
-        navigationBarAppearace.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
-        
+        factory.addWalletSelectAlertActions(walletTypeAlertController, walletTypes: walletTypes)
+        factory.addWalletNameAlertActions(walletNameAlertController, walletDescriptions: WalletDescription.props)
+//
+//        let attributes = [
+//            NSAttributedStringKey.foregroundColor : UIColor.white
+//        ]
+//
+//        navigation?.navigationBar.largeTitleTextAttributes = attributes
+//
+//        var navigationBarAppearace = UINavigationBar.appearance()
+//        navigationBarAppearace.tintColor = .white
+//        navigationBarAppearace.barTintColor = WalletType.litecoin.color
+//        // change navigation item title color
+//        navigationBarAppearace.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+//        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+//
     }
     
     func dispatch(walletAction: WalletAction) {
@@ -164,10 +161,15 @@ extension WalletCoordinator {
     
     fileprivate func handleQRResult(walletAddress: String, walletType: WalletType?) {
         guard let walletType = walletType else { return }
-        WalletService.fetchWallet(walletAddress: walletAddress, walletType: walletType) { [weak self] wallet in
-            switch wallet {
+        WalletService.fetchWallet(walletAddress: walletAddress, walletType: walletType) { [weak self] walletResult in
+            switch walletResult {
             case .success(let wallet):
                 print(wallet)
+                let properties = Wallet.viewProperties(wallet)
+                self?.walletDetailViewController.properties = properties
+                self?.handleRoute(route: .walletDetail(properties))
+                
+                
             case .failure(let error):
                 print(error.localizedDescription)
                 let alertController = UIAlertController.confirmationAlert(
@@ -185,13 +187,7 @@ extension WalletCoordinator {
     }
 }
 
-extension UIAlertController {
-    static func confirmationAlert(confirmationTitle: String, confirmationMessage: String) -> UIAlertController {
-        let alertController = UIAlertController(title: confirmationTitle, message: confirmationMessage, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        return alertController
-    }
-}
+
 
 
 extension WalletCoordinator: WalletRoutable {
@@ -205,7 +201,10 @@ extension WalletCoordinator: WalletRoutable {
         switch route {
         case .walletDetail(let properties):
             walletDetailViewController.properties = properties
-            navigation?.pushViewController(walletDetailViewController, animated: true)
+            DispatchQueue.main.async { [weak self] in
+                guard let controller = self?.walletDetailViewController else { return }
+                self?.navigation?.pushViewController(controller, animated: true)
+            }
         case .wallets(let properties):
             walletViewController.properties = properties
             navigation?.pushViewController(walletViewController, animated: true)
@@ -229,83 +228,6 @@ extension WalletCoordinator: WalletRoutable {
     }
 }
 
-extension WalletCoordinator: WalletFactory {
-    func makeWalletSelectorAlertController() -> UIAlertController {
-        let controller = UIAlertController(title: "Wallet Type", message: "Select your Wallet type.", preferredStyle: .actionSheet)
-        let walletTypes: [WalletType] = [.bitcoin, .litecoin, .dash, .dogecoin]
-        return controller
-    }
-    
-    func addWalletSelectAlertActions(_ controller: UIAlertController, walletTypes: [WalletType]) {
-        var actions: [UIAlertAction] = walletTypes.map(self.makeWalletSelectorAction(_:))
-        actions.append(.cancel())
-        
-        actions.forEach { action in
-            controller.addAction(action)
-        }
-    }
-    
-    func addWalletNameAlertActions(_ controller: UIAlertController, walletDescriptions: [WalletDescription]) {
-        var actions: [UIAlertAction] = walletDescriptions.map(self.makeWalletNameSelectorAction(_:))
-        actions.append(.cancel())
-        
-        actions.forEach { action in
-            controller.addAction(action)
-        }
-    }
-    
-    func makeWalletSelectorAction(_ walletType: WalletType) -> UIAlertAction {
-        return UIAlertAction(title: walletType.rawValue.capitalized, style: .default, handler: { [weak self] _ in
-            self?.dispatch(walletAction: .scanQR(walletType))
-        })
-    }
-    
-    func makeWalletNameSelectorAction(_ walletName: WalletDescription) -> UIAlertAction {
-        return UIAlertAction(title: walletName.title, style: .default, handler: { [weak self] _ in
-//            self?.dispatch(walletAction: .scanQR(walletType))
-        })
-    }
-}
-
-extension UIAlertAction {
-    static func cancel() -> UIAlertAction {
-        return UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-    }
-}
-
-enum WalletServiceError: Error {
-    case walletDoesNotExist
-    case urlGenerationFailure
-}
-
-final class WalletService {
-    static func fetchWallet(walletAddress: String, walletType: WalletType, _ completion: @escaping(Result<Wallet, WalletServiceError>) -> Void) {
-        guard let url = URLFactory.url(walletAddress: walletAddress, walletType: walletType) else {
-            completion(.failure(.urlGenerationFailure))
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data else { return }
-            do {
-                let wallet = try JSONDecoder().decode(Wallet.self, from: data)
-                completion(.success(wallet))
-            } catch let error {
-                completion(.failure(.walletDoesNotExist))
-                print(error.localizedDescription)
-            }
-        }.resume()
-    }
-}
-
-
-struct URLFactory {
-    static func url(walletAddress: String, walletType: WalletType) -> URL? {
-        let address = "https://api.blockcypher.com/v1/\(walletType.symbol.lowercased())/main/addrs/\(walletAddress)/full?limit=50"
-        return URL(string: address)
-    }
-}
-
 struct Wallet: Codable {
     let address: String
     let total_received: Int
@@ -317,6 +239,26 @@ struct Wallet: Codable {
     let unconfirmed_n_tx: Int
     let final_n_tx: Int
     let txs: [Transaction]
+    
+    var totalReceived: String {
+        return String(total_received)
+    }
+    
+    static func viewProperties(_ wallet: Wallet) -> WalletDetailViewProperties {
+        let headerProperties = WalletDetailHeaderViewProperties(
+            balance: "",
+            received: wallet.totalReceived,
+            send: "",
+            address: "",
+            title: ""
+        )
+        
+        return WalletDetailViewProperties(
+            title: "New Wallet",
+            headerProperties: headerProperties,
+            items: wallet.txs.map(Transaction.viewPropertyItem(_:))
+        )
+    }
 }
 
 struct Transaction: Codable {
@@ -330,7 +272,7 @@ struct Transaction: Codable {
     let size: Int
     let preference: String
     let relayed_by: String?
-    let confirmed: String
+    let confirmed: Date
     let received: String
     let ver: Int
     let double_spend: Bool
@@ -341,15 +283,33 @@ struct Transaction: Codable {
     let inputs: [Input]
     let outputs: [Output]
     
-//    static func viewPropertyItem(from transaction: Transaction) -> TransactionRowItemProperties {
-//        return TransactionRowItemProperties(
-//            transactionHash: transaction.hash,
-//            transactionType: .recieved,
-//            title: <#T##String#>,
-//            subTitle: <#T##String#>,
-//            confirmationCount: String(transaction.confirmations)
-//        )
-//    }
+    static func viewPropertyItem(_ transaction: Transaction) -> TransactionRowItemProperties {
+        
+        return TransactionRowItemProperties(
+            transactionHash: transaction.hash,
+            transactionType: .recieved,
+            title: "sent",
+            subTitle: transaction.confirmed.transactionFormatString(),
+            confirmationCount: String(transaction.confirmations)
+        )
+    }
+    
+    static func transactionDetailPropreties(_ transaction: Transaction) -> TransactionDetailViewProperties {
+        let props = TransactionDetailViewProperties(
+            title: "detail",
+            transactionItemProperties: Transaction.viewPropertyItem(transaction),
+            sections: [
+                MetadataTitleSectionProperties(displayStyle: .metadata, title: "Transaction Metadata", items: [
+                    MetadataTitleRowItemProperties(title: "Hash", content: transaction.hash),
+                    MetadataTitleRowItemProperties(title: "Block Index", content: "58"),
+                    MetadataTitleRowItemProperties(title: "Block Height", content: "19823129038"),
+                    MetadataTitleRowItemProperties(title: "Confirmations", content: "123"),
+                    ]
+                ),
+            ]
+        )
+        return props
+    }
 }
 
 struct Input: Codable {
@@ -374,3 +334,6 @@ struct Output: Codable {
     let data_hex: String?
     let data_string: String?
 }
+
+
+
