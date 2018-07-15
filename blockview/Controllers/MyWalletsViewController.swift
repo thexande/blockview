@@ -29,10 +29,10 @@ enum WalletType: String {
     
     public var icon: UIImage {
         switch self {
-        case .bitcoin: return #imageLiteral(resourceName: "btc")
-        case .litecoin: return #imageLiteral(resourceName: "litecoin")
-        case .dash: return #imageLiteral(resourceName: "dash")
-        case .dogecoin: return #imageLiteral(resourceName: "dogecoin")
+        case .bitcoin: return UIImage()
+        case .litecoin: return UIImage()
+        case .dash: return UIImage()
+        case .dogecoin: return UIImage()
         }
     }
     

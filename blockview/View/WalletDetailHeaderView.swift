@@ -11,7 +11,7 @@ final class WalletDetailHeaderView: UIView, ViewPropertiesUpdating {
     fileprivate let sentTitle = UILabel()
     fileprivate let copyButton = SecondaryButton()
     fileprivate let qrButton = PrimaryButton()
-    fileprivate let accentImageView = UIImageView(image: #imageLiteral(resourceName: "btc"))
+    fileprivate let accentImageView = UIImageView()
     
     public var dispatcher: WalletActionDispatching?
     public var properties: WalletDetailHeaderViewProperties = .default {

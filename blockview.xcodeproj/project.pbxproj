@@ -19,7 +19,6 @@
 		B094377C20491DE100AF36D0 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094377B20491DE100AF36D0 /* ExploreViewController.swift */; };
 		B094377E2049212800AF36D0 /* qr_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B094377D2049212800AF36D0 /* qr_animation.json */; };
 		B094378120492B6600AF36D0 /* FontAwesomeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094378020492B6600AF36D0 /* FontAwesomeHelper.swift */; };
-		B0943785204A425E00AF36D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0943784204A425E00AF36D0 /* Assets.xcassets */; };
 		B0943788204A55D800AF36D0 /* WalletEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0943787204A55D800AF36D0 /* WalletEmptyStateView.swift */; };
 		B094378A204A563700AF36D0 /* WalletRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0943789204A563700AF36D0 /* WalletRowCell.swift */; };
 		B094378C204A565400AF36D0 /* WalletSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094378B204A565400AF36D0 /* WalletSectionHeader.swift */; };
@@ -36,6 +35,8 @@
 		B09722FA2053BA0A00152EFD /* WalletCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09722F92053BA0A00152EFD /* WalletCoordinator.swift */; };
 		B09722FC20548DBC00152EFD /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09722FB20548DBC00152EFD /* DummyData.swift */; };
 		B09722FE2054A1B100152EFD /* QRDispalyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09722FD2054A1B100152EFD /* QRDispalyViewController.swift */; };
+		B0B78A8E20FBD7AA0012FD05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0B78A8D20FBD7AA0012FD05 /* Assets.xcassets */; };
+		B0B78A9120FBD8B80012FD05 /* WalletDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B78A9020FBD8B80012FD05 /* WalletDetailPresenter.swift */; };
 		B0CE1BBC2055EFD0003D5EFB /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1BBB2055EFD0003D5EFB /* Date.swift */; };
 		B0CE1BBE2055EFF0003D5EFB /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1BBD2055EFF0003D5EFB /* UIAlertController.swift */; };
 		B0CE1BC12055F042003D5EFB /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE1BC02055F042003D5EFB /* WalletService.swift */; };
@@ -84,7 +85,6 @@
 		B094377B20491DE100AF36D0 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		B094377D2049212800AF36D0 /* qr_animation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = qr_animation.json; sourceTree = "<group>"; };
 		B094378020492B6600AF36D0 /* FontAwesomeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontAwesomeHelper.swift; sourceTree = "<group>"; };
-		B0943784204A425E00AF36D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		B0943787204A55D800AF36D0 /* WalletEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletEmptyStateView.swift; sourceTree = "<group>"; };
 		B0943789204A563700AF36D0 /* WalletRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletRowCell.swift; sourceTree = "<group>"; };
 		B094378B204A565400AF36D0 /* WalletSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSectionHeader.swift; sourceTree = "<group>"; };
@@ -101,6 +101,8 @@
 		B09722F92053BA0A00152EFD /* WalletCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCoordinator.swift; sourceTree = "<group>"; };
 		B09722FB20548DBC00152EFD /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		B09722FD2054A1B100152EFD /* QRDispalyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDispalyViewController.swift; sourceTree = "<group>"; };
+		B0B78A8D20FBD7AA0012FD05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B0B78A9020FBD8B80012FD05 /* WalletDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDetailPresenter.swift; sourceTree = "<group>"; };
 		B0CE1BBB2055EFD0003D5EFB /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		B0CE1BBD2055EFF0003D5EFB /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		B0CE1BC02055F042003D5EFB /* WalletService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletService.swift; sourceTree = "<group>"; };
@@ -172,6 +174,8 @@
 		B0943747204919A200AF36D0 /* blockview */ = {
 			isa = PBXGroup;
 			children = (
+				B0B78A8F20FBD8AC0012FD05 /* Presenters */,
+				B0B78A8D20FBD7AA0012FD05 /* Assets.xcassets */,
 				B0CE1BC22055F261003D5EFB /* Factories */,
 				B0CE1BBF2055F027003D5EFB /* Services */,
 				B0CE1BBA2055EFC7003D5EFB /* Extensions */,
@@ -179,7 +183,6 @@
 				B094377F20492B5800AF36D0 /* Helpers */,
 				B094377620491C7600AF36D0 /* Controllers */,
 				B0943748204919A200AF36D0 /* AppDelegate.swift */,
-				B0943784204A425E00AF36D0 /* Assets.xcassets */,
 				B0943751204919A200AF36D0 /* LaunchScreen.storyboard */,
 				B0943754204919A200AF36D0 /* Info.plist */,
 				B094377D2049212800AF36D0 /* qr_animation.json */,
@@ -255,6 +258,14 @@
 			path = Sections;
 			sourceTree = "<group>";
 		};
+		B0B78A8F20FBD8AC0012FD05 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				B0B78A9020FBD8B80012FD05 /* WalletDetailPresenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
 		B0CE1BBA2055EFC7003D5EFB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,7 +316,6 @@
 				B0943742204919A200AF36D0 /* Frameworks */,
 				B0943743204919A200AF36D0 /* Resources */,
 				45FC14A4F476372DE1BD75E5 /* [CP] Embed Pods Frameworks */,
-				5D9C1320799F4DA33A3A28FD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -324,8 +334,6 @@
 				B0943755204919A200AF36D0 /* Sources */,
 				B0943756204919A200AF36D0 /* Frameworks */,
 				B0943757204919A200AF36D0 /* Resources */,
-				81559CD44FF8B5BC15B96582 /* [CP] Embed Pods Frameworks */,
-				40927A942B62100820BE4B50 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -345,8 +353,6 @@
 				B0943760204919A200AF36D0 /* Sources */,
 				B0943761204919A200AF36D0 /* Frameworks */,
 				B0943762204919A200AF36D0 /* Resources */,
-				1C8FA7062B5755D2C6D79F11 /* [CP] Embed Pods Frameworks */,
-				A5A6B5E377BD646B3E13E47B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -410,7 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0943753204919A200AF36D0 /* LaunchScreen.storyboard in Resources */,
-				B0943785204A425E00AF36D0 /* Assets.xcassets in Resources */,
+				B0B78A8E20FBD7AA0012FD05 /* Assets.xcassets in Resources */,
 				B094377E2049212800AF36D0 /* qr_animation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,36 +438,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1C8FA7062B5755D2C6D79F11 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-blockviewUITests/Pods-blockviewUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		40927A942B62100820BE4B50 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-blockviewTests/Pods-blockviewTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		45FC14A4F476372DE1BD75E5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -490,36 +466,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-blockview/Pods-blockview-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5D9C1320799F4DA33A3A28FD /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-blockview/Pods-blockview-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		81559CD44FF8B5BC15B96582 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-blockviewTests/Pods-blockviewTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		86389D8EE9FB8B626B20D296 /* [CP] Check Pods Manifest.lock */ = {
@@ -558,21 +504,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A5A6B5E377BD646B3E13E47B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-blockviewUITests/Pods-blockviewUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		FC94B6DA0617D47BCF11DBA1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -608,6 +539,7 @@
 				B0943790204A87DC00AF36D0 /* Buttons.swift in Sources */,
 				B094379D204CBFFF00AF36D0 /* TransactionTableSectionController.swift in Sources */,
 				B094379F204CDEF600AF36D0 /* SectionProxyTableViewController.swift in Sources */,
+				B0B78A9120FBD8B80012FD05 /* WalletDetailPresenter.swift in Sources */,
 				B094378C204A565400AF36D0 /* WalletSectionHeader.swift in Sources */,
 				B0CE1BC12055F042003D5EFB /* WalletService.swift in Sources */,
 				B094378120492B6600AF36D0 /* FontAwesomeHelper.swift in Sources */,

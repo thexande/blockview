@@ -43,7 +43,7 @@ final class WalletDetailRowItemCell: UITableViewCell, ViewPropertiesUpdating {
         transactionBackground.centerYAnchor == contentView.centerYAnchor
         transactionBackground.addSubview(transactionIcon)
         
-        transactionIcon.image = #imageLiteral(resourceName: "up_arrow")
+        transactionIcon.image = UIImage()
         transactionIcon.contentMode = .scaleAspectFit
         let inset: CGFloat = 8
         transactionIcon.edgeAnchors == transactionBackground.edgeAnchors + UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
@@ -60,7 +60,7 @@ final class WalletDetailRowItemCell: UITableViewCell, ViewPropertiesUpdating {
         subTitle.font = UIFont.systemFont(ofSize: 16)
         subTitle.textColor = .gray
         
-        let lock = #imageLiteral(resourceName: "lock")
+        let lock = UIImage()
         lockIcon.image = lock.withRenderingMode(.alwaysTemplate)
         lockIcon.tintColor = StyleConstants.primaryGreen
         contentView.addSubview(lockIcon)

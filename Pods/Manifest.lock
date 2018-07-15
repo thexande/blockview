@@ -1,43 +1,43 @@
 PODS:
-  - Anchorage (4.2.1)
-  - FontAwesome.swift (1.2.0)
+  - Anchorage (4.2.4)
+  - FontAwesome.swift (1.3.2)
   - lottie-ios (2.5.0)
   - QRCode (2.0)
-  - Realm (3.1.1):
-    - Realm/Headers (= 3.1.1)
-  - Realm/Headers (3.1.1)
-  - RealmSwift (3.1.1):
-    - Realm (= 3.1.1)
-  - Result (3.0.0)
+  - Realm (3.7.4):
+    - Realm/Headers (= 3.7.4)
+  - Realm/Headers (3.7.4)
+  - RealmSwift (3.7.4):
+    - Realm (= 3.7.4)
+  - Result (4.0.0)
 
 DEPENDENCIES:
   - Anchorage
-  - FontAwesome.swift (from `https://github.com/thii/FontAwesome.swift`, branch `swift-4.0`)
+  - FontAwesome.swift
   - lottie-ios
   - QRCode
   - Realm
   - RealmSwift
-  - Result (~> 3.0.0)
+  - Result
 
-EXTERNAL SOURCES:
-  FontAwesome.swift:
-    :branch: swift-4.0
-    :git: https://github.com/thii/FontAwesome.swift
-
-CHECKOUT OPTIONS:
-  FontAwesome.swift:
-    :commit: ee1bf6b3db08f969ec7508c0feca3bac0d8b96ff
-    :git: https://github.com/thii/FontAwesome.swift
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Anchorage
+    - FontAwesome.swift
+    - lottie-ios
+    - QRCode
+    - Realm
+    - RealmSwift
+    - Result
 
 SPEC CHECKSUMS:
-  Anchorage: f4dbf32771115b8ef9c9cc4e55a002ad87711f48
-  FontAwesome.swift: 609815397a9b51cb4d774969787163c7d1306739
+  Anchorage: f855157310859280c706cc0b9c9281c21702f515
+  FontAwesome.swift: b4e4c8ccbbecb12f9b592bc533ff237af3706667
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   QRCode: f98a1886c8f37523704a7512a4c0cd45b34c18a4
-  Realm: 42d1c38a5b1bbcc828b48a7ce702cb86fc68adf4
-  RealmSwift: d31937ca6a6ee54acde64ec839523c0a3c04924b
-  Result: 1b3e431f37cbcd3ad89c6aa9ab0ae55515fae3b6
+  Realm: a469bb59e33f9926102ccaea4349822c53b9117e
+  RealmSwift: a45861b21c180f5cf0f122144b9759fa8dde3e9e
+  Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
 
-PODFILE CHECKSUM: 1ff79166f84392b6aa9e62a8c9fbf6ad507d0709
+PODFILE CHECKSUM: 5e35594d6fa5ec32454758b55ae4cb3dbaef7619
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3

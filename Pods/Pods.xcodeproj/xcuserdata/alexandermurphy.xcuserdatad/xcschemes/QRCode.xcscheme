@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '216E0A38B892961484FB3DE1664EB7FC'
-               BlueprintName = 'QRCode'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'QRCode.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "216E0A38B892961484FB3DE1664EB7FC"
+               BlueprintName = "QRCode"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "QRCode.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
