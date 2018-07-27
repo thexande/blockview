@@ -20,8 +20,8 @@ enum WalletDetailAcitons {
     case showMoreTransactions
     case reloadWallet(String, WalletCurrency)
     case selectedTransaction(String)
-    case displayWalletQR(String, String)
-    case copyWalletAddressToClipboard(String)
+    case displayWalletQR
+    case copyWalletAddressToClipboard
     case selectedTransactionSegment(String)
     case walletNameSelectAlert
     case selectedInput(String)

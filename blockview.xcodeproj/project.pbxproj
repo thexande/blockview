@@ -57,6 +57,7 @@
 		B02DD119210971A300D40413 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02DD110210971A300D40413 /* Transaction.swift */; };
 		B02DD11A210971A300D40413 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02DD111210971A300D40413 /* Int.swift */; };
 		B02DD11B210971A300D40413 /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02DD112210971A300D40413 /* WalletService.swift */; };
+		B032874A210B940500140279 /* MetadataActionTableSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0328749210B940500140279 /* MetadataActionTableSectionController.swift */; };
 		B0943753204919A200AF36D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0943751204919A200AF36D0 /* LaunchScreen.storyboard */; };
 		B094375E204919A200AF36D0 /* blockviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094375D204919A200AF36D0 /* blockviewTests.swift */; };
 		B0943769204919A200AF36D0 /* blockviewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0943768204919A200AF36D0 /* blockviewUITests.swift */; };
@@ -137,6 +138,7 @@
 		B02DD110210971A300D40413 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Transaction.swift; path = BlockCypherSwift/Transaction.swift; sourceTree = "<group>"; };
 		B02DD111210971A300D40413 /* Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Int.swift; path = BlockCypherSwift/Int.swift; sourceTree = "<group>"; };
 		B02DD112210971A300D40413 /* WalletService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletService.swift; path = BlockCypherSwift/WalletService.swift; sourceTree = "<group>"; };
+		B0328749210B940500140279 /* MetadataActionTableSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataActionTableSectionController.swift; sourceTree = "<group>"; };
 		B0943745204919A200AF36D0 /* blockview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blockview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0943752204919A200AF36D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0943754204919A200AF36D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				B0943751204919A200AF36D0 /* LaunchScreen.storyboard */,
 				B0943754204919A200AF36D0 /* Info.plist */,
 				B0B78A8D20FBD7AA0012FD05 /* Assets.xcassets */,
+				B0328749210B940500140279 /* MetadataActionTableSectionController.swift */,
 			);
 			path = blockview;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				B02DD0EC2109702100D40413 /* TableLoadingView.swift in Sources */,
 				B02DD0F82109702100D40413 /* WalletEmptyStateView.swift in Sources */,
 				B02DD0DF2109702100D40413 /* Button.swift in Sources */,
+				B032874A210B940500140279 /* MetadataActionTableSectionController.swift in Sources */,
 				B02DD0F02109702100D40413 /* MetadataAddressTableSectionController.swift in Sources */,
 				B02DD0E72109702100D40413 /* WalletsViewController.swift in Sources */,
 				B02DD0F32109702100D40413 /* WalletExtensions.swift in Sources */,

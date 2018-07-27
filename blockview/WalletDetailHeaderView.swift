@@ -54,11 +54,11 @@ final class WalletDetailHeaderView: UIView, ViewPropertiesUpdating {
     }
     
     @objc func showWalletQR() {
-        dispatcher?.dispatch(.displayWalletQR(properties.address, properties.title))
+        dispatcher?.dispatch(.displayWalletQR)
     }
     
     @objc func copyWalletAddress() {
-        dispatcher?.dispatch(.copyWalletAddressToClipboard(properties.address))
+        dispatcher?.dispatch(.copyWalletAddressToClipboard)
     }
     
     override init(frame: CGRect) {

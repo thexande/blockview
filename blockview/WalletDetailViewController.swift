@@ -77,8 +77,30 @@ final class WalletDetailController: SectionProxyTableViewController {
         self.properties = new
         
         sections = []
-        let controllers = new.sections.map(TransactionTableSectionController.init)
+        var controllers: [WalletTableSectionController] = new.sections.map(TransactionTableSectionController.init)
         
+        let balanceProps: [MetadataTitleRowItemProperties] = [
+            MetadataTitleRowItemProperties(title: "Balance", content: new.headerProperties.balance),
+            MetadataTitleRowItemProperties(title: "Received", content: new.headerProperties.received),
+            MetadataTitleRowItemProperties(title: "Sent", content: new.headerProperties.send)
+        ]
+        
+        let actionProps: [MetadataActionRowItemProperties] = [
+            MetadataActionRowItemProperties(title: "Copy Wallet Address", icon: UIImage(named: "copy_icon"), action: .copyWalletAddressToClipboard),
+            MetadataActionRowItemProperties(title: "Show Wallet Address QR", icon: UIImage(named: "qr_icon"), action: .displayWalletQR)
+        ]
+        
+        let actions = MetadataActionTableSectionController()
+        actions.properties = actionProps
+        
+        let balances = MetadataTitleTableSectionController()
+        balances.properties = balanceProps
+        balances.sectionTitle = "Wallet Balances"
+        
+        controllers.insert(actions, at: 0)
+        controllers.insert(balances, at: 1)
+        
+
         DispatchQueue.main.async {
             controllers.forEach {
                 $0.registerReusableTypes(tableView: self.tableView)
@@ -94,7 +116,7 @@ final class WalletDetailController: SectionProxyTableViewController {
             self.tableView.tableHeaderView?.isHidden = false
             self.tableView.backgroundView?.isHidden = true
             self.tableView.sendSubview(toBack: self.loading)
-            self.tableView.tableHeaderView = self.header
+//            self.tableView.tableHeaderView = self.header
             self.tableView.tableFooterView = self.footer
             
             if !new.showNavLoader {

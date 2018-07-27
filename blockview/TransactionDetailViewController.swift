@@ -33,6 +33,13 @@ struct MetadataAddressRowItemProperties: MetadataRowItemProperties {
     static let `default` = MetadataAddressRowItemProperties(address: "")
 }
 
+struct MetadataActionRowItemProperties: MetadataRowItemProperties {
+    let title: String
+    let icon: UIImage?
+    let action: WalletDetailAcitons
+    static let `default` = MetadataActionRowItemProperties(title: "", icon: UIImage(), action: .walletNameSelectAlert)
+}
+
 struct MetadataTransactionSegmentRowItemProperties: MetadataRowItemProperties {
     let address: String
     static let `default` = MetadataTransactionSegmentRowItemProperties(address: "")
