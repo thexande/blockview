@@ -36,6 +36,8 @@ final class TransactionDetailPresenter: WalletDetailActionDispatching {
             reloadTransaction(hash: hash)
         case let .selectedInput(identifier):
             handleSelectedInput(identifier)
+        case let .selectedOutput(identifier):
+            handleSelectedOutput(identifier)
         default: return
         }
     }
@@ -46,6 +48,14 @@ final class TransactionDetailPresenter: WalletDetailActionDispatching {
         }
         
         dispatch?.dispatch(.selectedInput(input))
+    }
+    
+    private func handleSelectedOutput(_ identifier: String) {
+        guard let output = transaction?.outputs.first(where: { $0.script == identifier }) else {
+            return
+        }
+        
+        dispatch?.dispatch(.selectedOutput(output))
     }
     
     private func reloadTransaction(hash: String) {

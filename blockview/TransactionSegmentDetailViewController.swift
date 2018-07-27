@@ -45,6 +45,30 @@ final class TransactionSegmentDetailViewController: SectionProxyTableViewControl
             self.sections = sections
             self.title = "Input"
         }
+        
+        init(_ output: Output) {
+            var sections: [MetadataSectionProperties] = []
+            
+            let metadataItems = [
+                MetadataTitleRowItemProperties(title: "Value", content: output.value.satoshiToReadableBtc()),
+                MetadataTitleRowItemProperties(title: "Script", content: output.script),
+                MetadataTitleRowItemProperties(title: "Script Type", content: output.script_type)
+                ]
+            
+            sections.append(MetadataTitleSectionProperties(displayStyle: .metadata,
+                                                           title: "Metadata",
+                                                           items: metadataItems))
+            let addressItems = output.addresses.map { address in
+                return MetadataTransactionSegmentRowItemProperties(address: address)
+            }
+            
+            sections.append(MetadataAddressSectionProperties(displayStyle: .metadata,
+                                                             title: "Addresses",
+                                                             items: addressItems))
+            
+            self.sections = sections
+            self.title = "Output"
+        }
     }
     
     override var sections: [WalletTableSectionController] {

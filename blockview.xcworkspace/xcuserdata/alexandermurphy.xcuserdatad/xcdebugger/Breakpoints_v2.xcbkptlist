@@ -10,76 +10,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "blockview/WalletCoordinator.swift"
-            timestampString = "542503410.044896"
+            timestampString = "554358007.7318569"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
-            landmarkName = "dispatch(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "blockview/WalletCoordinator.swift"
-            timestampString = "542503410.0453171"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
-            landmarkName = "dispatch(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Result.Result&lt;blockview.Wallet, blockview.WalletServiceError&gt;) -&gt; () in blockview.WalletCoordinator.(handleQRResult in _6F1BA9F11C3CDD71835CB79B57024EA1)(walletAddress: Swift.String, walletType: Swift.Optional&lt;blockview.WalletType&gt;) -&gt; ()"
-                  moduleName = "blockview"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alexandermurphy/Documents/thexande_apps/blockview/blockview/WalletCoordinator.swift"
-                  timestampString = "542502517.016857"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "173"
-                  endingLineNumber = "173"
-                  offsetFromSymbolStart = "2530">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Result.Result&lt;blockview.Wallet, blockview.WalletServiceError&gt;) -&gt; () in blockview.WalletCoordinator.(handleQRResult in _6F1BA9F11C3CDD71835CB79B57024EA1)(walletAddress: Swift.String, walletType: Swift.Optional&lt;blockview.WalletType&gt;) -&gt; ()"
-                  moduleName = "blockview"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alexandermurphy/Documents/thexande_apps/blockview/blockview/WalletCoordinator.swift"
-                  timestampString = "542502517.019291"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "173"
-                  endingLineNumber = "173"
-                  offsetFromSymbolStart = "3062">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "blockview/WalletCoordinator.swift"
-            timestampString = "542503410.045594"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
             landmarkName = "handleQRResult(walletAddress:walletType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "blockview/WalletCoordinator.swift"
+            timestampString = "554358007.731964"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "dispatch(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "blockview/MetadataTransactionSegmentTableSectionController.swift"
+            timestampString = "554355648.420347"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

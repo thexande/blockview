@@ -223,7 +223,8 @@ extension WalletCoordinator: WalletActionDispatching {
             
         case let .selectedInput(input):
             handleInputSelect(input)
-            
+        case let .selectedOutput(output):
+            handleOutputSelect(output)
         default: return
         }
     }
@@ -232,6 +233,13 @@ extension WalletCoordinator: WalletActionDispatching {
         let controller = TransactionSegmentDetailViewController()
         controller.title = "Input"
         controller.render(TransactionSegmentDetailViewController.Properties(input))
+        navigation?.pushViewController(controller, animated: true)
+    }
+    
+    private func handleOutputSelect(_ output: Output) {
+        let controller = TransactionSegmentDetailViewController()
+        controller.title = "Output"
+        controller.render(TransactionSegmentDetailViewController.Properties(output))
         navigation?.pushViewController(controller, animated: true)
     }
 }
