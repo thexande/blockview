@@ -100,6 +100,15 @@ final class WalletDetailPresenter: WalletDetailActionDispatching {
             reloadWallet(walletAddress: wallet,
                          walletType: type)
         case .showMoreTransactions: return
+        case .displayWalletQR:
+            if let cryptoWallet = cryptoWallet, case let .data(properties) = properties {
+                dispatcher?.dispatch(.displayWalletQR(cryptoWallet.0, properties.title))
+            }
+        case .copyWalletAddressToClipboard:
+            if let cryptoWallet = cryptoWallet {
+                dispatcher?.dispatch(.copyWalletAddressToClipboard(cryptoWallet.0))
+            }
+            
         default: return //dispatcher?.dispatch(action)
         }
     }

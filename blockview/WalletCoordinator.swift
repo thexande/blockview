@@ -135,6 +135,8 @@ final class WalletCoordinator {
         let walletService = WalletService(session: URLSession.shared)
         self.walletService = walletService
         
+        walletTypeAlertController.view.tintColor = StyleConstants.primaryPurple
+        
         walletPresenter = WalletsPresenter(walletService: walletService)
         
         self.navigationController.viewControllers = [walletsViewController]

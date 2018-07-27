@@ -117,7 +117,7 @@ final class ActionIconRowCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.separatorInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
         icon.heightAnchor == icon.widthAnchor
-        icon.heightAnchor == 24
+        icon.widthAnchor == 24
         icon.contentMode = .scaleAspectFit
         let stack = UIStackView(arrangedSubviews: [icon, titleLabel])
         stack.spacing = 18

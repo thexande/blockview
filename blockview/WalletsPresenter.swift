@@ -24,7 +24,7 @@ final class WalletsPresenter: WalletActionDispatching {
     
     func dispatch(_ action: WalletAction) {
         switch action {
-        case .displayDefaultWallets: dataProperties = WalletsViewProperties(title: "Example Wallets", sections: DummyData.sections, displayLoading: false)
+        case .displayDefaultWallets: dataProperties = WalletsViewProperties(title: "Examples", sections: DummyData.sections, displayLoading: false)
         case .reloadWallets:
             dataProperties.displayLoading = true
             reloadCurrentWallets()
@@ -52,7 +52,7 @@ final class WalletsPresenter: WalletActionDispatching {
             )
         }
         
-        dataProperties = WalletsViewProperties(title: "Example Wallets", sections: sectionProps, displayLoading: false)
+        dataProperties = WalletsViewProperties(title: "Examples", sections: sectionProps, displayLoading: false)
     }
     
     
