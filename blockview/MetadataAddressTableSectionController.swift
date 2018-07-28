@@ -127,14 +127,15 @@ final class WalletDescriptionRowCell: UITableViewCell {
         labelStack.leadingAnchor == icon.trailingAnchor + 12
         
         icon.sizeAnchors == CGSize(width: 56, height: 56)
-        icon.verticalAnchors == contentView.verticalAnchors + 12
+        labelStack.verticalAnchors == contentView.verticalAnchors + 18
         icon.leadingAnchor == contentView.leadingAnchor + 12
+        icon.centerYAnchor == labelStack.centerYAnchor
         
         separatorInset = UIEdgeInsets(top: 0, left: 92, bottom: 0, right: 0)
         
         title.font = UIFont.systemFont(ofSize: 20)
         address.font = UIFont.systemFont(ofSize: 12)
-        address.textColor = .gray
+        address.textColor = .black
     }
     
     required init?(coder aDecoder: NSCoder) {

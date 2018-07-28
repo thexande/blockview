@@ -100,10 +100,10 @@ final class WalletDetailController: SectionProxyTableViewController {
         balances.properties = balanceProps
         balances.sectionTitle = "Balances"
         
-//        let descriptions = WalletDescriptionTableSectionController()
-//        descriptions.properties = descriptionProps
+        let descriptions = WalletDescriptionTableSectionController()
+        descriptions.properties = descriptionProps
         
-//        controllers.insert(descriptions, at: 0)
+        controllers.insert(descriptions, at: 0)
         controllers.insert(actions, at: 1)
         controllers.insert(balances, at: 2)
         
