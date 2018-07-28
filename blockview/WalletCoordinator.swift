@@ -42,8 +42,6 @@ enum WalletDescription {
     static let props: [WalletDescription] = [.coinbase, .exodusWallet, .coldStorage, .ledgerNano, .trezor]
 }
 
-
-
 enum WalletRoute {
     case walletDetail(String, WalletCurrency)
     case transactionDetail(String, WalletCurrency)
@@ -113,6 +111,7 @@ final class WalletCoordinator {
     
     private func makeWalletDetailViewController() -> WalletDetailController {
         let walletDetailViewController = WalletDetailController()
+        walletDetailViewController.title = "Details"
         walletDetailPresenter.dispatcher = self
         walletDetailViewController.dispatcher = walletDetailPresenter
         walletDetailPresenter.deliver = { [weak self] props in

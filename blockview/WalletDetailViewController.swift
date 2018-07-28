@@ -79,6 +79,8 @@ final class WalletDetailController: SectionProxyTableViewController {
         sections = []
         var controllers: [WalletTableSectionController] = new.sections.map(TransactionTableSectionController.init)
         
+        let descriptionProps = WalletDescriptionSectionProperties(name: new.title, address: new.identifier, icon: new.headerProperties.backgroundImage)
+        
         let balanceProps: [MetadataTitleRowItemProperties] = [
             MetadataTitleRowItemProperties(title: "Balance", content: new.headerProperties.balance),
             MetadataTitleRowItemProperties(title: "Received", content: new.headerProperties.received),
@@ -92,13 +94,18 @@ final class WalletDetailController: SectionProxyTableViewController {
         
         let actions = MetadataActionTableSectionController()
         actions.properties = actionProps
+        actions.sectionTitle = "Actions"
         
         let balances = MetadataTitleTableSectionController()
         balances.properties = balanceProps
-        balances.sectionTitle = "Wallet Balances"
+        balances.sectionTitle = "Balances"
         
-        controllers.insert(actions, at: 0)
-        controllers.insert(balances, at: 1)
+//        let descriptions = WalletDescriptionTableSectionController()
+//        descriptions.properties = descriptionProps
+        
+//        controllers.insert(descriptions, at: 0)
+        controllers.insert(actions, at: 1)
+        controllers.insert(balances, at: 2)
         
 
         DispatchQueue.main.async {
@@ -110,7 +117,7 @@ final class WalletDetailController: SectionProxyTableViewController {
             self.sections = controllers
             
             self.header.properties = new.headerProperties
-            self.title = new.title
+//            self.title = new.title
             self.tableView.reloadData()
             
             self.tableView.tableHeaderView?.isHidden = false
@@ -138,9 +145,11 @@ final class WalletDetailController: SectionProxyTableViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
-        tableView.rowHeight = UITableViewAutomaticDimension
+        
         tableView.tableFooterView = UIView()
         tableView.backgroundView = self.loading
+        tableView.estimatedRowHeight = 60
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         tableView.refreshControl = refresh
         refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)

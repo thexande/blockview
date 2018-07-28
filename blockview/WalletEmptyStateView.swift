@@ -4,7 +4,7 @@ import Lottie
 
 final class WalletsEmptyStateView: UIView {
     let animation = LOTAnimationView(name: "qr_animation")
-    let actionButton = UIButton()
+    let actionButton = PrimaryButton()
     let defaultButton = UIButton()
     
     override init(frame: CGRect) {
@@ -29,11 +29,9 @@ final class WalletsEmptyStateView: UIView {
         buttonStack.topAnchor == animation.bottomAnchor + 36
         
         actionButton.setTitle("Scan Wallet QR", for: .normal)
-        actionButton.backgroundColor = .black
-        actionButton.layer.cornerRadius = 10
-        actionButton.tintColor = .gray
+     
         
-        defaultButton.setTitleColor(.black, for: .normal)
+        defaultButton.setTitleColor(StyleConstants.primaryPurple, for: .normal)
         defaultButton.setTitle("check out example wallets", for: .normal)
         
     }

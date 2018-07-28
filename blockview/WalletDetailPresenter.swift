@@ -66,7 +66,12 @@ final class WalletDetailPresenter: WalletDetailActionDispatching {
                              currency: walletType) { [weak self] walletResult in
             switch walletResult {
             case .success(let wallet):
-                let walletProps = Wallet.recentWalletDetailViewProperties(wallet)
+                var walletProps = Wallet.recentWalletDetailViewProperties(wallet)
+              
+                if let icon = self?.cryptoWallet?.1.icon {
+                    walletProps.headerProperties.backgroundImage = icon
+                }
+                
                 self?.wallet = wallet
                 self?.dataProperties = walletProps
                 

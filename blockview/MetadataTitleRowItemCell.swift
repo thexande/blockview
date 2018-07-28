@@ -115,14 +115,20 @@ final class ActionIconRowCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.separatorInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
-        icon.heightAnchor == icon.widthAnchor
-        icon.widthAnchor == 24
+        self.separatorInset = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
+       
+        icon.sizeAnchors == CGSize(width: 24, height: 24)
         icon.contentMode = .scaleAspectFit
-        let stack = UIStackView(arrangedSubviews: [icon, titleLabel])
-        stack.spacing = 18
-        contentView.addSubview(stack)
-        stack.edgeAnchors == contentView.edgeAnchors + UIEdgeInsets(top: 12, left: 18, bottom: 12, right: 18)
+
+        contentView.addSubview(icon)
+        
+        icon.leadingAnchor == contentView.leadingAnchor + 18
+        icon.centerYAnchor == contentView.centerYAnchor
+        
+        contentView.addSubview(titleLabel)
+        titleLabel.leadingAnchor == icon.trailingAnchor + 18
+        titleLabel.verticalAnchors == contentView.verticalAnchors + 12
+        titleLabel.trailingAnchor == contentView.trailingAnchor - 18
         accessoryType = .disclosureIndicator
     }
     
