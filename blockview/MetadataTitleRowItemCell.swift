@@ -24,6 +24,8 @@ final class MetadataTitleRowItemCell: UITableViewCell, ViewPropertiesUpdating {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         let labels = [titleLabel, contentLabel]
         contentLabel.textColor = .gray
+        selectionStyle = .none
+        
         
         labels.forEach { label in
             label.numberOfLines = 0
@@ -57,11 +59,11 @@ final class MetadataAddressRowItemCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         let inset: CGFloat = 12
         addressLabel.numberOfLines = 0
-        addressLabel.textColor = .gray
+        addressLabel.textColor = .black
         addressLabel.font = UIFont.systemFont(ofSize: 13)
         contentView.addSubview(addressLabel)
         addressLabel.edgeAnchors == contentView.edgeAnchors + UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
-        accessoryType = .disclosureIndicator
+        selectionStyle = .none
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -82,7 +84,7 @@ final class MetadataTransactionSegmentRowItemCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         accessoryType = .disclosureIndicator
         addressLabel.numberOfLines = 0
-        addressLabel.textColor = .gray
+        addressLabel.textColor = .black
         addressLabel.font = UIFont.systemFont(ofSize: 12)
         
         contentView.addSubview(addressLabel)

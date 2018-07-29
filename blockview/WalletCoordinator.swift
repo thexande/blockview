@@ -123,7 +123,7 @@ final class WalletCoordinator {
     private func makeTransactionDetailViewController() -> TransactionDetailViewController {
         let controller = TransactionDetailViewController()
         controller.dispatcher = transactionDetailPresenter
-        controller.title = "Details"
+        controller.title = "Transaction"
         transactionDetailPresenter.deliver = { props in
             controller.render(props)
         }
@@ -159,6 +159,8 @@ final class WalletCoordinator {
         
         factory.addWalletSelectAlertActions(walletTypeAlertController, walletTypes: walletTypes)
         factory.addWalletNameAlertActions(walletNameAlertController, walletDescriptions: WalletDescription.props)
+        
+        navigationController.navigationBar.prefersLargeTitles = true
     }
 }
 

@@ -5,6 +5,7 @@ final class TransactionTableSectionController: NSObject, WalletTableSectionContr
     public var sectionTitle: String?
     var sectionSubtitle: String?
     public var properties: [TransactionRowItemProperties] = []
+    public var hideDisclosure: Bool = false
     
     override init() {
         super.init()
@@ -31,6 +32,7 @@ final class TransactionTableSectionController: NSObject, WalletTableSectionContr
             return UITableViewCell()
         }
         cell.properties = properties[indexPath.row]
+        cell.accessoryType = (hideDisclosure ? .none : .disclosureIndicator)
         return cell
     }
     

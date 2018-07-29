@@ -136,6 +136,8 @@ final class WalletDescriptionRowCell: UITableViewCell {
         title.font = UIFont.systemFont(ofSize: 20)
         address.font = UIFont.systemFont(ofSize: 12)
         address.textColor = .black
+        
+        selectionStyle = .none
     }
     
     required init?(coder aDecoder: NSCoder) {

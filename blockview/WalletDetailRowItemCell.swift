@@ -65,6 +65,8 @@ final class TransactionRowItemCell: UITableViewCell, TransactionRowViewPropertie
         transactionBackground.centerYAnchor == contentView.centerYAnchor
         transactionBackground.addSubview(transactionIcon)
         
+        accessoryType = .disclosureIndicator
+        
         transactionIcon.image = #imageLiteral(resourceName: "up_arrow")
         transactionIcon.contentMode = .scaleAspectFit
         let inset: CGFloat = 8

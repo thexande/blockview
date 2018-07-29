@@ -192,9 +192,10 @@ final class TransactionDetailViewController: SectionProxyTableViewController, Tr
         self.properties = new
         
         sections = []
-        title = new.title
+//        title = new.title
         let metadataSections = MetadataTableSectionFactory.mapControllerFromSections(properties.sections, dispatcher: dispatcher)
         let transactionController = TransactionTableSectionController()
+        transactionController.hideDisclosure = true
         transactionController.properties = [properties.transactionItemProperties]
         
         var sectionControllers: [WalletTableSectionController] = []
@@ -220,7 +221,7 @@ final class TransactionDetailViewController: SectionProxyTableViewController, Tr
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.largeTitleDisplayMode = .always
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.refreshControl = UIRefreshControl()
