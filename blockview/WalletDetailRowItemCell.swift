@@ -76,8 +76,12 @@ final class TransactionRowItemCell: UITableViewCell, TransactionRowViewPropertie
         stack.axis = .vertical
         stack.spacing = 6
         contentView.addSubview(stack)
-        stack.leadingAnchor == transactionBackground.trailingAnchor + 12
+//        stack.leadingAnchor == transactionBackground.trailingAnchor + 12
         stack.verticalAnchors == contentView.verticalAnchors + 8
+        stack.leadingAnchor == contentView.leadingAnchor + 12
+        
+        // TODO:- show this after figuring out how to determine if the transaction is sent or recieved.
+        transactionBackground.isHidden = true
         
         title.font = UIFont.systemFont(ofSize: 18)
         

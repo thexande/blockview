@@ -29,6 +29,7 @@ public struct Safe<Base: Decodable>: Decodable {
 final public class WalletService {
     private let session: URLSession
     private let decoder = JSONDecoder()
+    private let urlFactory = UrlFactory()
     
     public init(session: URLSession) {
         self.session = session
@@ -45,7 +46,7 @@ final public class WalletService {
                     currency: WalletCurrency,
                     completion: @escaping(Result<Wallet, WalletServiceError>) -> Void) {
         
-        guard let url = UrlFactory.url(walletAddress: address, currency: currency) else {
+        guard let url = urlFactory.url(walletAddress: address, currency: currency) else {
             completion(.failure(.urlGenerationFailure))
             return
         }
@@ -78,7 +79,7 @@ final public class WalletService {
     public func transaction(hash: String,
                         currency: WalletCurrency,
                         completion: @escaping(Result<Transaction, WalletServiceError>) -> Void) {
-        guard let url = UrlFactory.url(transactionHash: hash, currency: currency) else {
+        guard let url = urlFactory.url(transactionHash: hash, currency: currency) else {
             completion(.failure(.urlGenerationFailure))
             return
         }

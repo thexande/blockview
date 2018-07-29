@@ -113,7 +113,7 @@ final class WalletDescriptionRowCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         let stackLabels = [title, address]
-        stackLabels.forEach { label in label.numberOfLines = 0 }
+        stackLabels.forEach { $0.numberOfLines = 0 }
         
         let labelStack = UIStackView(arrangedSubviews: stackLabels)
         labelStack.axis = .vertical
@@ -135,7 +135,7 @@ final class WalletDescriptionRowCell: UITableViewCell {
         
         title.font = UIFont.systemFont(ofSize: 20)
         address.font = UIFont.systemFont(ofSize: 12)
-        address.textColor = .black
+        address.textColor = .darkGray
         
         selectionStyle = .none
     }

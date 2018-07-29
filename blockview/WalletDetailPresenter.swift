@@ -38,6 +38,7 @@ final class WalletDetailPresenter: WalletDetailActionDispatching {
     private let walletService = WalletService(session: URLSession.shared)
     var wallet: Wallet?
     var deliver: ((LoadableProps<WalletDetailViewProperties>) -> Void)?
+    private var numberOfTransactions: Int = 30
     
     var properties: LoadableProps<WalletDetailViewProperties> = .loading {
         didSet {
