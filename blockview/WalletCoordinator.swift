@@ -20,8 +20,42 @@ enum WalletAction {
     
     case selectedInput(Input)
     case selectedOutput(Output)
+    
+    enum Donation {
+        case qr(DonationCurrency)
+        case copyAddress(DonationCurrency)
+    }
+    case showDonate
+    case donate(Donation)
+    case presentDonationOptions(DonationCurrency)
 }
 
+
+
+
+enum DonationCurrency {
+    case btc
+    case eth
+    case ltc
+    
+    var title: String {
+        switch self {
+        case .btc: return "Bitcoin"
+        case .eth: return "Ethereum"
+        case .ltc: return "Litecoin"
+        }
+    }
+    
+    var address: String {
+        switch self {
+        case .btc: return "3J34NbtHR6YcV4aNDv9qCAEb96tujmZ2nH"
+        case .eth: return "0x0cCB57a6617460Cf43fb6C1E00275803beD8aD0A"
+        case .ltc: return "MP29JQrv4bXx6RoPZMtYimvEi8AmLZ2xyb"
+        }
+    }
+}
+    
+    
 enum WalletDescription {
     case coinbase
     case exodusWallet
@@ -227,6 +261,11 @@ extension WalletCoordinator: WalletActionDispatching {
             handleInputSelect(input)
         case let .selectedOutput(output):
             handleOutputSelect(output)
+           
+        case .showDonate:
+            let controller = DonateViewController()
+            controller.dispatcher = self
+            navigationController.present(controller, animated: true, completion: nil)
         default: return
         }
     }

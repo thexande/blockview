@@ -27,6 +27,7 @@ enum WalletDetailAcitons {
     case selectedInput(String)
     case selectedOutput(String)
     case reloadTransaction(String)
+    case showDonate
 }
 
 protocol WalletDetailActionDispatching: AnyObject {
@@ -114,6 +115,9 @@ final class WalletDetailPresenter: WalletDetailActionDispatching {
             if let cryptoWallet = cryptoWallet {
                 dispatcher?.dispatch(.copyWalletAddressToClipboard(cryptoWallet.0))
             }
+            
+        case .showDonate:
+            dispatcher?.dispatch(.showDonate)
             
         default: return //dispatcher?.dispatch(action)
         }

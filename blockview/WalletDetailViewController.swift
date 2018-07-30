@@ -39,7 +39,7 @@ protocol WalletDetailPropertiesUpdating: ViewPropertiesUpdating where ViewProper
 
 final class WalletDetailController: SectionProxyTableViewController {
     private let header = WalletDetailHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 172))
-    private let footer = WalletDetailShowMoreResultsFooterView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 80))
+    private let footer = DonateFooterView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 80))
     private let segment = UISegmentedControl(items: [ "Recent", "Largest"])
     private let loading = TableLoadingView()
     private let refresh = UIRefreshControl()
@@ -62,7 +62,8 @@ final class WalletDetailController: SectionProxyTableViewController {
                 self.tableView.tableHeaderView = UIView()
                 self.tableView.tableFooterView = UIView()
             }
-        case .data(let properties): update(from: self.properties, to: properties)
+        case .data(let properties):
+            update(from: self.properties, to: properties)
         case .error(let error): return
         }
     }

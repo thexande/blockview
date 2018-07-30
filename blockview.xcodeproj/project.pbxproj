@@ -64,6 +64,10 @@
 		B094375E204919A200AF36D0 /* blockviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094375D204919A200AF36D0 /* blockviewTests.swift */; };
 		B0943769204919A200AF36D0 /* blockviewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0943768204919A200AF36D0 /* blockviewUITests.swift */; };
 		B0B78A8E20FBD7AA0012FD05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0B78A8D20FBD7AA0012FD05 /* Assets.xcassets */; };
+		B0D9298D210E988800CE89CB /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D9298C210E988800CE89CB /* ConfettiView.swift */; };
+		B0D9298F210E9EA000CE89CB /* DonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D9298E210E9EA000CE89CB /* DonateView.swift */; };
+		B0D92991210E9EF000CE89CB /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D92990210E9EF000CE89CB /* DonateViewController.swift */; };
+		B0D92993210E9F4E00CE89CB /* ClosureProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D92992210E9F4E00CE89CB /* ClosureProxy.swift */; };
 		B999799E11C88AAD22ACB237 /* Pods_blockviewUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB8EEAAF2E9CCB2BD8A8D8A /* Pods_blockviewUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -153,6 +157,10 @@
 		B0943768204919A200AF36D0 /* blockviewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blockviewUITests.swift; sourceTree = "<group>"; };
 		B094376A204919A200AF36D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0B78A8D20FBD7AA0012FD05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B0D9298C210E988800CE89CB /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
+		B0D9298E210E9EA000CE89CB /* DonateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateView.swift; sourceTree = "<group>"; };
+		B0D92990210E9EF000CE89CB /* DonateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateViewController.swift; sourceTree = "<group>"; };
+		B0D92992210E9F4E00CE89CB /* ClosureProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureProxy.swift; sourceTree = "<group>"; };
 		F03965C361FEDFAD4D29A05A /* Pods-blockviewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blockviewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-blockviewTests/Pods-blockviewTests.release.xcconfig"; sourceTree = "<group>"; };
 		F1535F4A5D145F5B4C3AD838 /* Pods-blockviewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blockviewTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-blockviewTests/Pods-blockviewTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -220,6 +228,9 @@
 		B0943747204919A200AF36D0 /* blockview */ = {
 			isa = PBXGroup;
 			children = (
+				B0943751204919A200AF36D0 /* LaunchScreen.storyboard */,
+				B0943754204919A200AF36D0 /* Info.plist */,
+				B0B78A8D20FBD7AA0012FD05 /* Assets.xcassets */,
 				B02DD10B210971A200D40413 /* Input.swift */,
 				B02DD111210971A300D40413 /* Int.swift */,
 				B02DD10E210971A200D40413 /* JSONDecoder.DateDecodingStrategy.swift */,
@@ -268,12 +279,13 @@
 				B02DD0B92109701D00D40413 /* WalletSectionHeader.swift */,
 				B02DD0D62109702000D40413 /* WalletsPresenter.swift */,
 				B02DD0BF2109701D00D40413 /* WalletsViewController.swift */,
-				B0943751204919A200AF36D0 /* LaunchScreen.storyboard */,
-				B0943754204919A200AF36D0 /* Info.plist */,
-				B0B78A8D20FBD7AA0012FD05 /* Assets.xcassets */,
 				B0328749210B940500140279 /* MetadataActionTableSectionController.swift */,
 				B032874B210CD2C700140279 /* OnboardingInformationViewController.swift */,
 				B032874D210CD2EE00140279 /* OnboardItemView.swift */,
+				B0D9298C210E988800CE89CB /* ConfettiView.swift */,
+				B0D9298E210E9EA000CE89CB /* DonateView.swift */,
+				B0D92990210E9EF000CE89CB /* DonateViewController.swift */,
+				B0D92992210E9F4E00CE89CB /* ClosureProxy.swift */,
 			);
 			path = blockview;
 			sourceTree = "<group>";
@@ -543,9 +555,11 @@
 				B02DD0EA2109702100D40413 /* WalletDetailShowMoreResultsFooterView.swift in Sources */,
 				B02DD0E82109702100D40413 /* WalletDetailPresenter.swift in Sources */,
 				B02DD0E12109702100D40413 /* WalletSectionHeader.swift in Sources */,
+				B0D92991210E9EF000CE89CB /* DonateViewController.swift in Sources */,
 				B02DD114210971A300D40413 /* Input.swift in Sources */,
 				B032874C210CD2C700140279 /* OnboardingInformationViewController.swift in Sources */,
 				B02DD0E02109702100D40413 /* DateFormatter.swift in Sources */,
+				B0D9298F210E9EA000CE89CB /* DonateView.swift in Sources */,
 				B02DD11A210971A300D40413 /* Int.swift in Sources */,
 				B02DD0ED2109702100D40413 /* TransactionTableSectionController.swift in Sources */,
 				B02DD0EE2109702100D40413 /* MetadataTitleTableSectionController.swift in Sources */,
@@ -575,11 +589,13 @@
 				B02DD0F12109702100D40413 /* MetadataTransactionSegmentTableSectionController.swift in Sources */,
 				B02DD0E92109702100D40413 /* WalletCoordinator.swift in Sources */,
 				B02DD11B210971A300D40413 /* WalletService.swift in Sources */,
+				B0D9298D210E988800CE89CB /* ConfettiView.swift in Sources */,
 				B02DD0EF2109702100D40413 /* UIAlertController.swift in Sources */,
 				B02DD115210971A300D40413 /* UrlFactory.swift in Sources */,
 				B02DD0F42109702100D40413 /* WalletControllerFactory.swift in Sources */,
 				B02DD0F62109702100D40413 /* LoadableProps.swift in Sources */,
 				B02DD0F92109702100D40413 /* Date.swift in Sources */,
+				B0D92993210E9F4E00CE89CB /* ClosureProxy.swift in Sources */,
 				B02DD1022109702100D40413 /* PropsUpdating.swift in Sources */,
 				B02DD0F52109702100D40413 /* AppDelegate.swift in Sources */,
 				B032874E210CD2EE00140279 /* OnboardItemView.swift in Sources */,
