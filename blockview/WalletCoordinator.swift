@@ -95,7 +95,7 @@ final class WalletCoordinator {
     
     private let walletTypeAlertController = UIAlertController(
         title: "Wallet Type",
-        message: "Select your Wallet type.",
+        message: "More wallet types coming soon!", // "Select your Wallet type.",
         preferredStyle: .actionSheet
     )
     
@@ -155,7 +155,7 @@ final class WalletCoordinator {
             self?.dispatch(.deliverQRResult(address, walletType))
         }
         
-        let walletTypes: [WalletCurrency] = [.bitcoin, .litecoin, .dash, .dogecoin]
+        let walletTypes: [WalletCurrency] = [.bitcoin] //, .litecoin, .dash, .dogecoin]
         
         factory.addWalletSelectAlertActions(walletTypeAlertController, walletTypes: walletTypes)
         factory.addWalletNameAlertActions(walletNameAlertController, walletDescriptions: WalletDescription.props)
@@ -208,7 +208,6 @@ extension WalletCoordinator: WalletActionDispatching {
             handleRoute(route: .qrCodeDisplay(walletAddress, walletTitle))
             
         case .scanQR(let walletType):
-//            walletDetailViewController.properties = .loading
             scannerViewController.walletType = walletType
             handleRoute(route: .scanQRCode)
             
@@ -261,7 +260,13 @@ extension WalletCoordinator {
         guard let walletType = walletType else {
             return
         }
-//        handleRoute(route: .walletDetail(.loading))
+        
+        walletDetailPresenter.properties = .loading
+        
+        DispatchQueue.main.async {
+            let controller = self.makeWalletDetailViewController()
+            self.navigation?.pushViewController(controller, animated: true)
+        }
         
         walletService.wallet(address: walletAddress, currency: walletType) { [weak self] walletResult in
             switch walletResult {
@@ -270,10 +275,10 @@ extension WalletCoordinator {
                 self?.walletDetailPresenter.wallet = wallet
                 var props = Wallet.recentWalletDetailViewProperties(wallet)
                 props.headerProperties.backgroundImage = walletType.icon
-                
 //                self?.handleRoute(route: .wallet)
+                self?.walletDetailPresenter.properties = .data(props)
+                self?.walletDetailPresenter.cryptoWallet = (walletAddress, walletType)
                 
-//                self?.walletDetailViewController.properties = .data(props)
             case .failure(let error):
                 print(error.localizedDescription)
                 let alertController = UIAlertController(

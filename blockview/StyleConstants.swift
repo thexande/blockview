@@ -15,7 +15,7 @@ enum StyleConstants {
     
     static let lightestGray: UIColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
     static let primaryBlue: UIColor = UIColor(red:0.00, green:0.48, blue:1.00, alpha:1.0)
-    static let primaryPurple: UIColor = UIColor(red:0.28, green:0.12, blue:0.42, alpha:1.0)
+    static let primaryPurple: UIColor = UIColor(red:0.49, green:0.29, blue:0.76, alpha:1.0)
     static let primaryGreen: UIColor = UIColor(red:0.16, green:0.73, blue:0.37, alpha:1.0)
     static let primaryRed: UIColor = UIColor(red:0.99, green:0.30, blue:0.33, alpha:1.0)
     static let navGray: UIColor = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0)

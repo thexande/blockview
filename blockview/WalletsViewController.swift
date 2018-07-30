@@ -117,7 +117,8 @@ final class WalletsViewController: UITableViewController, WalletsViewPropertiesU
     }
     
     @objc func refreshData() {
-        dispatcher?.dispatch(.reloadWallets)
+        // TODO:- enable swipe to refresh, debug default wallet
+//        dispatcher?.dispatch(.reloadWallets)
     }
     
     @objc func scanTapped() {
@@ -188,6 +189,9 @@ extension WalletsViewController {
         }
     }
     
+    // TODO:- Implement slide to remove
+    /*
+    
     @available(iOS 11.0, *)
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Add") { (action, view, handler) in
@@ -207,6 +211,8 @@ extension WalletsViewController {
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
         return configuration
     }
+    
+    */
 }
 
 

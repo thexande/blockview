@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "blockview/WalletCoordinator.swift"
-            timestampString = "554584481.159076"
+            filePath = "blockview/WalletDetailPresenter.swift"
+            timestampString = "554600859.848057"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
-            landmarkName = "handleQRResult(walletAddress:walletType:)"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "dispatch(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,12 +25,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "blockview/WalletCoordinator.swift"
-            timestampString = "554584481.159153"
+            filePath = "blockview/WalletDetailPresenter.swift"
+            timestampString = "554600859.848168"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "dispatch(_:)"
             landmarkType = "7">
          </BreakpointContent>
