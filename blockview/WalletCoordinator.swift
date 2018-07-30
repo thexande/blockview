@@ -126,6 +126,8 @@ final class WalletCoordinator {
     
     private let qrDisplayViewController = QRDispalyViewController()
     private let scannerViewController = ScannerViewController()
+    private let donationController = DonateViewController()
+
     
     private let walletTypeAlertController = UIAlertController(
         title: "Wallet Type",
@@ -167,7 +169,6 @@ final class WalletCoordinator {
     init() {
         let walletService = WalletService(session: URLSession.shared)
         self.walletService = walletService
-        
         walletTypeAlertController.view.tintColor = StyleConstants.primaryPurple
         
         walletPresenter = WalletsPresenter(walletService: walletService)
@@ -178,6 +179,8 @@ final class WalletCoordinator {
             self?.walletsViewController.properties = props
         }
         
+        donationController.dispatcher = self
+
         walletPresenter.dispatcher = self
         transactionDetailPresenter.dispatch = self
         factory.dispatcher = self
@@ -263,9 +266,11 @@ extension WalletCoordinator: WalletActionDispatching {
             handleOutputSelect(output)
            
         case .showDonate:
-            let controller = DonateViewController()
-            controller.dispatcher = self
-            navigationController.present(controller, animated: true, completion: nil)
+            navigationController.present(donationController, animated: true, completion: nil)
+        case let .donate(donation):
+            handleDonation(donation)
+        case let .presentDonationOptions(currency):
+            handleCurrency(currency)
         default: return
         }
     }
@@ -386,5 +391,51 @@ extension WalletCoordinator: WalletRoutable {
         case .walletNameSelectAlert:
             navigation?.present(walletNameAlertController, animated: true, completion: nil)
         }
+    }
+}
+
+
+extension WalletCoordinator {
+    private func handleCurrency(_ currency: DonationCurrency) {
+        let alert = makeDonateActionSheet(for: currency)
+        donationController.present(alert, animated: true, completion: nil)
+    }
+    
+    private func handleDonation(_ donation: WalletAction.Donation) {
+        switch donation {
+        case let .copyAddress(currency):
+            UIPasteboard.general.string = currency.address
+            let alert = UIAlertController.confirmationAlert(
+                confirmationTitle: "Copied.",
+                confirmationMessage: "Wallet address \(currency.address) has been copied to your clipboard."
+            )
+            donationController.present(alert, animated: true, completion: nil)
+
+        case let .qr(currency):
+            qrDisplayViewController.currency = currency
+            donationController.present(UINavigationController(rootViewController: qrDisplayViewController), animated: true, completion: nil)
+        }
+    }
+
+    private func makeDonateActionSheet(for currency: DonationCurrency) -> UIAlertController {
+        let alert = UIAlertController(title: "Thanks for wanting to help!",
+                                      message: "You can either copy my \(currency.title) wallet address, or scan my wallet's QR Code.",
+            preferredStyle: .actionSheet)
+        
+        let copyAction = UIAlertAction(title: "Copy my \(currency.title) address", style: .default) { [weak self] _ in
+            self?.dispatch(.donate(.copyAddress(currency)))
+        }
+        
+        let qrAction = UIAlertAction(title: "Display my \(currency.title) wallet QR code", style: .default) { [weak self] _ in
+            self?.dispatch(.donate(.qr(currency)))
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        [copyAction, qrAction, cancelAction].forEach { action in
+            alert.addAction(action)
+        }
+        
+        return alert
     }
 }

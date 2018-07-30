@@ -7,6 +7,7 @@ final class DonateViewController: UIViewController {
     let header = UILabel()
     let woot = UILabel()
     let donate = DonateView()
+    let dismiss = WhiteButton()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -40,13 +41,13 @@ final class DonateViewController: UIViewController {
         
         confettiView.edgeAnchors == view.edgeAnchors
         
-        header.text = "Your gradient background has been saved to your camera roll. \n\n If you enjoy using this free app, feel free to send some crypto my way! 💸"
+        header.text = "Thanks for downloading this blockchain viewing application. Bitcoin to the Moon! \n\n If you enjoy using this free app, feel free to send some crypto my way! 💸"
         header.textAlignment = .center
         header.font = UIFont.systemFont(ofSize: 20)
         header.textColor = .white
         header.numberOfLines = 0
         
-        party.text = "🎉"
+        party.text = "🚀"
         party.font = UIFont.systemFont(ofSize: 60)
         party.topAnchor == view.safeAreaLayoutGuide.topAnchor + 12
         party.centerXAnchor == view.centerXAnchor
@@ -55,9 +56,16 @@ final class DonateViewController: UIViewController {
         woot.centerXAnchor == view.centerXAnchor
         woot.font = UIFont.systemFont(ofSize: 40, weight: .bold)
         woot.textAlignment = .center
-        woot.text = "Woot!"
+        woot.text = "Moon!"
         
         confettiView.startConfetti()
+        
+        view.addSubview(dismiss)
+        dismiss.horizontalAnchors == view.horizontalAnchors + 18
+        dismiss.bottomAnchor == view.safeAreaLayoutGuide.bottomAnchor
+        dismiss.heightAnchor == 50
+        dismiss.setTitle("Get me outa here!", for: .normal)
+        dismiss.addTarget(self, action: #selector(didTapDismiss), for: .touchUpInside)
     }
     
     override func viewDidAppear(_ animated: Bool) {

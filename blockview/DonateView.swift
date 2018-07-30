@@ -33,7 +33,7 @@ final class DonateView: UIView {
         
         [btc, eth, ltc].forEach { button in
             let container = UIView()
-            container.backgroundColor = .lightGray
+            container.backgroundColor = .white
             container.layer.cornerRadius = 8
             container.addSubview(button)
             button.edgeAnchors == container.edgeAnchors + UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)

@@ -12,6 +12,15 @@ final class QRDispalyViewController: UIViewController {
         }
     }
     
+    var currency: DonationCurrency? {
+        didSet {
+            if let currency = currency {
+                address = currency.address
+                title = "Donate \(currency.title)"
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
