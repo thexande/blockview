@@ -91,7 +91,7 @@ final class WalletsViewController: UITableViewController, WalletsViewPropertiesU
         tableView.tableFooterView = UIView()
         tableView.register(WalletRowCell.self, forCellReuseIdentifier: String(describing: WalletRowCell.self))
         tableView.register(WalletSectionHeader.self, forHeaderFooterViewReuseIdentifier: String(describing: WalletSectionHeader.self))
-        tableView.refreshControl = refresh
+//        tableView.refreshControl = refresh
         refresh.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         emptyState.actionButton.addTarget(self, action: #selector(scanTapped), for: .touchUpInside)
         emptyState.defaultButton.addTarget(self, action: #selector(defaultTapped), for: .touchUpInside)
