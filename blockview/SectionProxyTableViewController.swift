@@ -25,6 +25,8 @@ class SectionProxyTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         sections[indexPath.section].tableView?(tableView, didSelectRowAt: indexPath)
+        //Change the selected background view of the cell after selection.
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

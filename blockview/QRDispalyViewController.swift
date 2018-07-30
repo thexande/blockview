@@ -16,7 +16,8 @@ final class QRDispalyViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(image)
-        image.widthAnchor == view.widthAnchor - 64
+        
+        image.heightAnchor == (view.heightAnchor - 64) / 2
         image.heightAnchor == image.widthAnchor
         image.centerAnchors == view.centerAnchors
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(done))

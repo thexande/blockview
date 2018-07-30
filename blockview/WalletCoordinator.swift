@@ -249,9 +249,10 @@ extension WalletCoordinator: WalletActionDispatching {
 /// Coordinator Action Handling Extension
 extension WalletCoordinator {
     private func handleCopyWalletAddressToClipboard(walletAddress: String) {
+        UIPasteboard.general.string = walletAddress
         let alert = UIAlertController.confirmationAlert(
-            confirmationTitle: "Coppied.",
-            confirmationMessage: "Wallet address \(walletAddress) has been coppied to your clipboard."
+            confirmationTitle: "Copied.",
+            confirmationMessage: "Wallet address \(walletAddress) has been copied to your clipboard."
         )
         navigation?.present(alert, animated: true, completion: nil)
     }
