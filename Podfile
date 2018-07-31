@@ -12,6 +12,7 @@ target 'blockview' do
   pod 'QRCode'
   pod 'Result'
   pod 'HydraAsync'
+  pod 'Hero'
 
   # Pods for blockview
 
