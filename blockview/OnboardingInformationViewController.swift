@@ -6,15 +6,31 @@ final class OnboardingInformationViewController: UIViewController {
     private let subtitleLabel = UILabel()
     private let action = PrimaryButton()
     private let actionContainer = UIView()
+    weak var dispatcher: WalletActionDispatching?
     
     struct Properties {
-        let title: String
+        let title: NSAttributedString
         let subtitle: String
         let onboardingItems: [OnboardItemView.Properties]
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        
+        titleLabel.numberOfLines = 0
+        titleLabel.minimumScaleFactor = 0.35
+        titleLabel.adjustsFontSizeToFitWidth = true
+        subtitleLabel.numberOfLines = 0
+        configure(makeOnboardingProperties())
+        
+        action.addAction { [weak self] in
+            self?.dispatcher?.dispatch(.dismissOnboarding)
+        }
+    }
+    
     func configure(_ properties: Properties) {
-        titleLabel.text = properties.title
+        titleLabel.attributedText = properties.title
         subtitleLabel.text = properties.subtitle
         
         let onboardItemViews: [UIView] = properties.onboardingItems.map { props in
@@ -42,20 +58,31 @@ final class OnboardingInformationViewController: UIViewController {
         stack.centerYAnchor == view.centerYAnchor
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
+    private func makeOnboardingProperties() -> Properties {
+        let attributedTitle = NSMutableAttributedString()
         
-        titleLabel.numberOfLines = 0
-        titleLabel.font = UIFont.systemFont(ofSize: 50, weight: .bold)
-        titleLabel.minimumScaleFactor = 0.35
-        titleLabel.adjustsFontSizeToFitWidth = true
-        subtitleLabel.numberOfLines = 0
+        let prefixAttributes = [
+            NSAttributedStringKey.font : UIFont.systemFont(ofSize: 42, weight: .black),
+            NSAttributedStringKey.foregroundColor : UIColor.black
+        ]
         
-        configure(Properties(title: "Welcome to Block View", subtitle: "Great new tools for notes synced to your iCloud account.", onboardingItems: [
-            OnboardItemView.Properties(content: "Capture documents, photos, maps and more for a richer Notes experience.", icon: UIImage(named: "copy_icon")),
-            OnboardItemView.Properties(content: "Capture documents, photos, maps and more for a richer Notes experience.", icon: UIImage(named: "copy_icon")),
-            OnboardItemView.Properties(content: "Capture documents, photos, maps and more for a richer Notes experience.", icon: UIImage(named: "copy_icon")),
-            ]))
+        let titleAttributes = [
+            NSAttributedStringKey.font : UIFont.systemFont(ofSize: 42, weight: .black),
+            NSAttributedStringKey.foregroundColor : StyleConstants.primaryPurple
+        ]
+        
+        let prefix = NSMutableAttributedString(string:"Welcome to ", attributes: prefixAttributes)
+        
+        let title = NSMutableAttributedString(string:"Block Viewer", attributes: titleAttributes)
+        
+        [prefix, title].forEach { string in
+            attributedTitle.append(string)
+        }
+        
+        return OnboardingInformationViewController.Properties(title: attributedTitle, subtitle: "Great tools for viewing blockchain transaction metadata.", onboardingItems: [
+            OnboardItemView.Properties(content: "Verify successful transactions through confirmation counts and block indexes.", icon: UIImage(named: "lock")),
+            OnboardItemView.Properties(content: "Scan QR codes to view transactions associated with a wallet, or display a wallet's QR code for payment.", icon: UIImage(named: "qrsvg")),
+            OnboardItemView.Properties(content: "Currently, only Bitcoin is supported. Multi currency wallet support is in development.", icon: UIImage(named: "multi_currency")),
+        ])
     }
 }

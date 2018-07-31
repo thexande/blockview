@@ -11,8 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.tintColor = StyleConstants.primaryPurple
 
         window = UIWindow(frame: UIScreen.main.bounds)
-//        window?.rootViewController = walletCoordinator.rootViewController
-        window?.rootViewController = OnboardingInformationViewController()
+        window?.rootViewController = walletCoordinator.rootViewController
         window?.makeKeyAndVisible()
         
         return true

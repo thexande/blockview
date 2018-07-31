@@ -28,6 +28,8 @@ enum WalletAction {
     case showDonate
     case donate(Donation)
     case presentDonationOptions(DonationCurrency)
+    
+    case dismissOnboarding
 }
 
 
@@ -127,6 +129,7 @@ final class WalletCoordinator {
     private let qrDisplayViewController = QRDispalyViewController()
     private let scannerViewController = ScannerViewController()
     private let donationController = DonateViewController()
+    private let onboardingViewController = OnboardingInformationViewController()
 
     
     private let walletTypeAlertController = UIAlertController(
@@ -198,6 +201,15 @@ final class WalletCoordinator {
         factory.addWalletNameAlertActions(walletNameAlertController, walletDescriptions: WalletDescription.props)
         
         navigationController.navigationBar.prefersLargeTitles = true
+        
+        
+        // Onboarding
+        onboardingViewController.dispatcher = self
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            if let controller = self?.onboardingViewController {
+                self?.navigationController.present(controller, animated: true, completion: nil)
+            }
+        }
     }
 }
 
@@ -271,6 +283,8 @@ extension WalletCoordinator: WalletActionDispatching {
             handleDonation(donation)
         case let .presentDonationOptions(currency):
             handleCurrency(currency)
+        case .dismissOnboarding:
+            onboardingViewController.dismiss(animated: true, completion: nil)
         default: return
         }
     }
