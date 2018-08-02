@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "blockview/WalletCoordinator.swift"
-            timestampString = "554693141.452415"
+            timestampString = "554910085.0656331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "419"
-            endingLineNumber = "419"
+            startingLineNumber = "424"
+            endingLineNumber = "424"
             landmarkName = "handleDonation(_:)"
             landmarkType = "7">
          </BreakpointContent>
