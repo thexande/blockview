@@ -1,6 +1,6 @@
 PODS:
   - Anchorage (4.2.4)
-  - FontAwesome.swift (1.3.2)
+  - FontAwesome.swift (1.4.3)
   - HydraAsync (1.2.1)
   - lottie-ios (2.5.0)
   - QRCode (2.0)
@@ -25,7 +25,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Anchorage: f855157310859280c706cc0b9c9281c21702f515
-  FontAwesome.swift: b4e4c8ccbbecb12f9b592bc533ff237af3706667
+  FontAwesome.swift: 4b9ba1e1f3418a626f3ab67b230856ab6eb4860f
   HydraAsync: 8f2ab62d57e140b4ca587ae0f66e1eb04e8e6965
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   QRCode: f98a1886c8f37523704a7512a4c0cd45b34c18a4
