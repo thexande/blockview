@@ -51,6 +51,6 @@ final class TransactionTableSectionController: NSObject, WalletTableSectionContr
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
 }

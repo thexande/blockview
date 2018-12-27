@@ -96,6 +96,6 @@ final class TransactionSegmentDetailViewController: SectionProxyTableViewControl
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
     }
 }

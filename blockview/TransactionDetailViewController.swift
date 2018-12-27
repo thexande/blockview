@@ -175,7 +175,7 @@ final class TransactionDetailViewController: SectionProxyTableViewController, Tr
             DispatchQueue.main.async {
                 self.tableView.backgroundView?.isHidden = false
                 self.tableView.tableHeaderView?.isHidden = true
-                self.tableView.bringSubview(toFront: self.loading)
+                self.tableView.bringSubviewToFront(self.loading)
                 self.tableView.tableHeaderView = UIView()
                 self.tableView.tableFooterView = UIView()
             }
@@ -208,7 +208,7 @@ final class TransactionDetailViewController: SectionProxyTableViewController, Tr
         
         sections = sectionControllers
         tableView.reloadData()
-        self.tableView.sendSubview(toBack: self.loading)
+        self.tableView.sendSubviewToBack(self.loading)
     }
     
     init() {
@@ -223,7 +223,7 @@ final class TransactionDetailViewController: SectionProxyTableViewController, Tr
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .always
         tableView.tableFooterView = UIView()
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
     }

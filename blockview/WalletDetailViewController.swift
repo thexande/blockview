@@ -58,7 +58,7 @@ final class WalletDetailController: SectionProxyTableViewController {
             DispatchQueue.main.async {
                 self.tableView.backgroundView?.isHidden = false
                 self.tableView.tableHeaderView?.isHidden = true
-                self.tableView.bringSubview(toFront: self.loading)
+                self.tableView.bringSubviewToFront(self.loading)
                 self.tableView.tableHeaderView = UIView()
                 self.tableView.tableFooterView = UIView()
             }
@@ -123,7 +123,7 @@ final class WalletDetailController: SectionProxyTableViewController {
             
             self.tableView.tableHeaderView?.isHidden = false
             self.tableView.backgroundView?.isHidden = true
-            self.tableView.sendSubview(toBack: self.loading)
+            self.tableView.sendSubviewToBack(self.loading)
 //            self.tableView.tableHeaderView = self.header
             self.tableView.tableFooterView = self.footer
             
@@ -150,7 +150,7 @@ final class WalletDetailController: SectionProxyTableViewController {
         tableView.tableFooterView = UIView()
         tableView.backgroundView = self.loading
         tableView.estimatedRowHeight = 60
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         
         tableView.refreshControl = refresh
         refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)

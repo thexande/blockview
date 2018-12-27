@@ -87,7 +87,7 @@ final class WalletsViewController: UITableViewController, WalletsViewPropertiesU
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         
-        tableView.estimatedRowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
         tableView.register(WalletRowCell.self, forCellReuseIdentifier: String(describing: WalletRowCell.self))
         tableView.register(WalletSectionHeader.self, forHeaderFooterViewReuseIdentifier: String(describing: WalletSectionHeader.self))

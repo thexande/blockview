@@ -20,7 +20,7 @@ final class MetadataTitleRowItemCell: UITableViewCell, ViewPropertiesUpdating {
         }
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         let labels = [titleLabel, contentLabel]
         contentLabel.textColor = .gray
@@ -55,7 +55,7 @@ final class MetadataAddressRowItemCell: UITableViewCell {
         }
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         let inset: CGFloat = 12
         addressLabel.numberOfLines = 0
@@ -80,7 +80,7 @@ final class MetadataTransactionSegmentRowItemCell: UITableViewCell {
         }
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         accessoryType = .disclosureIndicator
         addressLabel.numberOfLines = 0
@@ -115,7 +115,7 @@ final class ActionIconRowCell: UITableViewCell {
         }
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.separatorInset = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
        
