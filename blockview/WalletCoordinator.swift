@@ -202,6 +202,12 @@ final class WalletCoordinator {
         
         navigationController.navigationBar.prefersLargeTitles = true
         
+        if let popoverController = walletTypeAlertController.popoverPresentationController, let nav = navigation {
+            popoverController.sourceView = nav.view
+            popoverController.sourceRect = CGRect(x: nav.view.bounds.midX, y: nav.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+        
         
         // Onboarding
         onboardingViewController.dispatcher = self
