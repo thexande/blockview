@@ -462,6 +462,12 @@ extension WalletCoordinator {
             alert.addAction(action)
         }
         
+        if let popoverController = alert.popoverPresentationController, let nav = navigation {
+            popoverController.sourceView = nav.view
+            popoverController.sourceRect = CGRect(x: nav.view.bounds.midX, y: nav.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+        
         return alert
     }
 }
