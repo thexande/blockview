@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "97608FC9D54FAD5EBABC4DAC639EFFBC"
+               BlueprintIdentifier = "700D76790FBE4A7CBFAC4A0F11C72981"
                BuildableName = "Hydra.framework"
                BlueprintName = "HydraAsync"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "97608FC9D54FAD5EBABC4DAC639EFFBC"
+            BlueprintIdentifier = "700D76790FBE4A7CBFAC4A0F11C72981"
             BuildableName = "Hydra.framework"
             BlueprintName = "HydraAsync"
             ReferencedContainer = "container:Pods.xcodeproj">

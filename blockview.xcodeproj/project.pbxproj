@@ -464,7 +464,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-blockview/Pods-blockview-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-blockview/Pods-blockview-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Anchorage/Anchorage.framework",
 				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/HydraAsync/Hydra.framework",
@@ -483,7 +483,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-blockview/Pods-blockview-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-blockview/Pods-blockview-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		86389D8EE9FB8B626B20D296 /* [CP] Check Pods Manifest.lock */ = {
