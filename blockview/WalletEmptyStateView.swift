@@ -3,7 +3,7 @@ import Anchorage
 import Lottie
 
 final class WalletsEmptyStateView: UIView {
-    let animation = LOTAnimationView(name: "qr_animation")
+    let animation = AnimationView(name: "qr_animation")
     let actionButton = PrimaryButton()
     let defaultButton = UIButton()
     
@@ -14,7 +14,7 @@ final class WalletsEmptyStateView: UIView {
         animation.sizeAnchors == CGSize(width: 200, height: 200)
         animation.centerXAnchor == centerXAnchor
         animation.centerYAnchor == centerYAnchor - 100
-        animation.loopAnimation = true
+        animation.loopMode = .loop
         animation.play()
         
         actionButton.heightAnchor == 54
