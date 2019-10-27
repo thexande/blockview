@@ -1,4 +1,4 @@
-import Result
+import Foundation
 
 final class TransactionDetailPresenter: WalletDetailActionDispatching {
     var deliver: ((LoadableProps<TransactionDetailViewProperties>) -> Void)?

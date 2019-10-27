@@ -1,5 +1,4 @@
 import UIKit
-import Result
 import Hydra
 
 enum WalletAction {

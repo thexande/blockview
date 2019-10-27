@@ -1,4 +1,3 @@
-import Result
 import Hydra
 
 final class WalletsPresenter: WalletActionDispatching {
