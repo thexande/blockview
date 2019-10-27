@@ -59,7 +59,7 @@ final class MetadataAddressRowItemCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         let inset: CGFloat = 12
         addressLabel.numberOfLines = 0
-        addressLabel.textColor = .black
+        addressLabel.textColor = .gray
         addressLabel.font = UIFont.systemFont(ofSize: 13)
         contentView.addSubview(addressLabel)
         addressLabel.edgeAnchors == contentView.edgeAnchors + UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
@@ -84,7 +84,7 @@ final class MetadataTransactionSegmentRowItemCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         accessoryType = .disclosureIndicator
         addressLabel.numberOfLines = 0
-        addressLabel.textColor = .black
+        addressLabel.textColor = .gray
         addressLabel.font = UIFont.systemFont(ofSize: 12)
         
         contentView.addSubview(addressLabel)
